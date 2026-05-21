@@ -4,6 +4,9 @@ version = "0.1.0"
 description = "Daniel Shaulov — Analyst portfolio. Built with Next.js, deployed on Wasmer Edge."
 license = "MIT"
 
+[build]
+command = "npm ci && npm run build"
+
 [dependencies]
 "wasmer/static-web-server" = "^1"
 
