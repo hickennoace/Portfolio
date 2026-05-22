@@ -63,7 +63,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="h-screen overflow-hidden bg-slate-50 flex flex-col">
+      <div className="min-h-screen bg-slate-50 flex flex-col">
 
         {/* ── Header ── */}
         <header className="shrink-0 h-14 bg-slate-900 px-8 flex items-center justify-between">
@@ -92,10 +92,10 @@ export default function Page() {
         </header>
 
         {/* ── Main ── */}
-        <main className="flex-1 min-h-0 p-5 grid grid-cols-[290px_1fr] gap-4">
+        <main className="flex-1 p-5 grid grid-cols-[290px_1fr] gap-4">
 
           {/* ── Left panel ── */}
-          <aside className="flex flex-col gap-3 min-h-0">
+          <aside className="flex flex-col gap-3">
 
             {/* Bio card */}
             <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm p-4">
@@ -207,7 +207,7 @@ export default function Page() {
           </aside>
 
           {/* ── Right panel: Projects ── */}
-          <section className="flex flex-col min-h-0">
+          <section className="flex flex-col">
 
             <div className="shrink-0 flex items-center justify-between mb-3">
               <p className="text-[10px] font-semibold tracking-widest uppercase text-indigo-500">
@@ -224,11 +224,11 @@ export default function Page() {
               </a>
             </div>
 
-            <div className="flex-1 min-h-0 grid grid-rows-5 gap-2.5">
+            <div className="grid grid-rows-5 gap-2.5" style={{ minHeight: "420px" }}>
               {projects.map((p) => (
                 <div
                   key={p.id}
-                  className="bg-white rounded-xl border border-slate-200/80 shadow-sm px-5 flex items-center gap-4 hover:border-indigo-300 hover:shadow-md transition-all duration-200 group cursor-default min-h-0"
+                  className="bg-white rounded-xl border border-slate-200/80 shadow-sm px-5 h-20 flex items-center gap-4 hover:border-indigo-300 hover:shadow-md transition-all duration-200 group cursor-default"
                 >
                   <span className="w-8 shrink-0 text-[22px] font-light text-indigo-200 group-hover:text-indigo-400 tabular-nums leading-none transition-colors duration-200">
                     {p.id}
