@@ -30,3 +30,6 @@ next-env.d.ts
 
 # wasmer
 .wasmer/
+
+# claude code
+.claude/
