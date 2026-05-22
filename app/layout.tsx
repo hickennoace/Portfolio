@@ -4,30 +4,26 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Daniel Shaulov — Analyst · Economics & Management",
   description:
-    "Portfolio of Daniel Shaulov — former combat soldier, Economics & Management student at the Open University. Building rigor at the intersection of finance, data, and decisions.",
+    "Portfolio of Daniel Shaulov — Economics & Management student at the Open University of Israel, former IDF combat soldier. Targeting junior analyst roles in corporate finance and capital markets.",
   metadataBase: new URL("https://daniel-shaulov.wasmer.app"),
   openGraph: {
     title: "Daniel Shaulov — Analyst Portfolio",
     description:
-      "Where discipline from service meets the discipline of numbers.",
+      "Economics & Management student, former IDF combat soldier, targeting junior analyst roles.",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0b",
+  themeColor: "#f8fafc",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-    >
-      <body className="font-sans bg-ink text-bone selection:bg-gold selection:text-ink">
-        {children}
-      </body>
+    <html lang="en">
+      <body>{children}</body>
     </html>
   );
 }
