@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import Image from "next/image";
 import MeteorShower from "@/components/MeteorShower";
 
@@ -85,6 +85,14 @@ export default function Hero() {
                 className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/30 text-blue-300 hover:border-blue-400/60 hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
               >
                 Get in Touch
+              </a>
+              <a
+                href="/cv.pdf"
+                download
+                className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-white/[0.12] text-slate-400 hover:border-white/25 hover:text-white hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
+              >
+                <Download size={14} strokeWidth={2} />
+                Download CV
               </a>
             </motion.div>
           </div>

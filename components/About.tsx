@@ -12,7 +12,7 @@ const skills = [
 
 const stats = [
   { value: "92",    label: "GPA",         sub: "Open University of Israel" },
-  { value: "2 yrs", label: "IDF Service", sub: "Combat Infantry & Gunner"  },
+  { value: "2 yr 8 mo", label: "IDF Service", sub: "Combat Infantry & Gunner"  },
 ];
 
 const languages = [
