@@ -61,7 +61,7 @@ export default function Experience() {
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.13, ease: EASE }}
-              className="group p-6 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-500/25 hover:bg-white/[0.035] transition-all duration-300"
+              className="group p-6 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-400/48 hover:bg-white/[0.035] hover:shadow-[0_0_40px_rgba(59,130,246,0.1),0_0_1px_rgba(59,130,246,0.2)] transition-all duration-300"
             >
               <div className="flex items-start gap-4 sm:gap-5">
                 {/* Icon */}

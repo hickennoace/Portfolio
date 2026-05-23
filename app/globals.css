@@ -77,3 +77,34 @@ body {
 .orb-3 { animation: orbFloat3 26s ease-in-out infinite; }
 .orb-4 { animation: orbFloat1 44s ease-in-out infinite reverse; }
 .orb-5 { animation: orbFloat2 34s ease-in-out infinite 9s; }
+
+/* ── Meteor shower ── */
+@keyframes meteorFall {
+  0%   { opacity: 0; transform: rotate(-35deg) translateX(0); }
+  8%   { opacity: 0.75; }
+  72%  { opacity: 0.55; }
+  100% { opacity: 0; transform: rotate(-35deg) translateX(-620px); }
+}
+
+.meteor {
+  position: absolute;
+  height: 1.5px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    rgba(200, 215, 255, 0.65) 0%,
+    rgba(148, 163, 184, 0.25) 45%,
+    transparent 100%
+  );
+  animation-name: meteorFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+/* Show only first 4 meteors on small screens to keep it clean */
+@media (max-width: 639px) {
+  .meteor:nth-child(n+5) {
+    display: none;
+  }
+}

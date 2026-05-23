@@ -78,10 +78,10 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.14, ease: EASE }}
               whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
-              className="group relative block p-6 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-500/30 hover:bg-white/[0.04] transition-colors duration-300 overflow-hidden"
+              className="group relative block p-6 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-400/55 hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
             >
               {/* Hover glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-600/[0.07] via-transparent to-transparent rounded-2xl" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-6 gap-4">
