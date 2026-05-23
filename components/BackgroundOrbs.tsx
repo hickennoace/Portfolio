@@ -5,19 +5,19 @@ export default function BackgroundOrbs() {
       aria-hidden="true"
     >
       {/* Top-left: large deep blue */}
-      <div className="orb-1 absolute -top-48 -left-48 w-[750px] h-[750px] rounded-full bg-blue-700/[0.07] blur-[140px]" />
+      <div className="orb-1 absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full bg-blue-700/[0.08] blur-[140px]" />
 
-      {/* Top-center-right: indigo */}
-      <div className="orb-2 absolute -top-24 right-[12%] w-[480px] h-[480px] rounded-full bg-indigo-600/[0.06] blur-[120px]" />
+      {/* Top-right: indigo */}
+      <div className="orb-2 absolute -top-20 right-[10%] w-[460px] h-[460px] rounded-full bg-indigo-600/[0.06] blur-[120px]" />
 
       {/* Mid-right: electric blue */}
-      <div className="orb-3 absolute top-[42%] -right-44 w-[580px] h-[580px] rounded-full bg-blue-500/[0.06] blur-[160px]" />
+      <div className="orb-3 absolute top-[42%] -right-40 w-[540px] h-[540px] rounded-full bg-blue-500/[0.055] blur-[155px]" />
 
-      {/* Bottom-center-left: sky */}
-      <div className="orb-4 absolute bottom-[8%] left-[12%] w-[520px] h-[520px] rounded-full bg-sky-600/[0.05] blur-[140px]" />
+      {/* Bottom-left: sky */}
+      <div className="orb-4 absolute bottom-[8%] left-[10%] w-[500px] h-[500px] rounded-full bg-sky-600/[0.045] blur-[140px]" />
 
       {/* Bottom-right: deep blue */}
-      <div className="orb-5 absolute -bottom-24 -right-24 w-[420px] h-[420px] rounded-full bg-blue-800/[0.08] blur-[130px]" />
+      <div className="orb-5 absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-blue-800/[0.07] blur-[130px]" />
     </div>
   );
 }

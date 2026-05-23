@@ -4,28 +4,34 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
 const skills = ["Python", "SQL", "Power BI", "Excel", "Java"];
+
+const stats = [
+  { value: "92",    label: "GPA",         sub: "Open University of Israel"  },
+  { value: "3 yrs", label: "IDF Service", sub: "Combat Infantry & Gunner"   },
+];
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="about" ref={ref} className="py-28 sm:py-36 px-6">
+    <section id="about" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="block text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-5"
+          className="block text-[11px] font-semibold text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
           About
         </motion.span>
 
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left: bio */}
           <motion.div
-            initial={{ opacity: 0, x: -26 }}
+            initial={{ opacity: 0, x: -24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.82, delay: 0.08, ease: EASE }}
           >
@@ -56,11 +62,11 @@ export default function About() {
 
           {/* Right: skills + stats */}
           <motion.div
-            initial={{ opacity: 0, x: 26 }}
+            initial={{ opacity: 0, x: 24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.82, delay: 0.16, ease: EASE }}
           >
-            <p className="text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-4">
+            <p className="text-[11px] font-semibold text-blue-400 tracking-[0.24em] uppercase mb-4">
               Technologies
             </p>
 
@@ -68,10 +74,10 @@ export default function About() {
               {skills.map((skill, i) => (
                 <motion.span
                   key={skill}
-                  initial={{ opacity: 0, scale: 0.82 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.22 + i * 0.07, duration: 0.4 }}
-                  className="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[13px] font-medium hover:bg-blue-500/20 hover:border-blue-400/40 transition-all duration-200"
+                  transition={{ delay: 0.24 + i * 0.07, duration: 0.38 }}
+                  className="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[13px] font-medium hover:bg-blue-500/18 hover:border-blue-400/38 transition-all duration-200"
                 >
                   {skill}
                 </motion.span>
@@ -79,13 +85,10 @@ export default function About() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              {[
-                { value: "92",    label: "GPA",        sub: "Open University of Israel"   },
-                { value: "3 yrs", label: "IDF Service", sub: "Combat Infantry & Gunner"   },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="p-5 rounded-xl bg-white/[0.025] border border-white/[0.06] hover:border-blue-500/20 transition-colors duration-200"
+                  className="p-5 rounded-xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-500/20 transition-colors duration-300"
                 >
                   <p className="text-2xl font-bold text-white tabular-nums">{stat.value}</p>
                   <p className="text-[12px] text-blue-400/80 font-semibold mt-0.5">{stat.label}</p>

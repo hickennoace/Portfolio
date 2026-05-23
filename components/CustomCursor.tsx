@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
+  const [isTouch, setIsTouch] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -17,6 +18,10 @@ export default function CustomCursor() {
 
   useEffect(() => {
     setMounted(true);
+    // Don't show on touch / coarse pointer devices
+    const isPointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    setIsTouch(!isPointer);
+    if (!isPointer) return;
 
     const move = (e: MouseEvent) => {
       mx.set(e.clientX);
@@ -40,7 +45,7 @@ export default function CustomCursor() {
     };
   }, [mx, my]);
 
-  if (!mounted) return null;
+  if (!mounted || isTouch) return null;
 
   return (
     <>

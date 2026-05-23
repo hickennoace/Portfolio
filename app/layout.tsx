@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Daniel Shaulov — Data & Junior Analyst",
   description:
     "Portfolio of Daniel Shaulov — Economics & Management student at the Open University of Israel, former IDF combat soldier. Targeting data and junior analyst roles.",
-  metadataBase: new URL("https://daniel-shaulov.wasmer.app"),
   openGraph: {
     title: "Daniel Shaulov — Analyst Portfolio",
     description:
@@ -15,12 +14,14 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050d1a",
+  themeColor: "#0a0a0a",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body>{children}</body>
     </html>
   );

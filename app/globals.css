@@ -4,10 +4,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Only hide cursor on real pointer devices — never on touch */
+@media (hover: hover) and (pointer: fine) {
+  *,
+  *::before,
+  *::after {
+    cursor: none !important;
+  }
+}
+
 *,
 *::before,
 *::after {
-  cursor: none !important;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,8 +28,8 @@ html {
 
 body {
   font-family: "Inter Variable", "Inter", system-ui, sans-serif;
-  background-color: #050d1a;
-  color: #f1f5f9;
+  background-color: #0a0a0a;
+  color: #f8fafc;
   overflow-x: hidden;
 }
 
@@ -34,7 +42,7 @@ body {
   width: 3px;
 }
 ::-webkit-scrollbar-track {
-  background: #020810;
+  background: #050505;
 }
 ::-webkit-scrollbar-thumb {
   background: #2563eb;
@@ -46,22 +54,22 @@ body {
 
 /* ── Floating orb keyframes ── */
 @keyframes orbFloat1 {
-  0%,  100% { transform: translate(0,    0)    scale(1);    }
+  0%,  100% { transform: translate(0, 0)      scale(1);    }
   25%        { transform: translate(55px, -48px) scale(1.06); }
   55%        { transform: translate(95px, 22px)  scale(0.96); }
-  80%        { transform: translate(-22px,58px) scale(1.04); }
+  80%        { transform: translate(-22px, 58px) scale(1.04); }
 }
 
 @keyframes orbFloat2 {
-  0%,  100% { transform: translate(0,    0)    scale(1);    }
-  30%        { transform: translate(-70px,60px)  scale(1.09); }
-  65%        { transform: translate(50px, -38px) scale(0.93); }
+  0%,  100% { transform: translate(0, 0)      scale(1);    }
+  30%        { transform: translate(-70px, 60px)  scale(1.09); }
+  65%        { transform: translate(50px, -38px)  scale(0.93); }
 }
 
 @keyframes orbFloat3 {
-  0%,  100% { transform: translate(0,   0)    scale(1);    }
-  40%        { transform: translate(80px,75px)  scale(1.05); }
-  75%        { transform: translate(-48px,-28px) scale(0.97); }
+  0%,  100% { transform: translate(0, 0)      scale(1);    }
+  40%        { transform: translate(80px, 75px)   scale(1.05); }
+  75%        { transform: translate(-48px, -28px) scale(0.97); }
 }
 
 .orb-1 { animation: orbFloat1 32s ease-in-out infinite; }

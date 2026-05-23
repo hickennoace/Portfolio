@@ -38,14 +38,14 @@ export default function Connect() {
     <section
       id="connect"
       ref={ref}
-      className="py-28 sm:py-36 px-6 border-t border-white/[0.05]"
+      className="py-28 sm:py-36 px-5 sm:px-6 border-t border-white/[0.05]"
     >
       <div className="max-w-6xl mx-auto text-center">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="block text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-6"
+          className="block text-[11px] font-semibold text-blue-400 tracking-[0.24em] uppercase mb-6"
         >
           Connect
         </motion.span>
@@ -63,14 +63,14 @@ export default function Connect() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, delay: 0.14 }}
-          className="text-[17px] text-slate-400 font-light max-w-[400px] mx-auto mb-14 leading-relaxed"
+          className="text-[17px] text-slate-400 font-light max-w-[420px] mx-auto mb-14 leading-relaxed"
         >
           Open to collaboration and junior analyst opportunities in data,
           finance, and tech.
         </motion.p>
 
         {/* Contact cards */}
-        <div className="flex justify-center flex-wrap gap-4">
+        <div className="flex justify-center flex-wrap gap-3 sm:gap-4">
           {contacts.map((c, i) => (
             <motion.a
               key={c.label}
@@ -81,9 +81,9 @@ export default function Connect() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 + i * 0.1 }}
               whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
-              className="group flex items-center gap-3.5 px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-blue-500/35 hover:bg-blue-500/[0.06] transition-colors duration-300"
+              className="group flex items-center gap-3 sm:gap-3.5 px-5 sm:px-6 py-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] hover:border-blue-500/35 hover:bg-blue-500/[0.06] transition-colors duration-300"
             >
-              <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/20 transition-all duration-200">
+              <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-all duration-200">
                 <c.Icon size={16} strokeWidth={1.5} className="text-blue-400" />
               </div>
               <div className="text-left">
@@ -98,16 +98,15 @@ export default function Connect() {
           ))}
         </div>
 
-        {/* Footer line */}
+        {/* Footer */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.9, delay: 0.52 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
           className="mt-20 pt-7 border-t border-white/[0.04]"
         >
           <p className="text-[11px] text-slate-600">
-            © {new Date().getFullYear()} Daniel Shaulov · Built with Next.js ·
-            Deployed on Wasmer Edge
+            © {new Date().getFullYear()} Daniel Shaulov · Built with Next.js · Deployed on Vercel
           </p>
         </motion.div>
       </div>

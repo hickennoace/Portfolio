@@ -13,7 +13,7 @@ const projects = [
     category: "Data · Finance",
     description:
       "Investigated ETH price sensitivity to macroeconomic indicators — Fed rate decisions, DXY strength, and BTC dominance — using on-chain data pipelines and multivariate regression. Surfaced a statistically significant leading indicator ahead of major ETH drawdowns, validated across 3 years of historical data.",
-    tags: ["Python", "SQL", "pandas", "statsmodels", "matplotlib"],
+    tags: ["Python", "SQL", "pandas", "statsmodels"],
     href: "https://github.com/hickennoace",
   },
   {
@@ -22,7 +22,7 @@ const projects = [
     category: "Analytics · Gaming",
     description:
       "Mined 18 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
-    tags: ["Python", "SQL", "Power BI", "DAX", "pandas"],
+    tags: ["PowerBI", "Java", "SQL", "DAX"],
     href: "https://github.com/hickennoace",
   },
 ];
@@ -32,13 +32,13 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="work" ref={ref} className="py-28 sm:py-36 px-6">
+    <section id="work" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="block text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-5"
+          className="block text-[11px] font-semibold text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
           Selected Work
         </motion.span>
@@ -56,7 +56,7 @@ export default function Projects() {
           <motion.a
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.12 }}
+            transition={{ duration: 0.6, delay: 0.14 }}
             href="https://github.com/hickennoace"
             target="_blank"
             rel="noreferrer"
@@ -67,7 +67,7 @@ export default function Projects() {
           </motion.a>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-5">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
           {projects.map((project, i) => (
             <motion.a
               key={project.id}
@@ -78,19 +78,18 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.14, ease: EASE }}
               whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
-              className="group relative block p-7 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-500/30 hover:bg-white/[0.04] transition-colors duration-300 overflow-hidden"
+              className="group relative block p-6 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-500/30 hover:bg-white/[0.04] transition-colors duration-300 overflow-hidden"
             >
               {/* Hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-600/[0.07] via-transparent to-transparent rounded-2xl" />
 
               <div className="relative z-10">
-                {/* Header */}
                 <div className="flex items-start justify-between mb-6 gap-4">
                   <div>
                     <p className="text-[10px] font-semibold text-blue-400/70 tracking-[0.22em] uppercase mb-2">
                       {project.category}
                     </p>
-                    <h3 className="text-[20px] font-bold text-white group-hover:text-blue-300 transition-colors duration-200 leading-tight">
+                    <h3 className="text-[19px] sm:text-[20px] font-bold text-white group-hover:text-blue-300 transition-colors duration-200 leading-tight">
                       {project.title}
                     </h3>
                   </div>
@@ -99,12 +98,10 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Description */}
                 <p className="text-slate-400 text-[14px] leading-[1.88] mb-6">
                   {project.description}
                 </p>
 
-                {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
