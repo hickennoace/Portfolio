@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown, Download } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowDown, Download, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import MeteorShower from "@/components/MeteorShower";
 
@@ -16,6 +17,93 @@ const up = {
   hidden: { opacity: 0, y: 32 },
   show:   { opacity: 1, y: 0, transition: { duration: 0.78, ease: EASE } },
 };
+
+const CV_OPTIONS = [
+  { label: "CV (English)", href: "/cv-en.pdf", flag: "EN" },
+  { label: "CV (Hebrew)",  href: "/cv-he.pdf", flag: "HE" },
+];
+
+function CvDownloadButton() {
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onClick = (e: MouseEvent) => {
+      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={wrapRef} className="relative">
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-black/[0.12] dark:border-white/[0.12] text-slate-600 dark:text-slate-400 hover:border-black/[0.25] dark:hover:border-white/25 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
+      >
+        <Download size={14} strokeWidth={2} />
+        Download CV
+        <motion.span
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.22, ease: EASE }}
+          className="flex"
+        >
+          <ChevronDown size={14} strokeWidth={2} />
+        </motion.span>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            role="menu"
+            initial={{ opacity: 0, y: -6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0,  scale: 1    }}
+            exit={{    opacity: 0, y: -6, scale: 0.97 }}
+            transition={{ duration: 0.18, ease: EASE }}
+            className="absolute left-1/2 sm:left-0 -translate-x-1/2 sm:translate-x-0 top-full mt-2 w-56 origin-top
+                       rounded-xl border border-black/[0.1] dark:border-white/[0.08]
+                       bg-white/95 dark:bg-neutral-950/95 backdrop-blur-xl
+                       shadow-[0_10px_40px_rgba(15,23,42,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]
+                       z-30 p-1.5"
+          >
+            {CV_OPTIONS.map((opt) => (
+              <a
+                key={opt.href}
+                href={opt.href}
+                download
+                onClick={() => setOpen(false)}
+                role="menuitem"
+                className="group/item flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-medium
+                           text-slate-700 dark:text-slate-300
+                           hover:bg-blue-500/10 hover:text-blue-700 dark:hover:text-blue-300
+                           transition-colors duration-150"
+              >
+                <span className="flex items-center justify-center w-7 h-7 rounded-md
+                                 bg-blue-500/10 border border-blue-500/20
+                                 text-[10px] font-bold tracking-wider
+                                 text-blue-600 dark:text-blue-400
+                                 group-hover/item:bg-blue-500/18">
+                  {opt.flag}
+                </span>
+                <span className="flex-1">{opt.label}</span>
+                <Download size={13} strokeWidth={2} className="opacity-60 group-hover/item:opacity-100" />
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -94,33 +182,35 @@ export default function Hero() {
               >
                 Get in Touch
               </a>
-              <a
-                href="/cv.pdf"
-                download
-                className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-black/[0.12] dark:border-white/[0.12] text-slate-600 dark:text-slate-400 hover:border-black/[0.25] dark:hover:border-white/25 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
-              >
-                <Download size={14} strokeWidth={2} />
-                Download CV
-              </a>
+              <CvDownloadButton />
             </motion.div>
           </div>
 
-          {/* ── Profile image — square with rounded corners ── */}
+          {/* ── Profile image — large square, full color, permanent blue glow ── */}
           <motion.div variants={up} className="order-1 sm:order-2 shrink-0">
             <div
-              className="group relative w-52 h-52 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl
-                         ring-2 ring-black/[0.08] dark:ring-white/[0.07] transition-all duration-500
-                         hover:ring-blue-500/50 dark:hover:ring-blue-400/40
-                         hover:shadow-[0_8px_60px_rgba(59,130,246,0.25)] dark:hover:shadow-[0_8px_60px_rgba(59,130,246,0.35)]"
+              className="group relative w-56 h-56 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl
+                         ring-2 ring-blue-500/30 dark:ring-blue-400/25
+                         shadow-[0_10px_45px_-8px_rgba(59,130,246,0.45),0_0_0_1px_rgba(59,130,246,0.15)]
+                         dark:shadow-[0_12px_55px_-6px_rgba(59,130,246,0.55),0_0_0_1px_rgba(96,165,250,0.2)]
+                         hover:ring-blue-500/55 dark:hover:ring-blue-400/50
+                         hover:shadow-[0_15px_60px_-6px_rgba(59,130,246,0.6),0_0_0_1px_rgba(59,130,246,0.25)]
+                         dark:hover:shadow-[0_18px_70px_-4px_rgba(59,130,246,0.7),0_0_0_1px_rgba(96,165,250,0.3)]
+                         transition-all duration-500"
             >
+              {/* Soft blue aura behind image */}
+              <div
+                aria-hidden
+                className="absolute -inset-3 rounded-[1.4rem] bg-gradient-to-br from-blue-500/25 via-blue-400/10 to-indigo-500/20 blur-2xl opacity-80 pointer-events-none -z-10"
+              />
               <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
                   src="/copy.png"
                   alt="Daniel Shaulov"
                   fill
                   priority
-                  sizes="(max-width: 640px) 208px, (max-width: 1024px) 288px, 320px"
-                  className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
+                  sizes="(max-width: 640px) 224px, (max-width: 1024px) 320px, 384px"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
             </div>
