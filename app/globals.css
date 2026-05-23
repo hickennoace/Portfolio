@@ -4,11 +4,68 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+*,
+*::before,
+*::after {
+  cursor: none !important;
+  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  font-family: "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
+
+body {
+  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+  background-color: #050d1a;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: #f8fafc;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #020810;
+}
+::-webkit-scrollbar-thumb {
+  background: #2563eb;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
+}
+
+/* ── Floating orb keyframes ── */
+@keyframes orbFloat1 {
+  0%,  100% { transform: translate(0,    0)    scale(1);    }
+  25%        { transform: translate(55px, -48px) scale(1.06); }
+  55%        { transform: translate(95px, 22px)  scale(0.96); }
+  80%        { transform: translate(-22px,58px) scale(1.04); }
+}
+
+@keyframes orbFloat2 {
+  0%,  100% { transform: translate(0,    0)    scale(1);    }
+  30%        { transform: translate(-70px,60px)  scale(1.09); }
+  65%        { transform: translate(50px, -38px) scale(0.93); }
+}
+
+@keyframes orbFloat3 {
+  0%,  100% { transform: translate(0,   0)    scale(1);    }
+  40%        { transform: translate(80px,75px)  scale(1.05); }
+  75%        { transform: translate(-48px,-28px) scale(0.97); }
+}
+
+.orb-1 { animation: orbFloat1 32s ease-in-out infinite; }
+.orb-2 { animation: orbFloat2 38s ease-in-out infinite; }
+.orb-3 { animation: orbFloat3 26s ease-in-out infinite; }
+.orb-4 { animation: orbFloat1 44s ease-in-out infinite reverse; }
+.orb-5 { animation: orbFloat2 34s ease-in-out infinite 9s; }

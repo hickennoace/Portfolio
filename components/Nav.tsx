@@ -1,74 +1,68 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { motion } from "framer-motion";
+
+const links = [
+  { label: "About",      href: "#about"      },
+  { label: "Experience", href: "#experience" },
+  { label: "Work",       href: "#work"       },
+  { label: "Connect",    href: "#connect"    },
+];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const handle = () => setScrolled(window.scrollY > 28);
+    window.addEventListener("scroll", handle, { passive: true });
+    return () => window.removeEventListener("scroll", handle);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+    <motion.header
+      initial={{ y: -72, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "py-4 backdrop-blur-xl bg-ink/70 border-b border-bone/5"
-          : "py-7 bg-transparent"
+          ? "bg-[#050d1a]/80 backdrop-blur-xl border-b border-blue-500/10 shadow-[0_2px_48px_rgba(0,0,0,0.5)]"
+          : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12 flex items-center justify-between">
+      <nav className="max-w-6xl mx-auto px-6 sm:px-8 h-16 flex items-center justify-between gap-6">
+        {/* Logo */}
         <a
-          href="#top"
-          className="flex items-center gap-3 group"
-          aria-label="Daniel Shaulov — home"
+          href="#"
+          className="text-[15px] font-semibold text-white/90 hover:text-blue-400 transition-colors duration-200 tracking-tight shrink-0"
         >
-          <span className="font-serif text-2xl tracking-tightest leading-none text-bone group-hover:text-gold transition-colors duration-500">
-            Daniel{" "}
-            <span className="italic text-gold">Shaulov</span>
-          </span>
+          Daniel Shaulov
         </a>
 
-        <nav className="hidden md:flex items-center gap-10 text-[13px] tracking-widest uppercase text-bone-muted">
-          <a href="#about" className="underline-gold">About</a>
-          <a href="#work" className="underline-gold">Work</a>
-          <a href="#stack" className="underline-gold">Stack</a>
-          <a href="#writing" className="underline-gold">Writing</a>
-          <a href="#contact" className="underline-gold">Contact</a>
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <a
-            href="https://www.linkedin.com/in/danielshaulov/"
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="LinkedIn"
-            className="w-9 h-9 grid place-items-center rounded-full border border-bone/10 hover:border-gold/60 hover:text-gold transition-all duration-500 hover:rotate-[8deg]"
-          >
-            <Linkedin size={14} strokeWidth={1.6} />
-          </a>
-          <a
-            href="https://github.com/hickennoace"
-            target="_blank"
-            rel="noreferrer noopener"
-            aria-label="GitHub"
-            className="w-9 h-9 grid place-items-center rounded-full border border-bone/10 hover:border-gold/60 hover:text-gold transition-all duration-500 hover:rotate-[8deg]"
-          >
-            <Github size={14} strokeWidth={1.6} />
-          </a>
-          <a
-            href="mailto:danielshaulov4@gmail.com"
-            aria-label="Email"
-            className="hidden sm:grid w-9 h-9 place-items-center rounded-full border border-bone/10 hover:border-gold/60 hover:text-gold transition-all duration-500 hover:rotate-[8deg]"
-          >
-            <Mail size={14} strokeWidth={1.6} />
-          </a>
+        {/* Nav links */}
+        <div className="hidden md:flex items-center gap-7">
+          {links.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              className="text-[13px] text-slate-400 hover:text-white transition-colors duration-200 tracking-wide"
+            >
+              {l.label}
+            </a>
+          ))}
         </div>
-      </div>
-    </header>
+
+        {/* Availability badge */}
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="relative flex h-[7px] w-[7px]">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-55" />
+            <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-400" />
+          </span>
+          <span className="text-[12px] text-emerald-400/80 font-medium hidden sm:block">
+            Available
+          </span>
+        </div>
+      </nav>
+    </motion.header>
   );
 }

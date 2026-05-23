@@ -1,147 +1,101 @@
-import { Compass, Crosshair, GraduationCap, Quote } from "lucide-react";
-import Reveal from "./Reveal";
-import SectionLabel from "./SectionLabel";
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const skills = ["Python", "SQL", "Power BI", "Excel", "Java"];
 
 export default function About() {
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
-    <section id="about" className="relative py-32 md:py-44 overflow-hidden">
-      <div className="absolute inset-0 vignette-tl pointer-events-none opacity-60" />
+    <section id="about" ref={ref} className="py-28 sm:py-36 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="block text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-5"
+        >
+          About
+        </motion.span>
 
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
-        <Reveal>
-          <SectionLabel index="01" label="The Operator" />
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-12 gap-6 md:gap-10">
-          {/* Left: narrative */}
-          <Reveal className="col-span-12 lg:col-span-7">
-            <h2 className="font-serif text-[clamp(2.5rem,6vw,5rem)] leading-[1] tracking-tightest text-bone">
-              I learned to think clearly{" "}
-              <span className="italic text-bone-muted">when it mattered.</span>
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          {/* Left: bio */}
+          <motion.div
+            initial={{ opacity: 0, x: -26 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.82, delay: 0.08, ease: EASE }}
+          >
+            <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-white mb-6 leading-[1.1]">
+              A focused analyst,{" "}
+              <span className="text-blue-400">in the making.</span>
             </h2>
+            <p className="text-slate-400 text-[15px] leading-[1.9] mb-4">
+              I&apos;m an Economics &amp; Management student at the{" "}
+              <span className="text-slate-200 font-medium">
+                Open University of Israel
+              </span>{" "}
+              (GPA&nbsp;92), combining rigorous academic study with hands-on
+              analytical work.
+            </p>
+            <p className="text-slate-400 text-[15px] leading-[1.9]">
+              Before university, I served three years as a{" "}
+              <span className="text-slate-200 font-medium">
+                combat soldier and gunner in the IDF
+              </span>{" "}
+              — an experience that forged the precision, composure under
+              pressure, and structured decision-making that financial analysis
+              demands. I build data-driven answers to financial questions, and
+              I&apos;m targeting junior analyst roles where rigour and clear
+              thinking matter most.
+            </p>
+          </motion.div>
 
-            <div className="mt-10 space-y-6 text-bone-muted text-[15px] leading-[1.85] max-w-[58ch]">
-              <p>
-                Before the spreadsheets and the seminars, there were briefings,
-                kit checks, and decisions that didn&apos;t wait. Four years as a{" "}
-                <span className="text-bone">combat soldier in the IDF</span>{" "}
-                taught me what most early-career analysts can&apos;t fake: how
-                to remain composed under noise, prepare relentlessly, and own
-                an outcome.
-              </p>
-              <p>
-                Today I&apos;m reading{" "}
-                <span className="text-bone">Economics &amp; Management</span>{" "}
-                at the Open University — by deliberate choice. The format
-                rewards independence and self-imposed structure, the same
-                muscles I built in service. I&apos;m drawn to corporate
-                finance, capital markets, and the analytical roles where a
-                clean model and a defensible thesis still beat a louder room.
-              </p>
-              <p>
-                I write code to interrogate data, not to perform. My goal is
-                simple: shorten the distance between a question a stakeholder
-                cares about and a credible, decision-ready answer.
-              </p>
+          {/* Right: skills + stats */}
+          <motion.div
+            initial={{ opacity: 0, x: 26 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.82, delay: 0.16, ease: EASE }}
+          >
+            <p className="text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-4">
+              Technologies
+            </p>
+
+            <div className="flex flex-wrap gap-2.5 mb-9">
+              {skills.map((skill, i) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, scale: 0.82 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ delay: 0.22 + i * 0.07, duration: 0.4 }}
+                  className="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[13px] font-medium hover:bg-blue-500/20 hover:border-blue-400/40 transition-all duration-200"
+                >
+                  {skill}
+                </motion.span>
+              ))}
             </div>
 
-            <Reveal delay={250}>
-              <figure className="mt-14 border-l-2 border-gold pl-8 max-w-[52ch]">
-                <Quote
-                  size={20}
-                  strokeWidth={1.4}
-                  className="text-gold mb-3 -ml-1"
-                />
-                <blockquote className="font-serif text-2xl italic leading-[1.4] text-bone">
-                  Slow is smooth. Smooth is fast. The same principle that kept
-                  us alive in the field keeps a model honest at 2 a.m. before a
-                  deadline.
-                </blockquote>
-                <figcaption className="mt-4 font-mono text-[11px] tracking-widest uppercase text-bone-muted">
-                  — Operating principle
-                </figcaption>
-              </figure>
-            </Reveal>
-          </Reveal>
-
-          {/* Right: bento facts */}
-          <div className="col-span-12 lg:col-span-5 grid grid-cols-2 gap-4">
-            <Reveal className="col-span-2" delay={120}>
-              <FactCard
-                icon={<Crosshair size={18} strokeWidth={1.4} />}
-                label="Service"
-                title="IDF · Combat Infantry"
-                detail="Squad-level leadership, operational planning, sustained performance under load."
-              />
-            </Reveal>
-            <Reveal delay={200}>
-              <FactCard
-                icon={<GraduationCap size={18} strokeWidth={1.4} />}
-                label="Education"
-                title="B.A. Econ & Management"
-                detail="Open University · 2024 — present"
-              />
-            </Reveal>
-            <Reveal delay={280}>
-              <FactCard
-                icon={<Compass size={18} strokeWidth={1.4} />}
-                label="Trajectory"
-                title="Junior Analyst track"
-                detail="Corporate finance · capital markets · valuation."
-              />
-            </Reveal>
-            <Reveal className="col-span-2" delay={360}>
-              <div className="glass glass-hover rounded-2xl p-6 relative overflow-hidden">
-                <div className="absolute -right-6 -top-6 w-32 h-32 rounded-full bg-gold/10 blur-2xl" />
-                <p className="font-mono text-[10px] tracking-widest uppercase text-bone-muted">
-                  Operating tempo
-                </p>
-                <div className="mt-3 flex items-baseline gap-4">
-                  <span className="font-serif text-5xl text-bone tabular">
-                    07:00
-                  </span>
-                  <span className="font-serif text-bone-muted italic">
-                    daily standup with myself
-                  </span>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { value: "92",    label: "GPA",        sub: "Open University of Israel"   },
+                { value: "3 yrs", label: "IDF Service", sub: "Combat Infantry & Gunner"   },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="p-5 rounded-xl bg-white/[0.025] border border-white/[0.06] hover:border-blue-500/20 transition-colors duration-200"
+                >
+                  <p className="text-2xl font-bold text-white tabular-nums">{stat.value}</p>
+                  <p className="text-[12px] text-blue-400/80 font-semibold mt-0.5">{stat.label}</p>
+                  <p className="text-[11px] text-slate-500 mt-1">{stat.sub}</p>
                 </div>
-                <p className="mt-4 text-sm text-bone-muted leading-relaxed">
-                  Briefing, deep work block, market read, lectures, build. I
-                  ship before noon and review before sundown.
-                </p>
-              </div>
-            </Reveal>
-          </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
-  );
-}
-
-function FactCard({
-  icon,
-  label,
-  title,
-  detail,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  title: string;
-  detail: string;
-}) {
-  return (
-    <div className="glass glass-hover rounded-2xl p-6 h-full flex flex-col justify-between">
-      <div className="flex items-center justify-between text-bone-muted">
-        <span className="font-mono text-[10px] tracking-widest uppercase">
-          {label}
-        </span>
-        <span className="text-gold">{icon}</span>
-      </div>
-      <div className="mt-8">
-        <p className="font-serif text-xl text-bone leading-tight">{title}</p>
-        <p className="mt-2 text-[13px] text-bone-muted leading-relaxed">
-          {detail}
-        </p>
-      </div>
-    </div>
   );
 }

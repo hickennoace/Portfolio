@@ -1,236 +1,125 @@
-import { ArrowUpRight } from "lucide-react";
-import Reveal from "./Reveal";
-import SectionLabel from "./SectionLabel";
+"use client";
 
-type Project = {
-  n: string;
-  title: string;
-  tag: string;
-  blurb: string;
-  metric: { value: string; label: string };
-  stack: string[];
-  year: string;
-  href: string;
-};
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { ArrowUpRight, Github } from "lucide-react";
 
-const projects: Project[] = [
+const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+const projects = [
   {
-    n: "01",
-    title: "Equity screener: TA-125",
-    tag: "Capital Markets",
-    blurb:
-      "A custom screening engine over the Tel Aviv 125 — combining momentum, quality, and accruals factors. SQL pipeline → Python scoring → Power BI surface for weekly review.",
-    metric: { value: "+14.2%", label: "Backtest alpha vs. benchmark, 2019–24" },
-    stack: ["Python", "SQL", "Power BI"],
-    year: "2025",
-    href: "#",
+    id: "01",
+    title: "Ethereum Macro Analysis",
+    category: "Data · Finance",
+    description:
+      "Investigated ETH price sensitivity to macroeconomic indicators — Fed rate decisions, DXY strength, and BTC dominance — using on-chain data pipelines and multivariate regression. Surfaced a statistically significant leading indicator ahead of major ETH drawdowns, validated across 3 years of historical data.",
+    tags: ["Python", "SQL", "pandas", "statsmodels", "matplotlib"],
+    href: "https://github.com/hickennoace",
   },
   {
-    n: "02",
-    title: "DCF lab — sensitivity grids that don't lie",
-    tag: "Valuation",
-    blurb:
-      "An Excel-native DCF framework with Monte-Carlo sensitivity, scenario branches, and audit-ready trace. Built after seeing one too many fragile single-point models.",
-    metric: { value: "10,000", label: "scenarios simulated per run" },
-    stack: ["Excel", "VBA", "Python"],
-    year: "2025",
-    href: "#",
-  },
-  {
-    n: "03",
-    title: "Macro dashboard — the morning read",
-    tag: "Power BI",
-    blurb:
-      "A single-pane briefing for FX, rates, energy and equities. Auto-refreshing, with anomaly flags and a one-page exec summary I deliver to a small mailing list.",
-    metric: { value: "27 KPIs", label: "tracked daily, refreshed pre-open" },
-    stack: ["Power BI", "SQL", "DAX"],
-    year: "2024",
-    href: "#",
-  },
-  {
-    n: "04",
-    title: "Credit-risk simulator (Java)",
-    tag: "Risk · OOP",
-    blurb:
-      "A toy bank-book stress engine built in Java to internalize OOP patterns through the language of risk: exposures, ratings, transitions, expected loss.",
-    metric: { value: "98%", label: "test coverage · JUnit5" },
-    stack: ["Java", "JUnit"],
-    year: "2024",
-    href: "#",
-  },
-  {
-    n: "05",
-    title: "Earnings-call sentiment tracker",
-    tag: "NLP · Markets",
-    blurb:
-      "Pipeline that ingests transcripts, scores tone shift quarter-over-quarter, and surfaces the deltas most predictive of post-announcement drift.",
-    metric: { value: "0.61 IC", label: "information coefficient on 1-week drift" },
-    stack: ["Python", "SQL", "spaCy"],
-    year: "2026",
-    href: "#",
+    id: "02",
+    title: "Craftiverse Customer Behaviour",
+    category: "Analytics · Gaming",
+    description:
+      "Mined 18 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
+    tags: ["Python", "SQL", "Power BI", "DAX", "pandas"],
+    href: "https://github.com/hickennoace",
   },
 ];
 
 export default function Projects() {
-  return (
-    <section id="work" className="relative py-32 md:py-44 overflow-hidden">
-      {/* Soft top divider */}
-      <div className="absolute top-0 left-0 right-0 hairline" />
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
-      <div className="relative mx-auto max-w-[1400px] px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16">
-          <Reveal>
-            <SectionLabel index="02" label="Quick Access — Top 5" />
-            <h2 className="mt-6 font-serif text-[clamp(2.5rem,7vw,6rem)] leading-[1] tracking-tightest">
-              Five projects.
-              <br />
-              <span className="italic text-bone-muted">
-                Each one ships a decision.
-              </span>
-            </h2>
-          </Reveal>
-          <Reveal delay={150}>
-            <p className="max-w-[34ch] text-bone-muted text-[14px] leading-[1.8]">
-              A recruiter typically gives a portfolio 38 seconds. These are
-              the five things I&apos;d show first — built to be opened in any
-              order and still tell the same story.
-            </p>
-          </Reveal>
+  return (
+    <section id="work" ref={ref} className="py-28 sm:py-36 px-6">
+      <div className="max-w-6xl mx-auto">
+        <motion.span
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="block text-[11px] font-semibold text-blue-400 tracking-[0.22em] uppercase mb-5"
+        >
+          Selected Work
+        </motion.span>
+
+        <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.65, delay: 0.06 }}
+            className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-white"
+          >
+            Things I&apos;ve built.
+          </motion.h2>
+
+          <motion.a
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.12 }}
+            href="https://github.com/hickennoace"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 text-[13px] text-slate-400 hover:text-white transition-colors duration-200"
+          >
+            <Github size={14} strokeWidth={1.5} />
+            GitHub profile
+          </motion.a>
         </div>
 
-        {/* Featured project (top of the list) — larger card */}
-        <Reveal>
-          <FeaturedProject p={projects[0]} />
-        </Reveal>
+        <div className="grid sm:grid-cols-2 gap-5">
+          {projects.map((project, i) => (
+            <motion.a
+              key={project.id}
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 38 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.72, delay: 0.1 + i * 0.14, ease: EASE }}
+              whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
+              className="group relative block p-7 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-500/30 hover:bg-white/[0.04] transition-colors duration-300 overflow-hidden"
+            >
+              {/* Hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-600/[0.07] via-transparent to-transparent rounded-2xl" />
 
-        {/* Remaining four in a clean numbered list */}
-        <div className="mt-6 border-t border-bone/8">
-          {projects.slice(1).map((p, i) => (
-            <Reveal key={p.n} delay={i * 80}>
-              <ProjectRow p={p} />
-            </Reveal>
+              <div className="relative z-10">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-6 gap-4">
+                  <div>
+                    <p className="text-[10px] font-semibold text-blue-400/70 tracking-[0.22em] uppercase mb-2">
+                      {project.category}
+                    </p>
+                    <h3 className="text-[20px] font-bold text-white group-hover:text-blue-300 transition-colors duration-200 leading-tight">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
+                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-400" />
+                  </div>
+                </div>
+
+                {/* Description */}
+                <p className="text-slate-400 text-[14px] leading-[1.88] mb-6">
+                  {project.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-300/80 font-medium"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.a>
           ))}
         </div>
-
-        <Reveal delay={200}>
-          <div className="mt-14 flex flex-wrap items-center justify-between gap-4">
-            <p className="font-mono text-[11px] tracking-widest uppercase text-bone-muted">
-              Full case studies on request · NDA-respecting
-            </p>
-            <a
-              href="https://github.com/hickennoace"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="group inline-flex items-center gap-3 text-bone hover:text-gold transition-colors duration-500"
-            >
-              <span className="font-serif text-xl italic">
-                Browse the full archive
-              </span>
-              <ArrowUpRight
-                size={20}
-                strokeWidth={1.4}
-                className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500"
-              />
-            </a>
-          </div>
-        </Reveal>
       </div>
     </section>
-  );
-}
-
-function FeaturedProject({ p }: { p: Project }) {
-  return (
-    <a
-      href={p.href}
-      className="group relative block glass glass-hover rounded-3xl p-8 md:p-12 overflow-hidden"
-    >
-      {/* Glow */}
-      <div className="absolute -top-32 -right-24 w-96 h-96 rounded-full bg-gold/10 blur-3xl group-hover:bg-gold/20 transition-all duration-1000" />
-      <div className="relative grid grid-cols-12 gap-8 items-start">
-        <div className="col-span-12 md:col-span-7">
-          <div className="flex items-center gap-4 font-mono text-[11px] tracking-widest uppercase text-bone-muted mb-6">
-            <span className="font-serif italic text-gold text-3xl tabular leading-none">
-              {p.n}
-            </span>
-            <span className="h-px w-10 bg-bone/20" />
-            <span>{p.tag}</span>
-            <span className="text-bone-dim">·</span>
-            <span className="tabular">{p.year}</span>
-          </div>
-          <h3 className="font-serif text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.05] tracking-tightest text-bone group-hover:text-gold transition-colors duration-500">
-            {p.title}
-          </h3>
-          <p className="mt-6 max-w-[58ch] text-bone-muted text-[15px] leading-[1.8]">
-            {p.blurb}
-          </p>
-          <div className="mt-8 flex flex-wrap gap-2">
-            {p.stack.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-[11px] tracking-widest uppercase border border-bone/15 px-3 py-1.5 rounded-full text-bone-muted group-hover:border-gold/40 group-hover:text-bone transition-all duration-500"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="col-span-12 md:col-span-5 md:pl-8 md:border-l border-bone/8">
-          <p className="font-mono text-[10px] tracking-widest uppercase text-bone-muted">
-            Headline result
-          </p>
-          <p className="mt-3 font-serif text-7xl md:text-8xl tabular leading-none text-bone group-hover:text-gold transition-colors duration-500">
-            {p.metric.value}
-          </p>
-          <p className="mt-4 text-[13px] text-bone-muted leading-relaxed max-w-[28ch]">
-            {p.metric.label}
-          </p>
-
-          <div className="mt-12 inline-flex items-center gap-3 text-bone group-hover:text-gold transition-colors duration-500">
-            <span className="font-serif italic text-lg">
-              Open the case study
-            </span>
-            <span className="w-10 h-10 rounded-full border border-bone/20 group-hover:border-gold grid place-items-center group-hover:rotate-45 transition-all duration-700">
-              <ArrowUpRight size={16} strokeWidth={1.5} />
-            </span>
-          </div>
-        </div>
-      </div>
-    </a>
-  );
-}
-
-function ProjectRow({ p }: { p: Project }) {
-  return (
-    <a
-      href={p.href}
-      className="project-row group flex items-center gap-6 md:gap-10 py-8 md:py-10 border-b border-bone/8 cursor-pointer"
-    >
-      <span className="font-serif italic text-gold text-3xl md:text-4xl tabular leading-none w-12 shrink-0">
-        {p.n}
-      </span>
-      <div className="flex-1 grid grid-cols-12 gap-4 md:gap-8 items-baseline">
-        <div className="col-span-12 md:col-span-5">
-          <h3 className="font-serif text-2xl md:text-3xl leading-tight tracking-tight text-bone group-hover:text-gold transition-colors duration-500">
-            {p.title}
-          </h3>
-        </div>
-        <p className="hidden md:block md:col-span-4 text-[13px] text-bone-muted leading-relaxed">
-          {p.blurb.split(".")[0]}.
-        </p>
-        <div className="md:col-span-2 flex md:flex-col gap-2 md:gap-1">
-          <p className="font-mono text-[10px] tracking-widest uppercase text-bone-muted">
-            {p.tag}
-          </p>
-          <p className="font-mono text-[10px] tracking-widest uppercase text-bone-dim tabular">
-            {p.year}
-          </p>
-        </div>
-        <div className="hidden md:flex md:col-span-1 justify-end items-center text-bone-muted project-arrow">
-          <ArrowUpRight size={22} strokeWidth={1.4} />
-        </div>
-      </div>
-    </a>
   );
 }
