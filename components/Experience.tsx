@@ -2,11 +2,21 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Briefcase, Shield } from "lucide-react";
+import { Briefcase, Shield, Lock, Users } from "lucide-react";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const experiences = [
+  {
+    Icon: Lock,
+    role: "Security & Access Control",
+    company: "Team 3",
+    period: "2023 – Present",
+    description:
+      "Managing access control and facility security operations in a professional service environment. Responsible for maintaining strict operational protocols, controlling access across multiple points, and delivering high-quality, consistent service across diverse security scenarios.",
+    tags: ["Security Operations", "Access Control", "Protocols", "Service Delivery"],
+    accent: true,
+  },
   {
     Icon: Briefcase,
     role: "Administrator & Developer",
@@ -18,13 +28,23 @@ const experiences = [
     accent: true,
   },
   {
+    Icon: Users,
+    role: "Military Prep Coordinator",
+    company: "Midor Ledor Association",
+    period: "2022 – 2023",
+    description:
+      "Managed military preparation programs for service candidates, coordinating multiple concurrent workstreams under time pressure. Provided structured mentorship and logistical support to ensure candidates were thoroughly prepared for the demands of military service.",
+    tags: ["Programme Management", "Mentorship", "Multi-tasking", "Coordination"],
+    accent: false,
+  },
+  {
     Icon: Shield,
     role: "Combat Soldier & Gunner",
     company: "Israel Defense Forces (IDF)",
-    period: "2020 – 2023",
+    period: "2020 – 2022",
     description:
-      "Served three years in combat infantry, operating as a gunner in high-stakes, rapidly evolving environments. Built squad-level leadership, disciplined operational planning, and the analytical composure under pressure that directly translates to high-demand finance and data roles.",
-    tags: ["Leadership", "Operational Planning", "High-Stakes Execution", "Discipline"],
+      "Operated advanced technological systems in high-stakes, rapidly evolving field environments, exercising rapid decision-making under pressure. Participated in Guardian of the Walls operations. Developed the disciplined operational planning and analytical composure that directly translates to demanding data and finance roles.",
+    tags: ["Advanced Tech Systems", "Rapid Decision-Making", "Guardian of the Walls", "Field Operations"],
     accent: false,
   },
 ];
