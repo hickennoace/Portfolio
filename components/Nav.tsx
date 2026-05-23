@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const LINKS = [
   { label: "About",      href: "#about"      },
@@ -23,7 +24,6 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handle);
   }, []);
 
-  // Lock body scroll while mobile menu is open
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -37,7 +37,7 @@ export default function Nav() {
         transition={{ duration: 0.72, ease: EASE }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled || open
-            ? "bg-neutral-950/90 backdrop-blur-xl border-b border-white/[0.06]"
+            ? "bg-white/95 dark:bg-neutral-950/90 backdrop-blur-xl border-b border-black/[0.08] dark:border-white/[0.06]"
             : "bg-transparent"
         }`}
       >
@@ -46,7 +46,7 @@ export default function Nav() {
           <a
             href="#"
             onClick={() => setOpen(false)}
-            className="text-[15px] font-semibold text-white/90 hover:text-blue-400 transition-colors duration-200 tracking-tight shrink-0"
+            className="text-[15px] font-semibold text-slate-900 dark:text-white/90 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 tracking-tight shrink-0"
           >
             Daniel Shaulov
           </a>
@@ -57,30 +57,32 @@ export default function Nav() {
               <a
                 key={l.label}
                 href={l.href}
-                className="text-[13px] text-slate-400 hover:text-white transition-colors duration-200 tracking-wide"
+                className="text-[13px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 tracking-wide"
               >
                 {l.label}
               </a>
             ))}
           </div>
 
-          {/* Right: availability + hamburger */}
-          <div className="flex items-center gap-4 shrink-0">
+          {/* Right: availability + theme toggle + hamburger */}
+          <div className="flex items-center gap-3 shrink-0">
             <div className="flex items-center gap-2">
               <span className="relative flex h-[7px] w-[7px]">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-55" />
                 <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-400" />
               </span>
-              <span className="text-[12px] text-emerald-400/80 font-medium hidden sm:block">
+              <span className="text-[12px] text-emerald-600 dark:text-emerald-400/80 font-medium hidden sm:block">
                 Available
               </span>
             </div>
+
+            <ThemeToggle />
 
             {/* Hamburger — mobile only */}
             <button
               onClick={() => setOpen((o) => !o)}
               aria-label={open ? "Close navigation" : "Open navigation"}
-              className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
+              className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.06] dark:hover:bg-white/[0.06] transition-all duration-200"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {open ? (
@@ -119,9 +121,8 @@ export default function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="fixed inset-0 z-40 bg-neutral-950/98 backdrop-blur-2xl flex flex-col pt-20 px-6 pb-10 md:hidden"
+            className="fixed inset-0 z-40 bg-white dark:bg-neutral-950/98 backdrop-blur-2xl flex flex-col pt-20 px-6 pb-10 md:hidden"
           >
-            {/* Nav links */}
             <nav className="flex flex-col">
               {LINKS.map((l, i) => (
                 <motion.a
@@ -131,26 +132,25 @@ export default function Nav() {
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 + 0.05, duration: 0.32, ease: EASE }}
-                  className="text-[2.2rem] font-bold text-white/70 hover:text-blue-400 py-4 border-b border-white/[0.05] transition-colors duration-200 tracking-tight"
+                  className="text-[2.2rem] font-bold text-slate-800/80 dark:text-white/70 hover:text-blue-600 dark:hover:text-blue-400 py-4 border-b border-black/[0.06] dark:border-white/[0.05] transition-colors duration-200 tracking-tight"
                 >
                   {l.label}
                 </motion.a>
               ))}
             </nav>
 
-            {/* Bottom contact info */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.38, duration: 0.32 }}
               className="mt-auto"
             >
-              <p className="text-[10px] text-slate-600 tracking-[0.22em] uppercase mb-4">
+              <p className="text-[10px] text-slate-500 dark:text-slate-600 tracking-[0.22em] uppercase mb-4">
                 Get in Touch
               </p>
               <a
                 href="mailto:danielshaulov4@gmail.com"
-                className="block text-[15px] text-slate-400 hover:text-white transition-colors duration-200 mb-2"
+                className="block text-[15px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 mb-2"
               >
                 danielshaulov4@gmail.com
               </a>
@@ -158,7 +158,7 @@ export default function Nav() {
                 href="https://github.com/hickennoace"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-[15px] text-slate-400 hover:text-white transition-colors duration-200"
+                className="block text-[15px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
               >
                 github.com/hickennoace
               </a>

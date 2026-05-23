@@ -20,9 +20,17 @@ const up = {
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 overflow-hidden">
-      {/* Subtle dot-grid texture */}
+      {/* Dot-grid — light mode: dark dots */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.018]"
+        className="absolute inset-0 pointer-events-none opacity-[0.028] block dark:hidden"
+        style={{
+          backgroundImage: `radial-gradient(circle, rgba(15,23,42,0.9) 1px, transparent 1px)`,
+          backgroundSize: "36px 36px",
+        }}
+      />
+      {/* Dot-grid — dark mode: slate dots */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.018] hidden dark:block"
         style={{
           backgroundImage: `radial-gradient(circle, rgba(148,163,184,1) 1px, transparent 1px)`,
           backgroundSize: "36px 36px",
@@ -45,27 +53,27 @@ export default function Hero() {
           <div className="flex-1 min-w-0 text-center sm:text-left order-2 sm:order-1">
             <motion.p
               variants={up}
-              className="text-[11px] font-semibold text-blue-400 tracking-[0.26em] uppercase mb-6"
+              className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.26em] uppercase mb-6"
             >
               Hello, I&apos;m
             </motion.p>
 
             <motion.h1
               variants={up}
-              className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] text-white mb-6"
+              className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] text-slate-900 dark:text-white mb-6"
             >
               Daniel{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-indigo-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400">
                 Shaulov
               </span>
             </motion.h1>
 
             <motion.p
               variants={up}
-              className="text-[15px] sm:text-[17px] text-slate-400 font-light max-w-[460px] mx-auto sm:mx-0 mb-10 leading-relaxed"
+              className="text-[15px] sm:text-[17px] text-slate-600 dark:text-slate-400 font-light max-w-[460px] mx-auto sm:mx-0 mb-10 leading-relaxed"
             >
               Economics &amp; Management student —{" "}
-              <span className="text-slate-300">
+              <span className="text-slate-800 dark:text-slate-300">
                 targeting Data and Junior Analyst roles.
               </span>
             </motion.p>
@@ -82,14 +90,14 @@ export default function Hero() {
               </a>
               <a
                 href="#connect"
-                className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/30 text-blue-300 hover:border-blue-400/60 hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
+                className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/35 text-blue-700 dark:text-blue-300 hover:border-blue-500/60 hover:text-blue-900 dark:hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
               >
                 Get in Touch
               </a>
               <a
                 href="/cv.pdf"
                 download
-                className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-white/[0.12] text-slate-400 hover:border-white/25 hover:text-white hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
+                className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-black/[0.12] dark:border-white/[0.12] text-slate-600 dark:text-slate-400 hover:border-black/[0.25] dark:hover:border-white/25 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
               >
                 <Download size={14} strokeWidth={2} />
                 Download CV
@@ -97,20 +105,21 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Profile image ── */}
+          {/* ── Profile image — square with rounded corners ── */}
           <motion.div variants={up} className="order-1 sm:order-2 shrink-0">
             <div
-              className="group relative w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72 rounded-full
-                         ring-2 ring-white/[0.07] transition-all duration-500
-                         hover:ring-blue-400/40 hover:shadow-[0_0_60px_rgba(59,130,246,0.4)]"
+              className="group relative w-52 h-52 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-2xl
+                         ring-2 ring-black/[0.08] dark:ring-white/[0.07] transition-all duration-500
+                         hover:ring-blue-500/50 dark:hover:ring-blue-400/40
+                         hover:shadow-[0_8px_60px_rgba(59,130,246,0.25)] dark:hover:shadow-[0_8px_60px_rgba(59,130,246,0.35)]"
             >
-              <div className="relative w-full h-full rounded-full overflow-hidden">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
                   src="/copy.png"
                   alt="Daniel Shaulov"
                   fill
                   priority
-                  sizes="(max-width: 640px) 176px, (max-width: 1024px) 240px, 288px"
+                  sizes="(max-width: 640px) 208px, (max-width: 1024px) 288px, 320px"
                   className="object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
@@ -125,7 +134,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.9 }}
-        className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600"
+        className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-slate-600"
       >
         <motion.div
           animate={{ y: [0, 6, 0] }}

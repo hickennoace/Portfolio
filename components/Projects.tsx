@@ -38,7 +38,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="block text-[11px] font-semibold text-blue-400 tracking-[0.24em] uppercase mb-5"
+          className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
           Selected Work
         </motion.span>
@@ -48,7 +48,7 @@ export default function Projects() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.06 }}
-            className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-white"
+            className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white"
           >
             Things I&apos;ve built.
           </motion.h2>
@@ -60,7 +60,7 @@ export default function Projects() {
             href="https://github.com/hickennoace"
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 text-[13px] text-slate-400 hover:text-white transition-colors duration-200"
+            className="flex items-center gap-2 text-[13px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
           >
             <Github size={14} strokeWidth={1.5} />
             GitHub profile
@@ -78,7 +78,7 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.14, ease: EASE }}
               whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
-              className="group relative block p-6 sm:p-9 rounded-2xl bg-white/[0.025] border border-white/[0.07] hover:border-blue-400/55 hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
+              className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
             >
               {/* Hover glow */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
@@ -86,19 +86,19 @@ export default function Projects() {
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-6 gap-4">
                   <div>
-                    <p className="text-[10px] font-semibold text-blue-400/70 tracking-[0.22em] uppercase mb-2">
+                    <p className="text-[10px] font-semibold text-blue-600/70 dark:text-blue-400/70 tracking-[0.22em] uppercase mb-2">
                       {project.category}
                     </p>
-                    <h3 className="text-[19px] sm:text-[20px] font-bold text-white group-hover:text-blue-300 transition-colors duration-200 leading-tight">
+                    <h3 className="text-[19px] sm:text-[20px] font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-200 leading-tight">
                       {project.title}
                     </h3>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
-                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-400" />
+                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400" />
                   </div>
                 </div>
 
-                <p className="text-slate-400 text-[14px] leading-[1.88] mb-6">
+                <p className="text-slate-600 dark:text-slate-400 text-[14px] leading-[1.88] mb-6">
                   {project.description}
                 </p>
 
@@ -106,7 +106,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-300/80 font-medium"
+                      className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-700/80 dark:text-blue-300/80 font-medium"
                     >
                       {tag}
                     </span>

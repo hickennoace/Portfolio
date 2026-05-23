@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme variables ── */
+:root {
+  --site-bg: #f1f5f9;
+  --site-fg: #0f172a;
+}
+.dark {
+  --site-bg: #0a0a0a;
+  --site-fg: #f8fafc;
+}
+
 /* Only hide cursor on real pointer devices — never on touch */
 @media (hover: hover) and (pointer: fine) {
   *,
@@ -28,12 +38,17 @@ html {
 
 body {
   font-family: "Inter Variable", "Inter", system-ui, sans-serif;
-  background-color: #0a0a0a;
-  color: #f8fafc;
+  background-color: var(--site-bg);
+  color: var(--site-fg);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
+  background: rgba(59, 130, 246, 0.25);
+  color: #f8fafc;
+}
+.dark ::selection {
   background: rgba(59, 130, 246, 0.25);
   color: #f8fafc;
 }
@@ -42,7 +57,7 @@ body {
   width: 3px;
 }
 ::-webkit-scrollbar-track {
-  background: #050505;
+  background: var(--site-bg);
 }
 ::-webkit-scrollbar-thumb {
   background: #2563eb;
@@ -102,7 +117,17 @@ body {
   opacity: 0;
 }
 
-/* Show only first 4 meteors on small screens to keep it clean */
+/* Light mode: meteors use a visible dark-blue streak */
+html:not(.dark) .meteor {
+  background: linear-gradient(
+    to right,
+    rgba(37, 99, 235, 0.5) 0%,
+    rgba(71, 85, 105, 0.18) 45%,
+    transparent 100%
+  );
+}
+
+/* Show only first 4 meteors on small screens */
 @media (max-width: 639px) {
   .meteor:nth-child(n+5) {
     display: none;
