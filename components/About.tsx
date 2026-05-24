@@ -13,7 +13,7 @@ const skills = [
 ];
 
 const stats = [
-  { value: "90",    label: "GPA",         sub: "Open University of Israel" },
+  { value: "90",    label: "B.A Economics & Management", sub: "Open University of Israel" },
   { value: "3 yrs",     label: "Freelancer",  sub: "Data Analysis & Programming" },
 ];
 
@@ -53,7 +53,7 @@ export default function About() {
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
               Economics and Management student at the{" "}
               <span className="text-slate-800 dark:text-slate-200 font-medium">Open University of Israel</span>{" "}
-              (GPA 92), with a background that spans military service and operational management at scale.
+              (GPA 90), with a background that spans military service and operational management at scale.
               Those experiences shaped a disciplined, analytical mindset — and an instinct for translating
               raw information into{" "}
               <span className="text-slate-800 dark:text-slate-200 font-medium">clear, actionable decisions.</span>
