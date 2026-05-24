@@ -53,15 +53,25 @@ export default function About() {
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
               Economics and Management student at the{" "}
               <span className="text-slate-800 dark:text-slate-200 font-medium">Open University of Israel</span>{" "}
-              with a strong analytical and technological orientation. Highly proficient in data
-              processing and analysis using Excel (including PivotTables and VLOOKUP), SQL,
-              and PowerBI.
+              (GPA 92), with a background spanning three years of{" "}
+              <span className="text-slate-800 dark:text-slate-200 font-medium">IDF combat service</span>{" "}
+              and two years running Craftiverse — a Minecraft server network with thousands of active
+              players. Those experiences built real-world discipline, sound judgment under pressure,
+              and an instinct for turning raw information into clear decisions.
+            </p>
+            <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
+              On the technical side, I work across the full data pipeline — transforming datasets with{" "}
+              <span className="text-slate-800 dark:text-slate-200 font-medium">Python (Pandas, NumPy, Statsmodels)</span>,
+              writing precise SQL, and delivering findings through Power BI dashboards with DAX measures.
+              My projects include a macro analysis of Ethereum&apos;s on-chain metrics against price cycles,
+              and a player behaviour study at Craftiverse that surfaced retention and revenue patterns
+              from raw gameplay data.
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9]">
-              Combines practical programming knowledge with advanced AI tools for workflow
-              optimization. Characterized by logical thinking, rapid self-learning abilities,
-              and optimal performance in dynamic,{" "}
-              <span className="text-slate-700 dark:text-slate-300 font-medium">high-pressure environments.</span>
+              I&apos;m targeting roles in{" "}
+              <span className="text-slate-700 dark:text-slate-300 font-medium">data analysis and corporate finance</span>{" "}
+              — particularly where markets, numbers, and technology intersect. I work independently,
+              learn fast, and use AI tools deliberately to raise output quality without cutting corners.
             </p>
           </motion.div>
 
