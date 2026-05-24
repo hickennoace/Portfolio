@@ -13,8 +13,8 @@ const skills = [
 ];
 
 const stats = [
-  { value: "90",    label: "B.A Economics & Management", sub: "Open University of Israel" },
-  { value: "3 yrs",     label: "Freelancer",  sub: "Data Analysis & Programming" },
+  { label: "B.A Economics & Management", sub: "Open University of Israel" },
+  { label: "Freelancer",                 sub: "Data Analysis & Programming" },
 ];
 
 const languages = [
@@ -104,8 +104,7 @@ export default function About() {
                   key={stat.label}
                   className="p-5 rounded-xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-500/20 transition-colors duration-300"
                 >
-                  <p className="text-2xl font-bold text-slate-900 dark:text-white tabular-nums">{stat.value}</p>
-                  <p className="text-[12px] text-blue-600/80 dark:text-blue-400/80 font-semibold mt-0.5">{stat.label}</p>
+                  <p className="text-[13px] text-blue-600/80 dark:text-blue-400/80 font-semibold">{stat.label}</p>
                   <p className="text-[11px] text-slate-500 mt-1">{stat.sub}</p>
                 </div>
               ))}
