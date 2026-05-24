@@ -5,6 +5,15 @@ import { motion, useInView } from "framer-motion";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
+const skillsContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.04, delayChildren: 0.24 } },
+};
+const skillItem = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show:   { opacity: 1, scale: 1, transition: { duration: 0.35 } },
+};
+
 const skills = [
   "Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Statsmodels",
   "Power BI", "DAX", "Excel", "Jupyter Notebook",
@@ -85,19 +94,22 @@ export default function About() {
               Technologies &amp; Skills
             </p>
 
-            <div className="flex flex-wrap gap-2.5 mb-9">
-              {skills.map((skill, i) => (
+            <motion.div
+              className="flex flex-wrap gap-2.5 mb-9"
+              variants={skillsContainer}
+              initial="hidden"
+              animate={inView ? "show" : "hidden"}
+            >
+              {skills.map((skill) => (
                 <motion.span
                   key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.24 + i * 0.055, duration: 0.38 }}
+                  variants={skillItem}
                   className="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-700 dark:text-blue-300 text-[13px] font-medium hover:bg-blue-500/18 hover:border-blue-400/38 transition-all duration-200"
                 >
                   {skill}
                 </motion.span>
               ))}
-            </div>
+            </motion.div>
 
             <div className="grid grid-cols-2 gap-3 mb-8">
               {stats.map((stat) => (

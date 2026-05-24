@@ -32,10 +32,17 @@ export default function ContactModal({ isOpen, onClose }: Props) {
   }, [isOpen]);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") handleClose(); };
+    if (!isOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setName(""); setEmail(""); setMessage("");
+        setStatus("idle"); setErrorMsg("");
+        onClose();
+      }
+    };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  });
+  }, [isOpen, onClose]);
 
   const reset = () => {
     setName(""); setEmail(""); setMessage("");

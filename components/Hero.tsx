@@ -226,12 +226,9 @@ export default function Hero() {
         transition={{ delay: 1.6, duration: 0.9 }}
         className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-slate-600"
       >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <div className="animate-bounce-arrow">
           <ArrowDown size={15} strokeWidth={1.5} />
-        </motion.div>
+        </div>
         <span className="text-[9px] tracking-[0.26em] uppercase font-medium">
           Scroll
         </span>

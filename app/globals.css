@@ -133,3 +133,32 @@ html:not(.dark) .meteor {
     display: none;
   }
 }
+
+/* ── GPU layer promotion for animated orbs ── */
+.orb-1, .orb-2, .orb-3, .orb-4, .orb-5 {
+  will-change: transform;
+}
+
+/*
+  On mobile: stop all orb animations (large blur + continuous transform is the
+  #1 GPU killer) and hide the three extra orbs to cut rasterized area.
+  Static blurs are cached by the GPU; animated ones re-rasterize every frame.
+*/
+@media (max-width: 767px) {
+  .orb-1, .orb-2, .orb-3, .orb-4, .orb-5 {
+    animation: none !important;
+    will-change: auto;
+  }
+  .orb-3, .orb-4, .orb-5 {
+    display: none !important;
+  }
+}
+
+/* CSS replacement for the framer-motion repeat:Infinity scroll arrow bounce */
+@keyframes bounce-arrow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+.animate-bounce-arrow {
+  animation: bounce-arrow 2.4s ease-in-out infinite;
+}

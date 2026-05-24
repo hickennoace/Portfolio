@@ -2,6 +2,7 @@ export default function BackgroundOrbs() {
   return (
     <div
       className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+      style={{ contain: "layout style paint", transform: "translateZ(0)" }}
       aria-hidden="true"
     >
       {/* Top-left: large deep blue */}

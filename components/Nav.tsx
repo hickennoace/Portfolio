@@ -69,7 +69,7 @@ export default function Nav() {
           <div className="flex items-center gap-3 shrink-0">
             <div className="flex items-center gap-2">
               <span className="relative flex h-[7px] w-[7px]">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-55" />
+                <span className="sm:animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-55" />
                 <span className="relative inline-flex rounded-full h-[7px] w-[7px] bg-emerald-400" />
               </span>
               <span className="text-[12px] text-emerald-600 dark:text-emerald-400/80 font-medium hidden sm:block">
