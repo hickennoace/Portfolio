@@ -6,9 +6,10 @@ import { motion, useInView } from "framer-motion";
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const skills = [
-  "Python", "SQL", "Power BI", "Excel", "Java",
-  "AI Automation", "Prompt Engineering", "Capital Markets", "Financial Statements",
-  "DAX", "TMDL", "MongoDB", "Git", "Claude Code", "Jupyter Notebook",
+  "Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Statsmodels",
+  "Power BI", "DAX", "Excel", "Jupyter Notebook",
+  "Capital Markets", "Financial Statements",
+  "Git", "AI Automation",
 ];
 
 const stats = [
