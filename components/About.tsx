@@ -105,8 +105,8 @@ export default function About() {
                   key={stat.label}
                   className="p-5 rounded-xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-500/20 transition-colors duration-300"
                 >
-                  <p className="text-[13px] text-blue-600/80 dark:text-blue-400/80 font-semibold">{stat.label}</p>
-                  <p className="text-[11px] text-slate-500 mt-1">{stat.sub}</p>
+                  <p className="text-[15px] text-blue-600/80 dark:text-blue-400/80 font-semibold">{stat.label}</p>
+                  <p className="text-[13px] text-slate-500 mt-1">{stat.sub}</p>
                 </div>
               ))}
             </div>
