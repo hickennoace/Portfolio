@@ -20,24 +20,24 @@ const rows: Row[] = [
     title: "DATA ANALYSIS",
     subtitle: "Turning messy data into decision-ready insights",
     description:
-      "From raw exports to clear dashboards — I clean, model, and visualise data so stakeholders can act on it. Strong on relational querying, pivot-driven exploration, and lightweight statistical workflows in Python.",
-    tags: ["SQL", "Power BI", "Excel Advanced", "Pandas"],
+      "I work across the full data pipeline — ingesting raw exports, cleaning and transforming datasets with Python (Pandas, NumPy), querying relational databases with SQL, and delivering findings through interactive Power BI dashboards with DAX measures. Statistical workflows include regression analysis, correlation studies, and time-series exploration using Statsmodels and Matplotlib. The goal is always the same: cut through the noise and produce insight that drives confident decisions.",
+    tags: ["Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Statsmodels", "Power BI", "DAX", "Excel", "Jupyter Notebook"],
   },
   {
     Icon: TrendingUp,
     title: "FINANCIAL ANALYSIS",
     subtitle: "Modeling for Business Impact",
     description:
-      "Reading financial statements end-to-end, building valuation and scenario models, and translating capital-market dynamics into structured analyses that support investment and operational decisions.",
-    tags: ["Capital Markets", "Financial Statements", "Python"],
+      "I read financial statements end-to-end — income statements, balance sheets, and cash flow — and build scenario and valuation models that translate numbers into strategic context. My market analysis work spans capital market dynamics, macroeconomic correlations, and on-chain financial metrics. I structure findings into clear, concise outputs suited for investment research and operational decision-making.",
+    tags: ["Financial Statements", "Capital Markets", "Financial Modeling", "Excel", "Python", "Statsmodels"],
   },
   {
     Icon: Sparkles,
     title: "AI & AUTOMATION",
     subtitle: "Workflow Optimization",
     description:
-      "Designing prompt pipelines and automations that compress hours of manual work into minutes — from research and data wrangling to reporting — using Claude, Gemini, and custom Java/Python glue code.",
-    tags: ["Claude", "Gemini", "Prompt Engineering", "Java"],
+      "I design prompt pipelines and Python automations that compress hours of manual work into minutes — from research aggregation and data wrangling to structured report generation. Proficient in working with large language model APIs and building reliable workflows that integrate AI into existing data and business processes. The focus is on consistent, repeatable output that genuinely saves time rather than just impressive one-off demos.",
+    tags: ["Claude", "Gemini", "Python", "Prompt Engineering", "AI Automation", "API Integration"],
   },
 ];
 
