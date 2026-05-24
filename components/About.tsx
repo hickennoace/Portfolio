@@ -9,6 +9,7 @@ const skills = [
   "Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Statsmodels",
   "Power BI", "DAX", "Excel", "Jupyter Notebook",
   "Capital Markets", "Financial Statements",
+  "HTML", "CSS", "JavaScript", "React", "Next.js",
   "Git", "AI Automation",
 ];
 
