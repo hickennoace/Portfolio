@@ -53,11 +53,10 @@ export default function About() {
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
               Economics and Management student at the{" "}
               <span className="text-slate-800 dark:text-slate-200 font-medium">Open University of Israel</span>{" "}
-              (GPA 92), with a background spanning three years of{" "}
-              <span className="text-slate-800 dark:text-slate-200 font-medium">IDF combat service</span>{" "}
-              and two years running Craftiverse — a Minecraft server network with thousands of active
-              players. Those experiences built real-world discipline, sound judgment under pressure,
-              and an instinct for turning raw information into clear decisions.
+              (GPA 92), with a background that spans military service and operational management at scale.
+              Those experiences shaped a disciplined, analytical mindset — and an instinct for translating
+              raw information into{" "}
+              <span className="text-slate-800 dark:text-slate-200 font-medium">clear, actionable decisions.</span>
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
               On the technical side, I work across the full data pipeline — transforming datasets with{" "}
