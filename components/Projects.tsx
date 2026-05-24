@@ -12,18 +12,18 @@ const projects = [
     title: "Ethereum Macro Analysis",
     category: "Data · Finance",
     description:
-      "Investigated ETH price sensitivity to macroeconomic indicators — Fed rate decisions, DXY strength, and BTC dominance — using on-chain data pipelines and multivariate regression. Surfaced a statistically significant leading indicator ahead of major ETH drawdowns, validated across 3 years of historical data.",
-    tags: ["Python", "SQL", "pandas", "statsmodels"],
-    href: "https://github.com/hickennoace",
+      "Investigated ETH price sensitivity to macroeconomic indicators — Fed rate decisions, DXY strength, NDAQ correlation and BTC dominance — using on-chain data pipelines and multivariate regression. Surfaced a statistically significant leading indicator ahead of major ETH drawdowns, validated across 5 years of historical data.",
+    tags: ["Python", "Jupyter Notebook", "Pandas", "Statistical tests"],
+    href: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
   },
   {
     id: "02",
     title: "Craftiverse Customer Behaviour",
     category: "Analytics · Gaming",
     description:
-      "Mined 18 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
-    tags: ["PowerBI", "Java", "SQL", "DAX"],
-    href: "https://github.com/hickennoace",
+      "Mined 60 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
+    tags: ["PowerBI", "Python", "SQL", "DAX", "TMDL"],
+    href: "https://github.com/hickennoace/CustomerBehaviour",
   },
 ];
 

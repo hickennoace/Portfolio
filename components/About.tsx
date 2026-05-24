@@ -7,11 +7,11 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const skills = [
   "Python", "SQL", "Power BI", "Excel", "Java",
-  "AI Automation", "Prompt Engineering", "Capital Markets", "Financial Statements",
+  "AI Automation", "Prompt Engineering", "Capital/Crpyto Markets", "Financial Statements",
 ];
 
 const stats = [
-  { value: "92",    label: "GPA",         sub: "Open University of Israel" },
+  { value: "90",    label: "GPA",         sub: "Open University of Israel" },
   { value: "3 yrs",     label: "IDF Service", sub: "Combat Infantry & Gunner"  },
 ];
 
