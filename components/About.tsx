@@ -63,14 +63,14 @@ export default function About() {
               On the technical side, I work across the full data pipeline — transforming datasets with{" "}
               <span className="text-slate-800 dark:text-slate-200 font-medium">Python (Pandas, NumPy, Statsmodels)</span>,
               writing precise SQL, and delivering findings through Power BI dashboards with DAX measures.
-              My projects include a macro analysis of Ethereum&apos;s on-chain metrics against price cycles,
-              and a player behaviour study at Craftiverse that surfaced retention and revenue patterns
-              from raw gameplay data.
+              My applied work spans cryptocurrency market analysis correlating on-chain metrics with price
+              cycles, and user behaviour analytics that surfaced retention and revenue patterns from
+              large-scale activity data.
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9]">
               I&apos;m targeting roles in{" "}
-              <span className="text-slate-700 dark:text-slate-300 font-medium">data analysis and corporate finance</span>{" "}
-              — particularly where markets, numbers, and technology intersect. I work independently,
+              <span className="text-slate-700 dark:text-slate-300 font-medium">data analysis and financial analysis</span>{" "}
+              — positions where markets, numbers, and technology intersect. I work independently,
               learn fast, and use AI tools deliberately to raise output quality without cutting corners.
             </p>
           </motion.div>
