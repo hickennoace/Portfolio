@@ -7,7 +7,8 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const skills = [
   "Python", "SQL", "Power BI", "Excel", "Java",
-  "AI Automation", "Prompt Engineering", "Capital/Crpyto Markets", "Financial Statements",
+  "AI Automation", "Prompt Engineering", "Capital Markets", "Financial Statements",
+    "DAX", "TMDL", "MongoDB", "Git", "Claude Code", "Jupyter Notebook",
 ];
 
 const stats = [
