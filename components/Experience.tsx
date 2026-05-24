@@ -19,12 +19,12 @@ const experiences = [
   },
   {
     Icon: Briefcase,
-    role: "Administrator & Developer",
-    company: "Craftiverse",
-    period: "2022 – 2024",
+    role: "Freelance Analyst & Developer",
+    company: "Freelancer",
+    period: "2022 – Present",
     description:
-      "Managed a Minecraft server network handling hundreds of concurrent players. Architected and continuously balanced the in-game economy, administered server infrastructure, built custom plugins to enhance gameplay, and led community operations — accumulating the player transaction data that later became the foundation of a full customer behaviour analytics project.",
-    tags: ["Server Infrastructure", "Economy Design", "Plugin Dev", "Community Ops"],
+      "Providing comprehensive freelance services across data analytics, web development, gaming, and capital markets. I design and execute full data pipelines that surface actionable insights from complex datasets, delivering clear, stakeholder-ready reporting. On the technical side, I architect and deploy robust, responsive websites tailored to client needs, and build custom plugins and solutions for game environments in the gaming industry. In parallel, I actively engage in capital market trading — applying rigorous market analysis, disciplined risk management, and financial acumen to Proprietary (Prop/Nostro) trading strategies across equity and derivative instruments.",
+    tags: ["Data Analysis", "Web Development", "Plugin Dev", "Prop Trading", "Capital Markets"],
     accent: true,
   },
   {
