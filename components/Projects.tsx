@@ -21,7 +21,7 @@ const projects = [
     title: "Craftiverse Customer Behaviour",
     category: "Analytics · Gaming",
     description:
-      "Mined 60 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
+      "Mined 36 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
     tags: ["PowerBI", "Python", "SQL", "DAX", "TMDL"],
     href: "https://github.com/hickennoace/CustomerBehaviour",
   },

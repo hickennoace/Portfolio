@@ -26,7 +26,10 @@ export default function CustomCursor() {
     const move = (e: MouseEvent) => {
       mx.set(e.clientX);
       my.set(e.clientY);
-      setIsVisible(true);
+    };
+    // mouseover fires only on element change — el.closest at mousemove rate
+    // (120-240Hz) was the desktop slowdown.
+    const over = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
       setIsHovering(
         !!el.closest('a, button, [role="button"], input, select, label, [data-cursor]')
@@ -35,11 +38,14 @@ export default function CustomCursor() {
     const hide = () => setIsVisible(false);
     const show = () => setIsVisible(true);
 
-    document.addEventListener("mousemove", move);
+    setIsVisible(true);
+    document.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseover", over, { passive: true });
     document.addEventListener("mouseleave", hide);
     document.addEventListener("mouseenter", show);
     return () => {
       document.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseover", over);
       document.removeEventListener("mouseleave", hide);
       document.removeEventListener("mouseenter", show);
     };

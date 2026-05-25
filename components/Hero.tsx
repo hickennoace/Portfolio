@@ -125,8 +125,10 @@ export default function Hero() {
         }}
       />
 
-      {/* Meteor shower — contained by parent overflow-hidden */}
-      <MeteorShower />
+      {/* Meteor shower — desktop only; CSS animations kill mobile GPU */}
+      <div className="hidden sm:block absolute inset-0 pointer-events-none">
+        <MeteorShower />
+      </div>
 
       {/* Main content: text ←→ image */}
       <motion.div
