@@ -96,23 +96,23 @@ body {
 /* ── Meteor shower ── */
 @keyframes meteorFall {
   0%    { opacity: 0; transform: rotate(var(--meteor-angle, -35deg)) translateX(0); }
-  12%   { opacity: 1; }
-  88%   { opacity: 0.85; }
+  18%   { opacity: 0.6; }
+  82%   { opacity: 0.45; }
   100%  { opacity: 0; transform: rotate(var(--meteor-angle, -35deg)) translateX(var(--meteor-distance, -700px)); }
 }
 
 .meteor {
   position: absolute;
-  height: 1.5px;
+  height: 1px;
   border-radius: 9999px;
   background: linear-gradient(
     to right,
-    rgba(240, 248, 255, 0.95) 0%,
-    rgba(186, 220, 255, 0.55) 18%,
-    rgba(148, 163, 184, 0.18) 55%,
+    rgba(220, 232, 248, 0.55) 0%,
+    rgba(186, 210, 245, 0.28) 22%,
+    rgba(148, 163, 184, 0.08) 60%,
     transparent 100%
   );
-  filter: drop-shadow(0 0 5px rgba(147, 197, 253, 0.55));
+  filter: drop-shadow(0 0 2px rgba(147, 197, 253, 0.28));
   animation-name: meteorFall;
   animation-timing-function: cubic-bezier(0.55, 0.08, 0.85, 0.4);
   animation-iteration-count: infinite;
@@ -120,39 +120,39 @@ body {
   will-change: transform, opacity;
 }
 
-/* Burning head — bright point + cool blue halo at the leading edge */
+/* Subtle head — small point with a soft, low-alpha halo */
 .meteor::after {
   content: "";
   position: absolute;
   left: 0;
   top: 50%;
-  width: 5px;
-  height: 5px;
+  width: 3px;
+  height: 3px;
   border-radius: 9999px;
-  background: rgba(245, 250, 255, 1);
+  background: rgba(220, 232, 248, 0.7);
   transform: translate(-1px, -50%);
   box-shadow:
-    0 0 6px 1px rgba(186, 220, 255, 0.95),
-    0 0 18px 3px rgba(96, 165, 250, 0.55);
+    0 0 4px 0.5px rgba(186, 220, 255, 0.5),
+    0 0 10px 1.5px rgba(96, 165, 250, 0.22);
 }
 
-/* Light mode: cool electric-blue streak + matching halo */
+/* Light mode: muted blue streak so it whispers against a light sky */
 html:not(.dark) .meteor {
   background: linear-gradient(
     to right,
-    rgba(29, 78, 216, 0.9) 0%,
-    rgba(59, 130, 246, 0.4) 22%,
-    rgba(71, 85, 105, 0.14) 58%,
+    rgba(29, 78, 216, 0.5) 0%,
+    rgba(59, 130, 246, 0.22) 24%,
+    rgba(71, 85, 105, 0.07) 60%,
     transparent 100%
   );
-  filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.5));
+  filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.28));
 }
 
 html:not(.dark) .meteor::after {
-  background: rgba(37, 99, 235, 1);
+  background: rgba(37, 99, 235, 0.65);
   box-shadow:
-    0 0 6px 1px rgba(59, 130, 246, 0.85),
-    0 0 18px 3px rgba(37, 99, 235, 0.5);
+    0 0 4px 0.5px rgba(59, 130, 246, 0.45),
+    0 0 10px 1.5px rgba(37, 99, 235, 0.22);
 }
 
 /* No meteors on small screens — continuous transform animations are
