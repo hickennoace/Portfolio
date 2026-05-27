@@ -48,14 +48,13 @@ export default function Nav() {
         }`}
       >
         <nav className="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
-          {/* Logo — initials + last name in italic serif */}
+          {/* Logo */}
           <a
             href="#"
             onClick={() => setOpen(false)}
-            className="text-[15px] text-slate-900 dark:text-white/95 hover:text-ochre-600 dark:hover:text-ochre-400 transition-colors duration-200 tracking-tight shrink-0 inline-flex items-baseline gap-1.5"
+            className="text-[15px] font-semibold text-slate-900 dark:text-white/90 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 tracking-tight shrink-0"
           >
-            <span className="font-semibold">DS</span>
-            <span className="font-display italic text-slate-600 dark:text-slate-300 text-[14px]">Shaulov</span>
+            Daniel Shaulov
           </a>
 
           {/* Desktop links */}
@@ -140,7 +139,7 @@ export default function Nav() {
                   initial={{ opacity: 0, x: linkSlideX }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.07 + 0.05, duration: 0.32, ease: EASE }}
-                  className="text-[2.2rem] font-bold text-slate-900 dark:text-white hover:text-ochre-600 dark:hover:text-ochre-400 py-4 border-b border-black/[0.06] dark:border-white/[0.05] transition-colors duration-200 tracking-[-0.02em]"
+                  className="text-[2.2rem] font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 py-4 border-b border-black/[0.06] dark:border-white/[0.05] transition-colors duration-200 tracking-tight"
                 >
                   {t.nav[l.key]}
                 </motion.a>
@@ -158,7 +157,7 @@ export default function Nav() {
               </p>
               <a
                 href="mailto:danielshaulov4@gmail.com"
-                className="block text-[15px] text-slate-700 dark:text-slate-200 hover:text-ochre-600 dark:hover:text-ochre-400 transition-colors duration-200 mb-2"
+                className="block text-[15px] text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 mb-2"
               >
                 danielshaulov4@gmail.com
               </a>
@@ -166,7 +165,7 @@ export default function Nav() {
                 href="https://github.com/hickennoace"
                 target="_blank"
                 rel="noreferrer"
-                className="block text-[15px] text-slate-700 dark:text-slate-200 hover:text-ochre-600 dark:hover:text-ochre-400 transition-colors duration-200"
+                className="block text-[15px] text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
               >
                 github.com/hickennoace
               </a>

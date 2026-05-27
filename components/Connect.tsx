@@ -41,20 +41,20 @@ export default function Connect() {
         className="py-28 sm:py-36 px-5 sm:px-6 border-t border-black/[0.07] dark:border-white/[0.05]"
       >
         <div className="max-w-6xl mx-auto text-center">
-          <motion.p
+          <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="font-display italic text-[14px] text-ochre-600 dark:text-ochre-400 mb-6"
+            className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-6"
           >
-            — {t.connect.eyebrow.toLowerCase()}
-          </motion.p>
+            {t.connect.eyebrow}
+          </motion.span>
 
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.78, delay: 0.06, ease: EASE }}
-            className="text-4xl sm:text-5xl lg:text-[3.8rem] font-bold tracking-[-0.03em] text-slate-900 dark:text-white mb-5 font-display italic font-normal"
+            className="text-4xl sm:text-5xl lg:text-[3.8rem] font-bold tracking-tighter text-slate-900 dark:text-white mb-5"
           >
             {t.connect.title}
           </motion.h2>
@@ -77,17 +77,17 @@ export default function Connect() {
               initial={{ opacity: 0, y: 22 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.65, delay: 0.2 }}
-              whileHover={{ y: -3, transition: { duration: 0.2, ease: "easeOut" } }}
-              className="group flex items-center gap-3 sm:gap-3.5 px-5 sm:px-6 py-4 rounded-2xl border border-slate-900/12 dark:border-white/10 hover:border-slate-900/26 dark:hover:border-white/22 transition-colors duration-300"
+              whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+              className="group flex items-center gap-3 sm:gap-3.5 px-5 sm:px-6 py-4 rounded-2xl bg-black/[0.04] dark:bg-white/[0.03] border border-black/[0.1] dark:border-white/[0.08] hover:border-blue-500/35 hover:bg-blue-500/[0.06] transition-colors duration-300"
             >
-              <div className="w-9 h-9 rounded-xl border border-slate-900/14 dark:border-white/12 flex items-center justify-center shrink-0 group-hover:border-slate-900/24 dark:group-hover:border-white/22 transition-colors duration-200">
-                <Mail size={16} strokeWidth={1.5} className="text-slate-700 dark:text-slate-200" />
+              <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-all duration-200">
+                <Mail size={16} strokeWidth={1.5} className="text-blue-600 dark:text-blue-400" />
               </div>
               <div className="text-start">
-                <p className="text-[10px] text-slate-500 font-medium tracking-[0.16em] uppercase">
+                <p className="text-[10px] text-slate-500 font-semibold tracking-[0.16em] uppercase">
                   {t.connect.emailLabel}
                 </p>
-                <p className="text-[13px] text-slate-700 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
+                <p className="text-[13px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
                   danielshaulov4@gmail.com
                 </p>
               </div>
@@ -103,17 +103,17 @@ export default function Connect() {
                 initial={{ opacity: 0, y: 22 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.65, delay: 0.3 + i * 0.1 }}
-                whileHover={{ y: -3, transition: { duration: 0.2, ease: "easeOut" } }}
-                className="group flex items-center gap-3 sm:gap-3.5 px-5 sm:px-6 py-4 rounded-2xl border border-slate-900/12 dark:border-white/10 hover:border-slate-900/26 dark:hover:border-white/22 transition-colors duration-300"
+                whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+                className="group flex items-center gap-3 sm:gap-3.5 px-5 sm:px-6 py-4 rounded-2xl bg-black/[0.04] dark:bg-white/[0.03] border border-black/[0.1] dark:border-white/[0.08] hover:border-blue-500/35 hover:bg-blue-500/[0.06] transition-colors duration-300"
               >
-                <div className="w-9 h-9 rounded-xl border border-slate-900/14 dark:border-white/12 flex items-center justify-center shrink-0 group-hover:border-slate-900/24 dark:group-hover:border-white/22 transition-colors duration-200">
-                  <c.Icon size={16} strokeWidth={1.5} className="text-slate-700 dark:text-slate-200" />
+                <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-all duration-200">
+                  <c.Icon size={16} strokeWidth={1.5} className="text-blue-600 dark:text-blue-400" />
                 </div>
                 <div className="text-start">
-                  <p className="text-[10px] text-slate-500 font-medium tracking-[0.16em] uppercase">
+                  <p className="text-[10px] text-slate-500 font-semibold tracking-[0.16em] uppercase">
                     {t.connect[c.key]}
                   </p>
-                  <p className="text-[13px] text-slate-700 dark:text-slate-200 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
+                  <p className="text-[13px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
                     {c.display}
                   </p>
                 </div>
@@ -126,13 +126,10 @@ export default function Connect() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.9, delay: 0.55 }}
-            className="mt-20 pt-7 border-t border-black/[0.06] dark:border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-2"
+            className="mt-20 pt-7 border-t border-black/[0.06] dark:border-white/[0.04]"
           >
-            <p className="text-[11px] text-slate-500 dark:text-slate-500 font-mono">
-              © {new Date().getFullYear()} Daniel Shaulov
-            </p>
-            <p className="text-[10px] text-slate-400 dark:text-slate-600 font-mono tracking-wider uppercase">
-              v.2026.05 · {t.connect.builtWith}
+            <p className="text-[11px] text-slate-500 dark:text-slate-600">
+              © {new Date().getFullYear()} Daniel Shaulov · {t.connect.builtWith}
             </p>
           </motion.div>
         </div>

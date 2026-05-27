@@ -40,30 +40,23 @@ export default function Projects() {
   return (
     <section id="work" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
+        <motion.span
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-baseline gap-3 mb-6 eyebrow-num"
+          className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          <span className="text-[12px] font-mono text-slate-400 dark:text-slate-600">03</span>
-          <span className="h-px flex-1 max-w-[28px] bg-slate-300 dark:bg-slate-700" />
-          <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300 tracking-[0.24em] uppercase">
-            {t.projects.eyebrow}
-          </span>
-        </motion.div>
+          {t.projects.eyebrow}
+        </motion.span>
 
         <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.65, delay: 0.06 }}
-            className="text-3xl sm:text-[2.7rem] font-bold tracking-[-0.02em] text-slate-900 dark:text-white"
+            className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white"
           >
-            {t.projects.title.split(" ").slice(0, -1).join(" ")}{" "}
-            <span className="font-display italic font-normal text-slate-700 dark:text-slate-200">
-              {t.projects.title.split(" ").slice(-1)}
-            </span>
+            {t.projects.title}
           </motion.h2>
 
           <motion.a
@@ -91,27 +84,23 @@ export default function Projects() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.14, ease: EASE }}
               whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
-              className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.025] dark:bg-white/[0.018] border border-black/[0.08] dark:border-white/[0.06] hover:border-black/[0.20] dark:hover:border-white/[0.16] transition-colors duration-300 overflow-hidden"
+              className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
             >
-              {/* Hairline start-edge accent on hover */}
-              <span aria-hidden className="absolute inset-y-6 sm:inset-y-9 start-0 w-px bg-slate-900/0 dark:bg-white/0 group-hover:bg-slate-900/25 dark:group-hover:bg-white/25 transition-colors duration-300" />
+              {/* Hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
 
               <div className="relative z-10">
                 <div className="flex items-start justify-between mb-6 gap-4">
                   <div>
-                    <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 tracking-[0.22em] uppercase mb-2">
+                    <p className="text-[10px] font-semibold text-blue-600/70 dark:text-blue-400/70 tracking-[0.22em] uppercase mb-2">
                       {project.category}
                     </p>
-                    <h3 className="text-[19px] sm:text-[20px] font-bold text-slate-900 dark:text-white transition-colors duration-200 leading-tight">
+                    <h3 className="text-[19px] sm:text-[20px] font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-200 leading-tight">
                       {project.title}
                     </h3>
                   </div>
-                  <div className="w-9 h-9 rounded-xl border border-slate-900/12 dark:border-white/10 flex items-center justify-center shrink-0 group-hover:border-slate-900/28 dark:group-hover:border-white/24 transition-all duration-200">
-                    <ArrowUpRight
-                      size={14}
-                      strokeWidth={1.75}
-                      className="text-slate-700 dark:text-slate-200 rtl:-scale-x-100 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5"
-                    />
+                  <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
+                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400 rtl:-scale-x-100" />
                   </div>
                 </div>
 
@@ -123,7 +112,7 @@ export default function Projects() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-md border border-slate-900/10 dark:border-white/10 text-[11px] text-slate-600 dark:text-slate-300 font-medium"
+                      className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-700/80 dark:text-blue-300/80 font-medium"
                     >
                       {tag}
                     </span>

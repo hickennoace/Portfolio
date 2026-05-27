@@ -13,9 +13,9 @@ const en = {
     closeMenu: "Close navigation",
   },
   hero: {
-    hello: "Hello, I'm",
-    role: "Economics & Management student —",
-    roleAccent: "targeting Data and Junior Analyst roles.",
+    hello: "Hi, I'm",
+    role: "Studying Economics & Management at the Open University. I work with Python, SQL and Power BI, and trade futures with real money.",
+    roleAccent: "Looking for a Financial or Data Analyst role.",
     viewWork: "View Work",
     getInTouch: "Get in Touch",
     downloadCV: "Download CV",
@@ -26,26 +26,25 @@ const en = {
   },
   about: {
     eyebrow: "About",
-    titleStart: "A focused analyst,",
-    titleEnd: "in the making.",
-    p1Pre: "Economics and Management student at the",
+    titleStart: "Analyst in training,",
+    titleEnd: "with real money on the line.",
+    p1Pre: "Studying Economics & Management at the",
     p1University: "Open University of Israel",
-    p1Mid:
-      "(GPA 90), with a background that spans military service and operational management at scale. Those experiences shaped a disciplined, analytical mindset — and an instinct for translating raw information into",
-    p1End: "clear, actionable decisions.",
-    p2Pre: "On the technical side, I work across the full data pipeline — transforming datasets with",
-    p2Stack: "Python (Pandas, NumPy, Statsmodels)",
+    p1Mid: "(GPA 90). Before that, two years as a combat soldier in the",
+    p1End: "Nahal Brigade.",
+    p2Pre: "I write",
+    p2Stack: "Python, SQL, Power BI and advanced Excel",
     p2End:
-      ", writing precise SQL, and delivering findings through Power BI dashboards with DAX measures. My applied work spans cryptocurrency market analysis correlating on-chain metrics with price cycles, and user behaviour analytics that surfaced retention and revenue patterns from large-scale activity data.",
-    p3Pre: "I'm targeting roles in",
-    p3Roles: "data analysis and financial analysis",
+      " — PivotTables, VLOOKUP, the rest. I'm comfortable cleaning a messy CSV, querying a relational DB, and shipping a dashboard a stakeholder can actually use.",
+    p3Pre: "Outside class, I trade futures with real capital — formal training from",
+    p3Roles: "W.C.T College",
     p3End:
-      "— positions where markets, numbers, and technology intersect. I work independently, learn fast, and use AI tools deliberately to raise output quality without cutting corners.",
-    skillsLabel: "Technologies & Skills",
+      ". That's where the textbook meets the bid-ask. Looking for a Financial or Data Analyst role where numbers actually drive decisions.",
+    skillsLabel: "Tech & Tools",
     languagesLabel: "Languages",
     stats: [
-      { label: "B.A Economics & Management", sub: "Open University of Israel" },
-      { label: "Freelancer", sub: "Data Analysis & Programming" },
+      { label: "Economics & Management", sub: "Open University · GPA 90" },
+      { label: "Futures Trader", sub: "Trained at W.C.T College" },
     ],
     languages: [
       { lang: "Hebrew", level: "Native" },
@@ -55,26 +54,26 @@ const en = {
   },
   whatIDo: {
     eyebrow: "What I Do",
-    titleStart: "Three disciplines,",
-    titleEnd: "one analytical mind.",
+    titleStart: "What I",
+    titleEnd: "actually do.",
     rows: [
       {
         title: "DATA ANALYSIS",
-        subtitle: "Turning messy data into decision-ready insights",
+        subtitle: "Clean it, query it, ship the dashboard.",
         description:
-          "I work across the full data pipeline — ingesting raw exports, cleaning and transforming datasets with Python (Pandas, NumPy), querying relational databases with SQL, and delivering findings through interactive Power BI dashboards with DAX measures. Statistical workflows include regression analysis, correlation studies, and time-series exploration using Statsmodels and Matplotlib. The goal is always the same: cut through the noise and produce insight that drives confident decisions.",
+          "Most data starts ugly. I pull raw exports, clean and reshape them in Python (Pandas, NumPy), query relational DBs with SQL, and build Power BI dashboards someone can actually read in a meeting. For analysis I lean on regression, correlation, and time-series with Statsmodels. The job is the same every time: cut the noise, hand back something you can decide with.",
       },
       {
         title: "FINANCIAL ANALYSIS",
-        subtitle: "Modeling for Business Impact",
+        subtitle: "Statements and real-money markets.",
         description:
-          "I read financial statements end-to-end — income statements, balance sheets, and cash flow — and build scenario and valuation models that translate numbers into strategic context. My market analysis work spans capital market dynamics, macroeconomic correlations, and on-chain financial metrics. I structure findings into clear, concise outputs suited for investment research and operational decision-making.",
+          "I read income statements, balance sheets, and cash flow end-to-end, and build the scenario and valuation models that sit beside them. On the markets side, I trade index futures and derivatives with real capital, and follow the macro picture closely. The point isn't theory — it's understanding which numbers actually move price.",
       },
       {
         title: "AI & AUTOMATION",
-        subtitle: "Workflow Optimization",
+        subtitle: "Cutting the manual parts.",
         description:
-          "I design prompt pipelines and Python automations that compress hours of manual work into minutes — from research aggregation and data wrangling to structured report generation. Proficient in working with large language model APIs and building reliable workflows that integrate AI into existing data and business processes. The focus is on consistent, repeatable output that genuinely saves time rather than just impressive one-off demos.",
+          "I write Python and prompt pipelines that turn an hour of clicking into a script that runs in seconds — research summaries, data cleanup, report scaffolding. I'm comfortable wiring LLM APIs into real workflows. Not flashy one-off demos, just things I'll actually re-use the next day.",
       },
     ],
   },
@@ -84,32 +83,39 @@ const en = {
     present: "Present",
     items: [
       {
+        role: "Futures & Prop Trading",
+        company: "Self-directed · W.C.T College trained",
+        period: "Active",
+        description:
+          "Trading index futures and derivatives with real capital. Structured market analysis, strict risk management, formal training from W.C.T College in institutional prop strategies. This is where the theory meets the bid-ask — and where I learn to read price, not just news.",
+      },
+      {
         role: "Security & Access Control",
         company: "Team 3",
         period: "2023 – Present",
         description:
-          "Managing access control and facility security operations in a professional service environment. Responsible for maintaining strict operational protocols, controlling access across multiple points, and delivering high-quality, consistent service across diverse security scenarios.",
+          "Operational security role: access control, strict protocols, consistent execution across multiple posts. The day job while I finish the degree.",
       },
       {
         role: "Freelance Analyst & Developer",
         company: "Freelancer",
         period: "2022 – Present",
         description:
-          "Providing comprehensive freelance services across data analytics, web development, gaming, and capital markets. I design and execute full data pipelines that surface actionable insights from complex datasets, delivering clear, stakeholder-ready reporting. On the technical side, I architect and deploy robust, responsive websites tailored to client needs, and build custom plugins and solutions for game environments in the gaming industry. In parallel, I actively engage in capital market trading — applying rigorous market analysis, disciplined risk management, and financial acumen to Proprietary (Prop/Nostro) trading strategies across equity and derivative instruments.",
+          "Client work across data analytics, web development, and gaming. Built data pipelines and Power BI dashboards, shipped responsive sites, and developed plugins for game servers. Variety teaches you to scope tight and ship fast.",
       },
       {
         role: "Military Prep Coordinator",
         company: "Midor Ledor Association",
         period: "2022 – 2023",
         description:
-          "Managed military preparation programs for service candidates, coordinating multiple concurrent workstreams under time pressure. Provided structured mentorship and logistical support to ensure candidates were thoroughly prepared for the demands of military service.",
+          "Ran preparation programs for candidates heading into combat units. Several tracks in parallel on tight timelines, one-on-one mentorship, and the logistics behind both. Good practice at owning outcomes for other people.",
       },
       {
         role: "Combat Soldier — Nahal Brigade",
         company: "Israel Defense Forces (IDF)",
         period: "2020 – 2022",
         description:
-          "Served as a combat infantryman in the Nahal Brigade, executing operational missions in dynamic, high-pressure field environments and making rapid decisions under fire. Participated in Operation Guardian of the Walls. The discipline, situational analysis, and composure built in the field translate directly to demanding data and finance roles.",
+          "Combat infantryman in the Nahal Brigade. Operational missions in dynamic field environments, decisions made in seconds. Participated in Operation Guardian of the Walls. The discipline and composure you build here transfer directly to analyst work.",
       },
     ],
   },
@@ -121,25 +127,25 @@ const en = {
       {
         category: "Data · Finance",
         description:
-          "Investigated ETH price sensitivity to macroeconomic indicators — Fed rate decisions, DXY strength, NDAQ correlation and BTC dominance — using on-chain data pipelines and multivariate regression. Surfaced a statistically significant leading indicator ahead of major ETH drawdowns, validated across 5 years of historical data.",
+          "Tested whether ETH price moves with the macro picture — Fed decisions, DXY, NDAQ, BTC dominance — using on-chain data and multivariate regression. Found one statistically significant leading indicator ahead of major drawdowns, validated across five years.",
       },
       {
         category: "Analytics · Gaming",
         description:
-          "Mined 36 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
+          "36 months of player transaction logs from a game server network. Dug through it to find retention drivers, economy leaks, and high-value cohorts. Shipped an interactive Power BI dashboard the team uses to balance the in-game economy in real time.",
       },
       {
         category: "Analytics · Public Safety",
         description:
-          "Built a 7-page Power BI report on ~853K LAPD incidents from 2020 through late 2023, breaking down crime by geography, time-of-day, weapon, victim demographics and case status. Authored the Power Query pipeline (header repair, locale-aware date parsing, sentinel cleanup) and DAX measures for YoY trends, peak hours, reporting lag and arrest rate. Wrote Python validation scripts that catch upstream schema drift before refresh.",
+          "Built a 7-page Power BI report on ~853K LAPD incidents (2020 to late 2023). Cleaned the data in Power Query (header repair, locale-aware date parsing, sentinel cleanup) and wrote the DAX measures behind YoY trends, peak hours, reporting lag, and arrest rate. Python validation scripts catch upstream schema drift before refresh.",
       },
     ],
   },
   connect: {
     eyebrow: "Connect",
-    title: "Let's Connect.",
+    title: "Let's talk.",
     body:
-      "Open to collaboration and junior analyst opportunities in data, finance, and tech.",
+      "Looking for a Financial or Data Analyst seat. If you're hiring — or you just want to talk markets — get in touch.",
     emailLabel: "Email",
     linkedinLabel: "LinkedIn",
     githubLabel: "GitHub",
@@ -153,13 +159,13 @@ const en = {
     emailLabel: "Email",
     emailPlaceholder: "you@example.com",
     messageLabel: "Message",
-    messagePlaceholder: "Tell me about your project or opportunity...",
+    messagePlaceholder: "Tell me about the role or the opportunity...",
     send: "Send Message",
     sending: "Sending...",
     close: "Close",
     closeAria: "Close modal",
     successTitle: "Message Sent",
-    successBody: "Thanks for reaching out. I'll get back to you as soon as possible.",
+    successBody: "Thanks. I'll get back to you within a day or two.",
     genericError: "Something went wrong.",
     sendError: "Failed to send. Please try again.",
   },
@@ -184,8 +190,8 @@ const he: typeof en = {
   },
   hero: {
     hello: "שלום, אני",
-    role: "סטודנט לכלכלה וניהול —",
-    roleAccent: "מחפש תפקידי אנליסט נתונים וג'וניור.",
+    role: "סטודנט לכלכלה וניהול באוניברסיטה הפתוחה. עובד עם Python, SQL ו-Power BI, וסוחר חוזים עתידיים עם הון אמיתי.",
+    roleAccent: "מחפש תפקיד אנליסט פיננסי או אנליסט נתונים.",
     viewWork: "לפרויקטים",
     getInTouch: "צרו קשר",
     downloadCV: "הורדת קו״ח",
@@ -196,26 +202,25 @@ const he: typeof en = {
   },
   about: {
     eyebrow: "אודות",
-    titleStart: "אנליסט ממוקד,",
-    titleEnd: "בהתהוות.",
-    p1Pre: "סטודנט לכלכלה וניהול ב",
+    titleStart: "אנליסט בהכשרה,",
+    titleEnd: "עם הון אמיתי על הקו.",
+    p1Pre: "לומד כלכלה וניהול ב",
     p1University: "אוניברסיטה הפתוחה",
-    p1Mid:
-      "(ממוצע 90), עם רקע שמשלב שירות צבאי וניהול תפעולי בקנה מידה רחב. החוויות הללו עיצבו חשיבה אנליטית וממושמעת — ויכולת לתרגם מידע גולמי ל",
-    p1End: "החלטות ברורות ובנות יישום.",
-    p2Pre: "מהצד הטכני, אני עובד לאורך כל צינור הנתונים — עיבוד מערכי נתונים עם",
-    p2Stack: "Python (Pandas, NumPy, Statsmodels)",
+    p1Mid: "(ממוצע 90). לפני זה, שירתי שנתיים כלוחם קרבי ב",
+    p1End: "חטיבת הנח״ל.",
+    p2Pre: "אני כותב",
+    p2Stack: "Python, SQL, Power BI ואקסל מתקדם",
     p2End:
-      ", כתיבת SQL מדויק, והפקת תובנות באמצעות דשבורדים של Power BI עם מדדי DAX. העבודה היישומית שלי כוללת ניתוח שוק הקריפטו תוך מתאם בין מדדי On-Chain למחזורי מחיר, וניתוח התנהגות משתמשים שחשף דפוסי שימור והכנסות מנתוני פעילות בקנה מידה רחב.",
-    p3Pre: "אני מחפש תפקידים ב",
-    p3Roles: "ניתוח נתונים וניתוח פיננסי",
+      " — Pivot Tables, VLOOKUP וכל מה שבדרך. נוח לי לנקות CSV מבולגן, לעבוד מול מסד נתונים רלציוני, ולספק דשבורד שמישהו באמת ישתמש בו.",
+    p3Pre: "מחוץ ללימודים אני סוחר חוזים עתידיים עם הון אמיתי — הכשרה רשמית מ",
+    p3Roles: "מכללת W.C.T",
     p3End:
-      "— תפקידים שבהם שווקים, מספרים וטכנולוגיה נפגשים. אני עובד באופן עצמאי, לומד מהר, ומשתמש בכלי AI במכוון כדי להעלות את איכות התוצר מבלי לקצר פינות.",
-    skillsLabel: "טכנולוגיות וכישורים",
+      ". שם התיאוריה פוגשת את ה-bid-ask. מחפש תפקיד אנליסט פיננסי או אנליסט נתונים שבו מספרים באמת מובילים החלטות.",
+    skillsLabel: "טכנולוגיות וכלים",
     languagesLabel: "שפות",
     stats: [
-      { label: "תואר ראשון בכלכלה וניהול", sub: "האוניברסיטה הפתוחה" },
-      { label: "פרילנסר", sub: "ניתוח נתונים ותכנות" },
+      { label: "כלכלה וניהול", sub: "אוניברסיטה הפתוחה · ממוצע 90" },
+      { label: "סוחר חוזים", sub: "הכשרה במכללת W.C.T" },
     ],
     languages: [
       { lang: "עברית", level: "שפת אם" },
@@ -225,61 +230,68 @@ const he: typeof en = {
   },
   whatIDo: {
     eyebrow: "מה אני עושה",
-    titleStart: "שלושה תחומים,",
-    titleEnd: "ראש אנליטי אחד.",
+    titleStart: "מה אני",
+    titleEnd: "באמת עושה.",
     rows: [
       {
         title: "ניתוח נתונים",
-        subtitle: "הופך נתונים גולמיים לתובנות בנות יישום",
+        subtitle: "מנקה, שואל שאילתות, מספק דשבורד.",
         description:
-          "אני עובד לאורך כל צינור הנתונים — מקליטת ייצואים גולמיים, ניקוי ועיבוד מערכי נתונים עם Python (Pandas, NumPy), שאילתות מסדי נתונים רלציוניים ב-SQL, ועד הפקת תוצרים בדשבורדים אינטראקטיביים של Power BI עם מדדי DAX. תהליכי העבודה הסטטיסטיים כוללים ניתוחי רגרסיה, מתאם, וחקירת סדרות עיתיות באמצעות Statsmodels ו-Matplotlib. המטרה תמיד אותה מטרה: לחתוך את הרעש ולהפיק תובנה שמכוונת להחלטות בטוחות.",
+          "רוב הנתונים מתחילים מבולגנים. אני מושך ייצואים גולמיים, מנקה ומעבד אותם בפייתון (Pandas, NumPy), שולח שאילתות למסדי נתונים רלציוניים ב-SQL, ובונה דשבורדים ב-Power BI שמישהו באמת יכול לקרוא בישיבה. לאנליזה אני נשען על רגרסיה, מתאם וסדרות עיתיות עם Statsmodels. העבודה תמיד אותה עבודה: לחתוך את הרעש, להחזיר משהו שאפשר להחליט לפיו.",
       },
       {
         title: "ניתוח פיננסי",
-        subtitle: "מודלים שמשפיעים על העסק",
+        subtitle: "דוחות ושווקים אמיתיים.",
         description:
-          "אני קורא דוחות כספיים מקצה לקצה — דוח רווח והפסד, מאזן ותזרים מזומנים — ובונה מודלי תרחיש והערכת שווי שמתרגמים מספרים להקשר אסטרטגי. עבודת ניתוח השווקים שלי כוללת דינמיקה של שוק ההון, מתאמים מאקרו-כלכליים, ומדדים פיננסיים On-Chain. אני מבנה תוצרים ברורים ותמציתיים המתאימים למחקרי השקעות ולקבלת החלטות תפעוליות.",
+          "אני קורא רווח והפסד, מאזנים ותזרים מקצה לקצה, ובונה את מודלי התרחיש וההערכה שמתלווים אליהם. בצד השווקים — סוחר חוזים עתידיים עם הון אמיתי, חוזים על מדדים ונגזרים, ועוקב אחרי המאקרו. הנקודה היא לא תיאוריה — זה להבין אילו מספרים באמת מזיזים את המחיר.",
       },
       {
         title: "AI ואוטומציה",
-        subtitle: "ייעול תהליכי עבודה",
+        subtitle: "חיתוך החלקים הידניים.",
         description:
-          "אני מתכנן צינורות פרומפטים ואוטומציות פייתון שדוחסות שעות של עבודה ידנית לדקות — מאיסוף מחקר ועיבוד נתונים ועד הפקת דוחות מובְנים. בקיא בעבודה עם ממשקי API של מודלי שפה גדולים ובבניית תהליכים אמינים שמשלבים AI בתהליכי נתונים ועסקים קיימים. הדגש הוא על תוצר עקבי ובר-שחזור שבאמת חוסך זמן, ולא רק הדגמות מרשימות חד-פעמיות.",
+          "אני כותב פייתון וצינורות פרומפט שהופכים שעה של קליקים לסקריפט שרץ בכמה שניות — סיכומי מחקר, ניקוי נתונים, שלדי דוחות. נוח לי לחבר ממשקי LLM לתהליכים אמיתיים. לא הדגמות חד-פעמיות, דברים שאשתמש בהם גם מחר.",
       },
     ],
   },
   experience: {
     eyebrow: "ניסיון",
-    title: "היכן שהייתי.",
+    title: "איפה הייתי.",
     present: "כיום",
     items: [
+      {
+        role: "סחר חוזים עתידיים ופרופ",
+        company: "עצמאי · הכשרה ממכללת W.C.T",
+        period: "פעיל",
+        description:
+          "סוחר חוזים עתידיים ונגזרים על מדדי מניות עם הון אמיתי. ניתוח שוק מובְנה, ניהול סיכונים קפדני, הכשרה רשמית במכללת W.C.T באסטרטגיות פרופ מוסדיות. כאן התיאוריה פוגשת את ה-bid-ask — וכאן לומדים לקרוא מחיר, לא רק חדשות.",
+      },
       {
         role: "אבטחה ובקרת כניסה",
         company: "טים 3",
         period: "2023 – כיום",
         description:
-          "ניהול בקרת כניסה ותפעול אבטחת מתקנים בסביבת שירות מקצועית. אחראי לשמירה על נהלים תפעוליים קפדניים, בקרת כניסות במספר נקודות, ומתן שירות אחיד ואיכותי במגוון תרחישי אבטחה.",
+          "תפקיד אבטחה מבצעי: בקרת כניסה, נהלים קפדניים, ביצוע עקבי במגוון עמדות. עבודה תוך כדי השלמת התואר.",
       },
       {
         role: "אנליסט ומפתח פרילנס",
         company: "פרילנסר",
         period: "2022 – כיום",
         description:
-          "מתן שירותי פרילנס מקיפים בתחומי ניתוח נתונים, פיתוח ווב, גיימינג ושוק ההון. אני מתכנן ומבצע צינורות נתונים מלאים שמפיקים תובנות בנות יישום ממערכי נתונים מורכבים, ומספק דיווחים ברורים לבעלי עניין. בצד הטכני, אני בונה ומפרסם אתרים רספונסיביים ויציבים בהתאמה אישית, ומפתח פלאגינים ופתרונות מותאמים לסביבות גיימינג. במקביל, אני פעיל במסחר בשוק ההון — מיישם ניתוח שוק קפדני, ניהול סיכונים ממושמע, ושיקול דעת פיננסי באסטרטגיות מסחר פרופ/נוסטרו על מניות ונגזרים.",
+          "עבודת לקוח בתחומי ניתוח נתונים, פיתוח ווב וגיימינג. בניתי צינורות נתונים ודשבורדי Power BI ללקוחות, סיפקתי אתרים רספונסיביים, ופיתחתי פלאגינים לשרתי משחק. השונות מלמדת לסקופ צמוד ולספק מהר.",
       },
       {
         role: "רכז הכנה לצבא",
         company: "עמותת מדור לדור",
         period: "2022 – 2023",
         description:
-          "ניהול תכניות הכנה לשירות הצבאי, תיאום כמה תהליכים מקבילים תחת לחץ זמן. ליווי מובְנה ותמיכה לוגיסטית למועמדים על מנת להבטיח שיגיעו ערוכים לדרישות השירות הצבאי.",
+          "ניהלתי תכניות הכנה למועמדים ליחידות קרביות. כמה מסלולים במקביל בלוחות זמנים צפופים, ליווי אחד-על-אחד, והלוגיסטיקה מסביב. תרגול טוב בלקיחת אחריות על תוצאות של אנשים אחרים.",
       },
       {
         role: "לוחם קרבי — חטיבת הנח״ל",
         company: "צבא ההגנה לישראל (צה״ל)",
         period: "2020 – 2022",
         description:
-          "שירתי כלוחם חי״ר בחטיבת הנח״ל, ביצוע משימות מבצעיות בסביבות שטח דינמיות ובלחץ גבוה תוך קבלת החלטות מהירה תחת אש. השתתפות במבצע שומר החומות. המשמעת, יכולת ניתוח המצב והריכוז שפיתחתי בשטח מתורגמים ישירות לתפקידי נתונים ופיננסים תובעניים.",
+          "לוחם חי״ר בחטיבת הנח״ל. משימות מבצעיות בשטח דינמי, החלטות בשניות. השתתפות במבצע שומר החומות. המשמעת וקור הרוח שלומדים שם מתורגמים ישירות לעבודת אנליסט.",
       },
     ],
   },
@@ -291,17 +303,17 @@ const he: typeof en = {
       {
         category: "נתונים · פיננסים",
         description:
-          "חקרתי את הרגישות של מחיר ETH למדדים מאקרו-כלכליים — החלטות ריבית של הפד, חוזק DXY, מתאם NDAQ ודומיננטיות BTC — באמצעות צינורות נתוני On-Chain ורגרסיה רב-משתנית. חשפתי אינדיקטור מקדים מובהק סטטיסטית לפני ירידות משמעותיות ב-ETH, שאומת על פני 5 שנות נתונים היסטוריים.",
+          "בדקתי האם מחיר ETH זז יחד עם התמונה המאקרו — החלטות פד, DXY, NDAQ ודומיננטיות BTC — באמצעות נתוני On-Chain ורגרסיה רב-משתנית. מצאתי אינדיקטור מקדים מובהק סטטיסטית לפני ירידות משמעותיות, על פני 5 שנות נתונים.",
       },
       {
         category: "אנליטיקה · גיימינג",
         description:
-          "כריתי 36 חודשים של לוגי טרנזקציות שחקנים מרשת השרתים של Craftiverse כדי לחשוף מניעי שימור, נקודות דליפה בכלכלה, וקבוצות שחקנים בעלי ערך גבוה. סיפקתי דשבורד Power BI אינטראקטיבי שמאפשר איזון של כלכלת המשחק בזמן אמת, ותרם לשיפור מדיד בשימור שחקנים.",
+          "36 חודשים של לוגי טרנזקציות שחקנים מרשת שרתים של משחק. חיפשתי מניעי שימור, נקודות דליפה בכלכלת המשחק, וקבוצות שחקנים בעלות ערך גבוה. סיפקתי דשבורד Power BI אינטראקטיבי שהצוות משתמש בו כדי לאזן את הכלכלה בזמן אמת.",
       },
       {
         category: "אנליטיקה · ביטחון ציבורי",
         description:
-          "בניתי דוח Power BI בן 7 עמודים על כ-853 אלף אירועי משטרת LA מ-2020 ועד סוף 2023, עם פילוחים לפי גיאוגרפיה, שעת יום, נשק, דמוגרפיית קורבן וסטטוס תיק. כתבתי את צינור ה-Power Query (תיקון כותרות שבורות, פרסור תאריכים לפי לוקאל, ניקוי ערכי סנטינל) ומדדי DAX למגמות YoY, שעות שיא, השהיית דיווח ושיעור מעצרים. בנוסף, כתבתי סקריפטי ולידציה ב-Python שתופסים סטיות סכמה במקור לפני הריענון.",
+          "בניתי דוח Power BI בן 7 עמודים על כ-853 אלף אירועי משטרת LA (2020 עד סוף 2023). ניקיתי את הנתונים ב-Power Query (תיקון כותרות שבורות, פרסור תאריכים לפי לוקאל, ניקוי ערכי סנטינל) וכתבתי את מדדי ה-DAX מאחורי מגמות YoY, שעות שיא, השהיית דיווח ושיעור מעצרים. סקריפטי ולידציה בפייתון תופסים סטיות סכמה במקור לפני הריענון.",
       },
     ],
   },
@@ -309,7 +321,7 @@ const he: typeof en = {
     eyebrow: "יצירת קשר",
     title: "בואו נדבר.",
     body:
-      "פתוח לשיתופי פעולה ולהזדמנויות אנליסט ג'וניור בתחומי הנתונים, הפיננסים והטכנולוגיה.",
+      "מחפש תפקיד אנליסט פיננסי או אנליסט נתונים. אם אתם מגייסים — או סתם רוצים לדבר שווקים — צרו קשר.",
     emailLabel: "אימייל",
     linkedinLabel: "לינקדאין",
     githubLabel: "גיטהאב",
@@ -323,13 +335,13 @@ const he: typeof en = {
     emailLabel: "אימייל",
     emailPlaceholder: "you@example.com",
     messageLabel: "הודעה",
-    messagePlaceholder: "ספרו לי על הפרויקט או ההזדמנות שלכם...",
+    messagePlaceholder: "ספרו לי על התפקיד או ההזדמנות...",
     send: "שליחה",
     sending: "שולח...",
     close: "סגירה",
     closeAria: "סגור חלון",
     successTitle: "ההודעה נשלחה",
-    successBody: "תודה על הפנייה. אחזור אליכם בהקדם האפשרי.",
+    successBody: "תודה. אחזור אליכם תוך יום-יומיים.",
     genericError: "משהו השתבש.",
     sendError: "השליחה נכשלה. נסו שוב.",
   },
