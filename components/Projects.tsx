@@ -3,33 +3,39 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const projects = [
+type Config = { id: string; title: string; tags: string[]; href: string };
+
+const projectConfig: Config[] = [
   {
     id: "01",
     title: "Ethereum Macro Analysis",
-    category: "Data · Finance",
-    description:
-      "Investigated ETH price sensitivity to macroeconomic indicators — Fed rate decisions, DXY strength, NDAQ correlation and BTC dominance — using on-chain data pipelines and multivariate regression. Surfaced a statistically significant leading indicator ahead of major ETH drawdowns, validated across 5 years of historical data.",
     tags: ["Python", "Jupyter Notebook", "Pandas", "Statistical tests"],
     href: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
   },
   {
     id: "02",
     title: "Craftiverse Customer Behaviour",
-    category: "Analytics · Gaming",
-    description:
-      "Mined 36 months of player transaction logs from the Craftiverse server network to surface retention drivers, economy leakage points, and high-value player cohorts. Delivered an interactive Power BI dashboard enabling real-time game economy balancing, contributing to a measurable improvement in player retention.",
     tags: ["PowerBI", "Python", "SQL", "DAX", "TMDL"],
     href: "https://github.com/hickennoace/CustomerBehaviour",
+  },
+  {
+    id: "03",
+    title: "L.A. Crime Rate",
+    tags: ["PowerBI", "Power Query", "DAX", "Python"],
+    href: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
   },
 ];
 
 export default function Projects() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useLang();
+
+  const projects = t.projects.items.map((it, i) => ({ ...projectConfig[i], ...it }));
 
   return (
     <section id="work" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
@@ -40,7 +46,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          Selected Work
+          {t.projects.eyebrow}
         </motion.span>
 
         <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
@@ -50,7 +56,7 @@ export default function Projects() {
             transition={{ duration: 0.65, delay: 0.06 }}
             className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white"
           >
-            Things I&apos;ve built.
+            {t.projects.title}
           </motion.h2>
 
           <motion.a
@@ -63,7 +69,7 @@ export default function Projects() {
             className="flex items-center gap-2 text-[13px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
           >
             <Github size={14} strokeWidth={1.5} />
-            GitHub profile
+            {t.projects.githubProfile}
           </motion.a>
         </div>
 
@@ -94,7 +100,7 @@ export default function Projects() {
                     </h3>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
-                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400" />
+                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400 rtl:-scale-x-100" />
                   </div>
                 </div>
 

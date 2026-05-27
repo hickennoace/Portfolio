@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -23,6 +24,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const { t } = useLang();
 
   useEffect(() => {
     if (!isOpen) return;
@@ -62,10 +64,10 @@ export default function ContactModal({ isOpen, onClose }: Props) {
         body: JSON.stringify({ name: name.trim(), email: email.trim(), message: message.trim() }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      if (!res.ok) throw new Error(data.error || t.contactModal.genericError);
       setStatus("success");
     } catch (err: unknown) {
-      setErrorMsg(err instanceof Error ? err.message : "Failed to send. Please try again.");
+      setErrorMsg(err instanceof Error ? err.message : t.contactModal.sendError);
       setStatus("error");
     }
   };
@@ -104,18 +106,18 @@ export default function ContactModal({ isOpen, onClose }: Props) {
               <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-black/[0.07] dark:border-white/[0.06]">
                 <div>
                   <p className="text-[10px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.22em] uppercase mb-1">
-                    Get in touch
+                    {t.contactModal.eyebrow}
                   </p>
                   <h2
                     id="contact-modal-title"
                     className="text-[20px] font-bold text-slate-900 dark:text-white tracking-tight"
                   >
-                    Send a Message
+                    {t.contactModal.title}
                   </h2>
                 </div>
                 <button
                   onClick={handleClose}
-                  aria-label="Close modal"
+                  aria-label={t.contactModal.closeAria}
                   className="w-9 h-9 rounded-xl border border-black/[0.1] dark:border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:border-blue-500/30 hover:bg-blue-500/[0.06] transition-all duration-200"
                 >
                   <X size={16} strokeWidth={2} />
@@ -136,17 +138,17 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     </div>
                     <div>
                       <p className="text-[17px] font-bold text-slate-900 dark:text-white mb-1.5">
-                        Message Sent
+                        {t.contactModal.successTitle}
                       </p>
                       <p className="text-[14px] text-slate-500 dark:text-slate-400 leading-relaxed">
-                        Thanks for reaching out. I&apos;ll get back to you as soon as possible.
+                        {t.contactModal.successBody}
                       </p>
                     </div>
                     <button
                       onClick={handleClose}
                       className="mt-1 px-7 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-semibold transition-colors duration-200"
                     >
-                      Close
+                      {t.contactModal.close}
                     </button>
                   </motion.div>
                 ) : (
@@ -154,7 +156,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase">
-                          Name
+                          {t.contactModal.nameLabel}
                         </label>
                         <input
                           ref={firstFieldRef}
@@ -162,20 +164,20 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           required
-                          placeholder="Your name"
+                          placeholder={t.contactModal.namePlaceholder}
                           className={inputClass}
                         />
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase">
-                          Email
+                          {t.contactModal.emailLabel}
                         </label>
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
-                          placeholder="you@example.com"
+                          placeholder={t.contactModal.emailPlaceholder}
                           className={inputClass}
                         />
                       </div>
@@ -183,14 +185,14 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
                     <div className="flex flex-col gap-1.5">
                       <label className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 tracking-[0.14em] uppercase">
-                        Message
+                        {t.contactModal.messageLabel}
                       </label>
                       <textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         required
                         rows={5}
-                        placeholder="Tell me about your project or opportunity..."
+                        placeholder={t.contactModal.messagePlaceholder}
                         className={`${inputClass} resize-none`}
                       />
                     </div>
@@ -214,12 +216,12 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                       {status === "sending" ? (
                         <>
                           <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                          Sending...
+                          {t.contactModal.sending}
                         </>
                       ) : (
                         <>
                           <Send size={14} strokeWidth={2} />
-                          Send Message
+                          {t.contactModal.send}
                         </>
                       )}
                     </button>

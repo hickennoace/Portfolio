@@ -2,21 +2,24 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, LucideIcon } from "lucide-react";
 import ContactModal from "./ContactModal";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const links = [
+type LinkConfig = { Icon: LucideIcon; key: "linkedinLabel" | "githubLabel"; display: string; href: string };
+
+const linkConfig: LinkConfig[] = [
   {
     Icon: Linkedin,
-    label: "LinkedIn",
-    display: "/in/danielshaulov",
+    key: "linkedinLabel",
+    display: "danielshaulov",
     href: "https://www.linkedin.com/in/danielshaulov/",
   },
   {
     Icon: Github,
-    label: "GitHub",
+    key: "githubLabel",
     display: "hickennoace",
     href: "https://github.com/hickennoace",
   },
@@ -26,6 +29,7 @@ export default function Connect() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useLang();
 
   return (
     <>
@@ -43,7 +47,7 @@ export default function Connect() {
             transition={{ duration: 0.6 }}
             className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-6"
           >
-            Connect
+            {t.connect.eyebrow}
           </motion.span>
 
           <motion.h2
@@ -52,7 +56,7 @@ export default function Connect() {
             transition={{ duration: 0.78, delay: 0.06, ease: EASE }}
             className="text-4xl sm:text-5xl lg:text-[3.8rem] font-bold tracking-tighter text-slate-900 dark:text-white mb-5"
           >
-            Let&apos;s Connect.
+            {t.connect.title}
           </motion.h2>
 
           <motion.p
@@ -61,8 +65,7 @@ export default function Connect() {
             transition={{ duration: 0.65, delay: 0.14 }}
             className="text-[17px] text-slate-600 dark:text-slate-400 font-light max-w-[420px] mx-auto mb-14 leading-relaxed"
           >
-            Open to collaboration and junior analyst opportunities in data,
-            finance, and tech.
+            {t.connect.body}
           </motion.p>
 
           {/* Contact cards */}
@@ -80,9 +83,9 @@ export default function Connect() {
               <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-all duration-200">
                 <Mail size={16} strokeWidth={1.5} className="text-blue-600 dark:text-blue-400" />
               </div>
-              <div className="text-left">
+              <div className="text-start">
                 <p className="text-[10px] text-slate-500 font-semibold tracking-[0.16em] uppercase">
-                  Email
+                  {t.connect.emailLabel}
                 </p>
                 <p className="text-[13px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
                   danielshaulov4@gmail.com
@@ -91,9 +94,9 @@ export default function Connect() {
             </motion.button>
 
             {/* LinkedIn & GitHub */}
-            {links.map((c, i) => (
+            {linkConfig.map((c, i) => (
               <motion.a
-                key={c.label}
+                key={c.key}
                 href={c.href}
                 target="_blank"
                 rel="noreferrer"
@@ -106,9 +109,9 @@ export default function Connect() {
                 <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-all duration-200">
                   <c.Icon size={16} strokeWidth={1.5} className="text-blue-600 dark:text-blue-400" />
                 </div>
-                <div className="text-left">
+                <div className="text-start">
                   <p className="text-[10px] text-slate-500 font-semibold tracking-[0.16em] uppercase">
-                    {c.label}
+                    {t.connect[c.key]}
                   </p>
                   <p className="text-[13px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
                     {c.display}
@@ -126,7 +129,7 @@ export default function Connect() {
             className="mt-20 pt-7 border-t border-black/[0.06] dark:border-white/[0.04]"
           >
             <p className="text-[11px] text-slate-500 dark:text-slate-600">
-              © {new Date().getFullYear()} Daniel Shaulov · Built with Next.js
+              © {new Date().getFullYear()} Daniel Shaulov · {t.connect.builtWith}
             </p>
           </motion.div>
         </div>

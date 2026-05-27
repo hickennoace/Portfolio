@@ -2,48 +2,31 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Briefcase, Shield, Lock, Users } from "lucide-react";
+import { Briefcase, Shield, Lock, Users, LucideIcon } from "lucide-react";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
-const experiences = [
+type Config = { Icon: LucideIcon; tags: string[]; accent: boolean };
+
+const itemConfig: Config[] = [
   {
     Icon: Lock,
-    role: "Security & Access Control",
-    company: "Team 3",
-    period: "2023 – Present",
-    description:
-      "Managing access control and facility security operations in a professional service environment. Responsible for maintaining strict operational protocols, controlling access across multiple points, and delivering high-quality, consistent service across diverse security scenarios.",
     tags: ["Security Operations", "Access Control", "Protocols", "Service Delivery"],
     accent: true,
   },
   {
     Icon: Briefcase,
-    role: "Freelance Analyst & Developer",
-    company: "Freelancer",
-    period: "2022 – Present",
-    description:
-      "Providing comprehensive freelance services across data analytics, web development, gaming, and capital markets. I design and execute full data pipelines that surface actionable insights from complex datasets, delivering clear, stakeholder-ready reporting. On the technical side, I architect and deploy robust, responsive websites tailored to client needs, and build custom plugins and solutions for game environments in the gaming industry. In parallel, I actively engage in capital market trading — applying rigorous market analysis, disciplined risk management, and financial acumen to Proprietary (Prop/Nostro) trading strategies across equity and derivative instruments.",
     tags: ["Data Analysis", "Web Development", "Plugin Dev", "Prop Trading", "Capital Markets"],
     accent: true,
   },
   {
     Icon: Users,
-    role: "Military Prep Coordinator",
-    company: "Midor Ledor Association",
-    period: "2022 – 2023",
-    description:
-      "Managed military preparation programs for service candidates, coordinating multiple concurrent workstreams under time pressure. Provided structured mentorship and logistical support to ensure candidates were thoroughly prepared for the demands of military service.",
     tags: ["Programme Management", "Mentorship", "Multi-tasking", "Coordination"],
     accent: false,
   },
   {
     Icon: Shield,
-    role: "Combat Soldier & Gunner",
-    company: "Israel Defense Forces (IDF)",
-    period: "2020 – 2022",
-    description:
-      "Operated advanced technological systems in high-stakes, rapidly evolving field environments, exercising rapid decision-making under pressure. Participated in Guardian of the Walls operations. Developed the disciplined operational planning and analytical composure that directly translates to demanding data and finance roles.",
     tags: ["Advanced Tech Systems", "Rapid Decision-Making", "Guardian of the Walls", "Field Operations"],
     accent: false,
   },
@@ -52,6 +35,9 @@ const experiences = [
 export default function Experience() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useLang();
+
+  const experiences = t.experience.items.map((it, i) => ({ ...it, ...itemConfig[i] }));
 
   return (
     <section id="experience" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
@@ -62,7 +48,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          Experience
+          {t.experience.eyebrow}
         </motion.span>
 
         <motion.h2
@@ -71,7 +57,7 @@ export default function Experience() {
           transition={{ duration: 0.65, delay: 0.06 }}
           className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white mb-14"
         >
-          Where I&apos;ve been.
+          {t.experience.title}
         </motion.h2>
 
         <div className="flex flex-col gap-4">

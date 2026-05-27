@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowDown, Download, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import MeteorShower from "@/components/MeteorShower";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -18,14 +19,15 @@ const up = {
   show:   { opacity: 1, y: 0, transition: { duration: 0.78, ease: EASE } },
 };
 
-const CV_OPTIONS = [
-  { label: "CV (English)", href: "/cv-en.pdf", flag: "EN" },
-  { label: "CV (Hebrew)",  href: "/cv-he.pdf", flag: "HE" },
-];
-
 function CvDownloadButton() {
   const [open, setOpen] = useState(false);
   const wrapRef = useRef<HTMLDivElement>(null);
+  const { t } = useLang();
+
+  const cvOptions = [
+    { label: t.hero.cvEn, href: "/cv-en.pdf", flag: "EN" },
+    { label: t.hero.cvHe, href: "/cv-he.pdf", flag: "HE" },
+  ];
 
   useEffect(() => {
     if (!open) return;
@@ -51,7 +53,7 @@ function CvDownloadButton() {
         className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-black/[0.12] dark:border-white/[0.12] text-slate-600 dark:text-slate-400 hover:border-black/[0.25] dark:hover:border-white/25 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
       >
         <Download size={14} strokeWidth={2} />
-        Download CV
+        {t.hero.downloadCV}
         <motion.span
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.22, ease: EASE }}
@@ -69,13 +71,13 @@ function CvDownloadButton() {
             animate={{ opacity: 1, y: 0,  scale: 1    }}
             exit={{    opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.18, ease: EASE }}
-            className="absolute left-1/2 sm:left-0 -translate-x-1/2 sm:translate-x-0 top-full mt-2 w-56 origin-top
+            className="absolute start-1/2 sm:start-0 -translate-x-1/2 rtl:translate-x-1/2 sm:translate-x-0 sm:rtl:translate-x-0 top-full mt-2 w-56 origin-top
                        rounded-xl border border-black/[0.1] dark:border-white/[0.08]
                        bg-white/95 dark:bg-neutral-950/95 backdrop-blur-xl
                        shadow-[0_10px_40px_rgba(15,23,42,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]
                        z-30 p-1.5"
           >
-            {CV_OPTIONS.map((opt) => (
+            {cvOptions.map((opt) => (
               <a
                 key={opt.href}
                 href={opt.href}
@@ -106,6 +108,8 @@ function CvDownloadButton() {
 }
 
 export default function Hero() {
+  const { t } = useLang();
+
   return (
     <section className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 overflow-hidden">
       {/* Dot-grid — light mode: dark dots */}
@@ -140,12 +144,12 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-14 lg:gap-20">
 
           {/* ── Text block ── */}
-          <div className="flex-1 min-w-0 text-center sm:text-left order-2 sm:order-1">
+          <div className="flex-1 min-w-0 text-center sm:text-start order-2 sm:order-1">
             <motion.p
               variants={up}
               className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.26em] uppercase mb-6"
             >
-              Hello, I&apos;m
+              {t.hero.hello}
             </motion.p>
 
             <motion.h1
@@ -162,9 +166,9 @@ export default function Hero() {
               variants={up}
               className="text-[15px] sm:text-[17px] text-slate-600 dark:text-slate-400 font-light max-w-[460px] mx-auto sm:mx-0 mb-10 leading-relaxed"
             >
-              Economics &amp; Management student —{" "}
+              {t.hero.role}{" "}
               <span className="text-slate-800 dark:text-slate-300">
-                targeting Data and Junior Analyst roles.
+                {t.hero.roleAccent}
               </span>
             </motion.p>
 
@@ -176,13 +180,13 @@ export default function Hero() {
                 href="#work"
                 className="inline-flex items-center px-7 sm:px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:-translate-y-[2px] active:scale-[0.97]"
               >
-                View Work
+                {t.hero.viewWork}
               </a>
               <a
                 href="#connect"
                 className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/35 text-blue-700 dark:text-blue-300 hover:border-blue-500/60 hover:text-blue-900 dark:hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
               >
-                Get in Touch
+                {t.hero.getInTouch}
               </a>
               <CvDownloadButton />
             </motion.div>
@@ -208,7 +212,7 @@ export default function Hero() {
               <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
                   src="/copy.png"
-                  alt="Daniel Shaulov"
+                  alt={t.hero.portraitAlt}
                   fill
                   priority
                   sizes="(max-width: 640px) 224px, (max-width: 1024px) 320px, 384px"
@@ -232,7 +236,7 @@ export default function Hero() {
           <ArrowDown size={15} strokeWidth={1.5} />
         </div>
         <span className="text-[9px] tracking-[0.26em] uppercase font-medium">
-          Scroll
+          {t.hero.scroll}
         </span>
       </motion.div>
     </section>

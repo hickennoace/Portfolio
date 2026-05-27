@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -22,20 +23,11 @@ const skills = [
   "Git", "AI Automation",
 ];
 
-const stats = [
-  { label: "B.A Economics & Management", sub: "Open University of Israel" },
-  { label: "Freelancer",                 sub: "Data Analysis & Programming" },
-];
-
-const languages = [
-  { lang: "Hebrew",  level: "Native"           },
-  { lang: "English", level: "Professional"     },
-  { lang: "Russian", level: "High Proficiency" },
-];
-
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t, dir } = useLang();
+  const slide = dir === "rtl" ? 24 : -24;
 
   return (
     <section id="about" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
@@ -46,52 +38,46 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          About
+          {t.about.eyebrow}
         </motion.span>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left: bio */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: slide }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.82, delay: 0.08, ease: EASE }}
           >
             <h2 className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white mb-6 leading-[1.1]">
-              A focused analyst,{" "}
-              <span className="text-blue-600 dark:text-blue-400">in the making.</span>
+              {t.about.titleStart}{" "}
+              <span className="text-blue-600 dark:text-blue-400">{t.about.titleEnd}</span>
             </h2>
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
-              Economics and Management student at the{" "}
-              <span className="text-slate-800 dark:text-slate-200 font-medium">Open University of Israel</span>{" "}
-              (GPA 90), with a background that spans military service and operational management at scale.
-              Those experiences shaped a disciplined, analytical mindset — and an instinct for translating
-              raw information into{" "}
-              <span className="text-slate-800 dark:text-slate-200 font-medium">clear, actionable decisions.</span>
+              {t.about.p1Pre}{" "}
+              <span className="text-slate-800 dark:text-slate-200 font-medium">{t.about.p1University}</span>{" "}
+              {t.about.p1Mid}{" "}
+              <span className="text-slate-800 dark:text-slate-200 font-medium">{t.about.p1End}</span>
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9] mb-4">
-              On the technical side, I work across the full data pipeline — transforming datasets with{" "}
-              <span className="text-slate-800 dark:text-slate-200 font-medium">Python (Pandas, NumPy, Statsmodels)</span>,
-              writing precise SQL, and delivering findings through Power BI dashboards with DAX measures.
-              My applied work spans cryptocurrency market analysis correlating on-chain metrics with price
-              cycles, and user behaviour analytics that surfaced retention and revenue patterns from
-              large-scale activity data.
+              {t.about.p2Pre}{" "}
+              <span className="text-slate-800 dark:text-slate-200 font-medium">{t.about.p2Stack}</span>
+              {t.about.p2End}
             </p>
             <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-[1.9]">
-              I&apos;m targeting roles in{" "}
-              <span className="text-slate-700 dark:text-slate-300 font-medium">data analysis and financial analysis</span>{" "}
-              — positions where markets, numbers, and technology intersect. I work independently,
-              learn fast, and use AI tools deliberately to raise output quality without cutting corners.
+              {t.about.p3Pre}{" "}
+              <span className="text-slate-700 dark:text-slate-300 font-medium">{t.about.p3Roles}</span>{" "}
+              {t.about.p3End}
             </p>
           </motion.div>
 
           {/* Right: skills + stats + languages */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: -slide }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.82, delay: 0.16, ease: EASE }}
           >
             <p className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-4">
-              Technologies &amp; Skills
+              {t.about.skillsLabel}
             </p>
 
             <motion.div
@@ -112,7 +98,7 @@ export default function About() {
             </motion.div>
 
             <div className="grid grid-cols-2 gap-3 mb-8">
-              {stats.map((stat) => (
+              {t.about.stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="p-5 rounded-xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-500/20 transition-colors duration-300"
@@ -126,10 +112,10 @@ export default function About() {
             {/* Languages */}
             <div className="pt-6 border-t border-black/[0.07] dark:border-white/[0.05]">
               <p className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-4">
-                Languages
+                {t.about.languagesLabel}
               </p>
               <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {languages.map(({ lang, level }) => (
+                {t.about.languages.map(({ lang, level }) => (
                   <div key={lang} className="flex items-center gap-1.5">
                     <span className="text-[13px] text-slate-700 dark:text-slate-300 font-medium">{lang}</span>
                     <span className="text-[12px] text-slate-500">— {level}</span>
