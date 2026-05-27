@@ -1,19 +1,18 @@
 # Portfolio site
 
-My personal landing page, built as a single-page Next.js site and deployed as a static export to Wasmer Edge. It's where I send recruiters and people asking what I'm working on.
+My personal landing page, built as a single-page Next.js site and deployed on Vercel. It's where I send recruiters and people asking what I'm working on.
 
 The site itself is one long page with anchored sections (Hero, About, What I Do, Experience, Projects, Connect) and a contact modal that actually sends mail via Resend. Dark theme by default. There's a custom cursor on desktop, a slow meteor-shower effect behind the hero, and a few framer-motion reveals as you scroll.
 
 ## Stack
 
-- Next.js 14 with the App Router, exported as fully static (`output: "export"`) so it can be served from a CDN with no runtime.
+- Next.js 14 with the App Router.
 - TypeScript in strict mode.
 - Tailwind CSS for styling.
 - framer-motion for section reveals and the small flourishes.
 - lucide-react for icons.
 - next-themes for dark mode (defaulted to dark, no system follow).
 - Resend for the contact form (`RESEND_API_KEY` env var required for emails to actually send).
-- Wasmer static-web-server for hosting at the edge.
 
 Fonts: Instrument Serif for the display headings, Inter (variable) for body, JetBrains Mono for accents. All three are loaded via `@fontsource` packages so there's no Google Fonts call at runtime.
 
@@ -26,23 +25,19 @@ npm run dev
 
 Then http://localhost:3000.
 
-## Building and deploying to Wasmer
+## Building and deploying
 
 ```bash
 npm run build
 ```
 
-That writes a static export into `./out`. The `wasmer:build` script copies anything from `public/` into `out/` (the CV PDFs, headshot, favicons) so they ship with the deploy. `wasmer.toml` and `settings/config.toml` wire that directory up to Wasmer's static web server.
+Deploys happen automatically on push via Vercel. To deploy manually:
 
 ```bash
-# one-time
-wasmer login
-
-# then
-npm run wasmer:deploy
+vercel deploy --prod
 ```
 
-This runs `next build` and then `wasmer deploy` against whatever's in `wasmer.toml`.
+Set `RESEND_API_KEY` in the Vercel project's environment variables so the contact form route can send mail.
 
 ## What each component does
 
@@ -51,6 +46,7 @@ app/
   layout.tsx           Root layout. Fonts, metadata, OpenGraph, ThemeProvider.
   page.tsx             The whole page in one composition.
   globals.css          Tailwind base + custom CSS variables and design tokens.
+  api/contact/route.ts Server route that sends the contact form via Resend.
 components/
   Nav.tsx              Top nav with anchor links to each section.
   Hero.tsx             Headline, CV download (EN/HE), call to action.
@@ -59,14 +55,12 @@ components/
   Experience.tsx       Roles and timeline.
   Projects.tsx         Featured projects with links.
   Connect.tsx          Contact section with social links and CTA.
-  ContactModal.tsx     Email form, sends via Resend.
+  ContactModal.tsx     Email form, posts to /api/contact.
   BackgroundOrbs.tsx   Soft gradient orbs that sit behind everything.
   CustomCursor.tsx     Desktop-only cursor. Disabled on coarse pointers.
   MeteorShower.tsx     Slow meteor streaks behind the hero. Sparse on purpose.
   ThemeToggle.tsx      Light/dark toggle (with a placeholder before mount).
 public/                CV PDFs (cv-en.pdf, cv-he.pdf), headshot, favicons.
-wasmer.toml            Wasmer package manifest.
-settings/              Static web server config.
 ```
 
 A couple of details worth knowing if you fork this:
@@ -87,4 +81,3 @@ A couple of details worth knowing if you fork this:
 ## Notes
 
 - Site title and OpenGraph metadata are in `app/layout.tsx`. Update both when you fork it or social previews will still say my name.
-- The strict static export means anything dynamic (server actions, on-demand revalidation) won't work. The contact form is the one exception and runs as a fetch to an external Resend endpoint, not a Next.js route.

@@ -126,7 +126,7 @@ export default function Connect() {
             className="mt-20 pt-7 border-t border-black/[0.06] dark:border-white/[0.04]"
           >
             <p className="text-[11px] text-slate-500 dark:text-slate-600">
-              © {new Date().getFullYear()} Daniel Shaulov · Built with Next.js · Deployed on Vercel
+              © {new Date().getFullYear()} Daniel Shaulov · Built with Next.js
             </p>
           </motion.div>
         </div>
