@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Briefcase, Shield, Lock, Users, TrendingUp, LucideIcon } from "lucide-react";
+import { Briefcase, Shield, Lock, Users, LucideIcon } from "lucide-react";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -10,11 +10,6 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 type Config = { Icon: LucideIcon; tags: string[]; accent: boolean };
 
 const itemConfig: Config[] = [
-  {
-    Icon: TrendingUp,
-    tags: ["Futures", "Risk Management", "Market Analysis", "Prop Trading"],
-    accent: true,
-  },
   {
     Icon: Lock,
     tags: ["Security Operations", "Access Control", "Protocols", "Service Delivery"],

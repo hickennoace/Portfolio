@@ -14,7 +14,7 @@ const en = {
   },
   hero: {
     hello: "Hi, I'm",
-    role: "Studying Economics & Management at the Open University. I work with Python, SQL and Power BI, and trade futures with real money.",
+    role: "Studying Economics & Management at the Open University. I work with Python, SQL, Power BI and advanced Excel.",
     roleAccent: "Looking for a Financial or Data Analyst role.",
     viewWork: "View Work",
     getInTouch: "Get in Touch",
@@ -27,7 +27,7 @@ const en = {
   about: {
     eyebrow: "About",
     titleStart: "Analyst in training,",
-    titleEnd: "with real money on the line.",
+    titleEnd: "focused on the work.",
     p1Pre: "Studying Economics & Management at the",
     p1University: "Open University of Israel",
     p1Mid: "(GPA 90). Before that, two years as a combat soldier in the",
@@ -36,15 +36,15 @@ const en = {
     p2Stack: "Python, SQL, Power BI and advanced Excel",
     p2End:
       " — PivotTables, VLOOKUP, the rest. I'm comfortable cleaning a messy CSV, querying a relational DB, and shipping a dashboard a stakeholder can actually use.",
-    p3Pre: "Outside class, I trade futures with real capital — formal training from",
-    p3Roles: "W.C.T College",
+    p3Pre: "Looking for a",
+    p3Roles: "Financial or Data Analyst role",
     p3End:
-      ". That's where the textbook meets the bid-ask. Looking for a Financial or Data Analyst role where numbers actually drive decisions.",
+      " — somewhere the analysis actually drives a decision. Less interested in pretty slides, more interested in models, dashboards, and research someone reads on a Monday morning.",
     skillsLabel: "Tech & Tools",
     languagesLabel: "Languages",
     stats: [
       { label: "Economics & Management", sub: "Open University · GPA 90" },
-      { label: "Futures Trader", sub: "Trained at W.C.T College" },
+      { label: "Analyst Toolkit", sub: "Python · SQL · Power BI · Excel" },
     ],
     languages: [
       { lang: "Hebrew", level: "Native" },
@@ -65,9 +65,9 @@ const en = {
       },
       {
         title: "FINANCIAL ANALYSIS",
-        subtitle: "Statements and real-money markets.",
+        subtitle: "Statements, models, and the macro picture.",
         description:
-          "I read income statements, balance sheets, and cash flow end-to-end, and build the scenario and valuation models that sit beside them. On the markets side, I trade index futures and derivatives with real capital, and follow the macro picture closely. The point isn't theory — it's understanding which numbers actually move price.",
+          "I read income statements, balance sheets, and cash flow end-to-end, and build the scenario and valuation models that sit beside them. I follow rates, inflation prints, and earnings drift closely — the point isn't theory, it's understanding which numbers actually move price. The output is research and models that hold up under questioning.",
       },
       {
         title: "AI & AUTOMATION",
@@ -82,13 +82,6 @@ const en = {
     title: "Where I've been.",
     present: "Present",
     items: [
-      {
-        role: "Futures & Prop Trading",
-        company: "Self-directed · W.C.T College trained",
-        period: "Active",
-        description:
-          "Trading index futures and derivatives with real capital. Structured market analysis, strict risk management, formal training from W.C.T College in institutional prop strategies. This is where the theory meets the bid-ask — and where I learn to read price, not just news.",
-      },
       {
         role: "Security & Access Control",
         company: "Team 3",
@@ -190,7 +183,7 @@ const he: typeof en = {
   },
   hero: {
     hello: "שלום, אני",
-    role: "סטודנט לכלכלה וניהול באוניברסיטה הפתוחה. עובד עם Python, SQL ו-Power BI, וסוחר חוזים עתידיים עם הון אמיתי.",
+    role: "סטודנט לכלכלה וניהול באוניברסיטה הפתוחה. עובד עם Python, SQL, Power BI ואקסל מתקדם.",
     roleAccent: "מחפש תפקיד אנליסט פיננסי או אנליסט נתונים.",
     viewWork: "לפרויקטים",
     getInTouch: "צרו קשר",
@@ -203,7 +196,7 @@ const he: typeof en = {
   about: {
     eyebrow: "אודות",
     titleStart: "אנליסט בהכשרה,",
-    titleEnd: "עם הון אמיתי על הקו.",
+    titleEnd: "ממוקד בעבודה.",
     p1Pre: "לומד כלכלה וניהול ב",
     p1University: "אוניברסיטה הפתוחה",
     p1Mid: "(ממוצע 90). לפני זה, שירתי שנתיים כלוחם קרבי ב",
@@ -212,15 +205,15 @@ const he: typeof en = {
     p2Stack: "Python, SQL, Power BI ואקסל מתקדם",
     p2End:
       " — Pivot Tables, VLOOKUP וכל מה שבדרך. נוח לי לנקות CSV מבולגן, לעבוד מול מסד נתונים רלציוני, ולספק דשבורד שמישהו באמת ישתמש בו.",
-    p3Pre: "מחוץ ללימודים אני סוחר חוזים עתידיים עם הון אמיתי — הכשרה רשמית מ",
-    p3Roles: "מכללת W.C.T",
+    p3Pre: "מחפש",
+    p3Roles: "תפקיד אנליסט פיננסי או אנליסט נתונים",
     p3End:
-      ". שם התיאוריה פוגשת את ה-bid-ask. מחפש תפקיד אנליסט פיננסי או אנליסט נתונים שבו מספרים באמת מובילים החלטות.",
+      " — איפה שהאנליזה באמת מובילה להחלטה. פחות מתעניין במצגות יפות, יותר במודלים, דשבורדים ומחקר שמישהו קורא בבוקר יום שני.",
     skillsLabel: "טכנולוגיות וכלים",
     languagesLabel: "שפות",
     stats: [
       { label: "כלכלה וניהול", sub: "אוניברסיטה הפתוחה · ממוצע 90" },
-      { label: "סוחר חוזים", sub: "הכשרה במכללת W.C.T" },
+      { label: "ארגז כלים", sub: "Python · SQL · Power BI · Excel" },
     ],
     languages: [
       { lang: "עברית", level: "שפת אם" },
@@ -241,9 +234,9 @@ const he: typeof en = {
       },
       {
         title: "ניתוח פיננסי",
-        subtitle: "דוחות ושווקים אמיתיים.",
+        subtitle: "דוחות, מודלים והתמונה המאקרו.",
         description:
-          "אני קורא רווח והפסד, מאזנים ותזרים מקצה לקצה, ובונה את מודלי התרחיש וההערכה שמתלווים אליהם. בצד השווקים — סוחר חוזים עתידיים עם הון אמיתי, חוזים על מדדים ונגזרים, ועוקב אחרי המאקרו. הנקודה היא לא תיאוריה — זה להבין אילו מספרים באמת מזיזים את המחיר.",
+          "אני קורא רווח והפסד, מאזנים ותזרים מקצה לקצה, ובונה את מודלי התרחיש וההערכה שמתלווים אליהם. עוקב מקרוב אחרי ריבית, אינפלציה ורווחי חברות — הנקודה היא לא תיאוריה, זה להבין אילו מספרים באמת מזיזים את המחיר. התוצר הוא מחקר ומודלים שעומדים בשאלות.",
       },
       {
         title: "AI ואוטומציה",
@@ -258,13 +251,6 @@ const he: typeof en = {
     title: "איפה הייתי.",
     present: "כיום",
     items: [
-      {
-        role: "סחר חוזים עתידיים ופרופ",
-        company: "עצמאי · הכשרה ממכללת W.C.T",
-        period: "פעיל",
-        description:
-          "סוחר חוזים עתידיים ונגזרים על מדדי מניות עם הון אמיתי. ניתוח שוק מובְנה, ניהול סיכונים קפדני, הכשרה רשמית במכללת W.C.T באסטרטגיות פרופ מוסדיות. כאן התיאוריה פוגשת את ה-bid-ask — וכאן לומדים לקרוא מחיר, לא רק חדשות.",
-      },
       {
         role: "אבטחה ובקרת כניסה",
         company: "טים 3",
