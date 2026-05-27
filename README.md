@@ -1,20 +1,19 @@
-# Daniel Shaulov — Portfolio
+# Portfolio site
 
-An ultra-premium personal landing page built for analyst / data-driven finance
-roles. Next.js (App Router) · TypeScript · Tailwind CSS · deployed on
-**Wasmer Edge** as a globally distributed static site.
+My personal landing page. It's a single-page Next.js site that I deploy as a static export to Wasmer Edge.
 
 ## Stack
-- **Next.js 14** with the App Router, static-exported (`output: "export"`)
-- **TypeScript** strict mode
-- **Tailwind CSS** with a custom design system (ink / bone / gold palette)
-- **lucide-react** for iconography
-- **Wasmer static-web-server** for edge hosting
 
-## Design language
-Editorial quiet luxury — deep ink black, warm cream typography, muted gold
-accents, premium serif (Instrument Serif) paired with Geist sans/mono. Layout
-favours asymmetric bento grids, hairline dividers, and discreet glassmorphism.
+- Next.js 14 (App Router), exported with `output: "export"` for static hosting
+- TypeScript (strict)
+- Tailwind CSS
+- framer-motion for the section reveals and the small animation flourishes
+- lucide-react for icons
+- next-themes for dark mode (defaults to dark)
+- resend for the contact form
+- Wasmer static-web-server for hosting
+
+Fonts: Instrument Serif for display, Inter for body, JetBrains Mono for accents.
 
 ## Local development
 
@@ -23,52 +22,53 @@ npm install
 npm run dev
 ```
 
-Then open [http://localhost:3000](http://localhost:3000).
+Then http://localhost:3000.
 
-## Building for Wasmer Edge
+## Building and deploying to Wasmer
 
 ```bash
 npm run build
 ```
 
-This produces a static export in `./out`. The `wasmer.toml` and
-`settings/config.toml` wire that directory up to Wasmer's static web server.
-
-## Deploying
+That writes a static export into `./out`. `wasmer.toml` and `settings/config.toml` point Wasmer's static-web-server at that directory.
 
 ```bash
-# one-time
+# once
 wasmer login
 
 # then
-npm run build
-wasmer deploy
+npm run wasmer:deploy
 ```
 
-## Project structure
+## What's in here
 
 ```
-app/                Next.js App Router entry
-  layout.tsx        Root layout, fonts, metadata
-  page.tsx          Single landing-page composition
-  globals.css      Design tokens, glass, grain, reveals
-components/         Modular UI building blocks
-  Nav.tsx           Sticky nav with social links
-  Hero.tsx          Headline + headshot + stat strip
-  About.tsx         Narrative + bento facts
-  Projects.tsx      Featured project + ranked Top 5 list
-  TechStack.tsx     Bento grid of instruments
-  Articles.tsx      Editorial list of writing
-  Contact.tsx       CTA + contact bento
-  Footer.tsx        Wordmark, live UTC clock, colophon
-  Reveal.tsx        IntersectionObserver scroll reveals
-  SectionLabel.tsx  Numbered section eyebrow
-public/             Static assets (drop headshot.jpg here)
-wasmer.toml         Wasmer package manifest
-settings/           Static-web-server config
+app/
+  layout.tsx        Root layout, fonts, metadata, ThemeProvider
+  page.tsx          The whole page in one composition
+  globals.css       Tailwind + custom CSS variables
+components/
+  Nav.tsx           Top nav
+  Hero.tsx          Headline + CV download
+  About.tsx         Background and bio
+  WhatIDo.tsx       What I'm focused on right now
+  Experience.tsx    Roles and timeline
+  Projects.tsx      Featured projects
+  Connect.tsx       Contact section
+  ContactModal.tsx  Email form (uses resend)
+  BackgroundOrbs.tsx
+  CustomCursor.tsx  Desktop-only custom cursor
+  MeteorShower.tsx  Slow background streaks
+  ThemeToggle.tsx
+public/             Static assets (CV PDFs, headshot, favicons)
+wasmer.toml         Wasmer manifest
+settings/           Static web server config
 ```
 
 ## To make it yours
-- Replace the placeholder headshot frame with `/public/headshot.jpg`
-- Update social URLs in `Nav.tsx`, `Contact.tsx`, `Footer.tsx`
-- Edit copy directly in the component files — content is colocated
+
+- Swap the CV PDFs in `public/` (`cv-en.pdf`, `cv-he.pdf`).
+- Replace the headshot reference in `Hero.tsx`.
+- Edit copy directly in each component - everything is colocated, no CMS.
+- Update social links wherever they appear (`Nav.tsx`, `Connect.tsx`).
+- If you want the contact form to actually send mail, set `RESEND_API_KEY` in your env.
