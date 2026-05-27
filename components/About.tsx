@@ -118,7 +118,7 @@ export default function About() {
                 {t.about.languages.map(({ lang, level }) => (
                   <div key={lang} className="flex items-center gap-1.5">
                     <span className="text-[13px] text-slate-700 dark:text-slate-300 font-medium">{lang}</span>
-                    <span className="text-[12px] text-slate-500">— {level}</span>
+                    <span className="text-[12px] text-slate-500">- {level}</span>
                   </div>
                 ))}
               </div>
