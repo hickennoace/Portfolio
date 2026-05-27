@@ -105,11 +105,11 @@ const en = {
           "Managed military preparation programs for service candidates, coordinating multiple concurrent workstreams under time pressure. Provided structured mentorship and logistical support to ensure candidates were thoroughly prepared for the demands of military service.",
       },
       {
-        role: "Combat Soldier & Gunner",
+        role: "Combat Soldier — Nahal Brigade",
         company: "Israel Defense Forces (IDF)",
         period: "2020 – 2022",
         description:
-          "Operated advanced technological systems in high-stakes, rapidly evolving field environments, exercising rapid decision-making under pressure. Participated in Guardian of the Walls operations. Developed the disciplined operational planning and analytical composure that directly translates to demanding data and finance roles.",
+          "Served as a combat infantryman in the Nahal Brigade, executing operational missions in dynamic, high-pressure field environments and making rapid decisions under fire. Participated in Operation Guardian of the Walls. The discipline, situational analysis, and composure built in the field translate directly to demanding data and finance roles.",
       },
     ],
   },
@@ -275,11 +275,11 @@ const he: typeof en = {
           "ניהול תכניות הכנה לשירות הצבאי, תיאום כמה תהליכים מקבילים תחת לחץ זמן. ליווי מובְנה ותמיכה לוגיסטית למועמדים על מנת להבטיח שיגיעו ערוכים לדרישות השירות הצבאי.",
       },
       {
-        role: "חייל קרבי ותותחן",
+        role: "לוחם קרבי — חטיבת הנח״ל",
         company: "צבא ההגנה לישראל (צה״ל)",
         period: "2020 – 2022",
         description:
-          "הפעלת מערכות טכנולוגיות מתקדמות בסביבות שטח דינמיות ובלחץ גבוה, תוך קבלת החלטות מהירה. השתתפות במבצע שומר החומות. פיתחתי תכנון תפעולי ממושמע וריכוז אנליטי שמתורגמים ישירות לתפקידי נתונים ופיננסים תובעניים.",
+          "שירתי כלוחם חי״ר בחטיבת הנח״ל, ביצוע משימות מבצעיות בסביבות שטח דינמיות ובלחץ גבוה תוך קבלת החלטות מהירה תחת אש. השתתפות במבצע שומר החומות. המשמעת, יכולת ניתוח המצב והריכוז שפיתחתי בשטח מתורגמים ישירות לתפקידי נתונים ופיננסים תובעניים.",
       },
     ],
   },

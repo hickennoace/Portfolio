@@ -86,14 +86,14 @@ function CvDownloadButton() {
                 role="menuitem"
                 className="group/item flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-medium
                            text-slate-700 dark:text-slate-300
-                           hover:bg-blue-500/10 hover:text-blue-700 dark:hover:text-blue-300
+                           hover:bg-slate-900/[0.04] dark:hover:bg-white/[0.05] hover:text-slate-900 dark:hover:text-white
                            transition-colors duration-150"
               >
                 <span className="flex items-center justify-center w-7 h-7 rounded-md
-                                 bg-blue-500/10 border border-blue-500/20
-                                 text-[10px] font-bold tracking-wider
-                                 text-blue-600 dark:text-blue-400
-                                 group-hover/item:bg-blue-500/18">
+                                 border border-slate-900/12 dark:border-white/12
+                                 text-[10px] font-mono font-bold tracking-wider
+                                 text-slate-600 dark:text-slate-300
+                                 group-hover/item:border-slate-900/22 dark:group-hover/item:border-white/22">
                   {opt.flag}
                 </span>
                 <span className="flex-1">{opt.label}</span>
@@ -147,27 +147,28 @@ export default function Hero() {
           <div className="flex-1 min-w-0 text-center sm:text-start order-2 sm:order-1">
             <motion.p
               variants={up}
-              className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.26em] uppercase mb-6"
+              className="text-[11px] text-ochre-600 dark:text-ochre-400 tracking-[0.28em] uppercase mb-7 font-medium"
             >
+              <span className="inline-block w-6 h-px align-middle bg-ochre-500/60 me-3" />
               {t.hero.hello}
             </motion.p>
 
             <motion.h1
               variants={up}
-              className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] text-slate-900 dark:text-white mb-6"
+              className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-[-0.025em] leading-[0.92] text-slate-900 dark:text-white mb-7"
             >
               Daniel{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400">
+              <span className="font-display italic font-normal tracking-[-0.02em] text-slate-800 dark:text-slate-100">
                 Shaulov
               </span>
             </motion.h1>
 
             <motion.p
               variants={up}
-              className="text-[15px] sm:text-[17px] text-slate-600 dark:text-slate-400 font-light max-w-[460px] mx-auto sm:mx-0 mb-10 leading-relaxed"
+              className="text-[15px] sm:text-[17px] text-slate-600 dark:text-slate-400 font-light max-w-[460px] mx-auto sm:mx-0 mb-10 leading-[1.7]"
             >
               {t.hero.role}{" "}
-              <span className="text-slate-800 dark:text-slate-300">
+              <span className="text-slate-800 dark:text-slate-200">
                 {t.hero.roleAccent}
               </span>
             </motion.p>
@@ -178,13 +179,13 @@ export default function Hero() {
             >
               <a
                 href="#work"
-                className="inline-flex items-center px-7 sm:px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:-translate-y-[2px] active:scale-[0.97]"
+                className="inline-flex items-center px-7 sm:px-8 py-3.5 bg-slate-900 dark:bg-slate-100 text-slate-50 dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
               >
                 {t.hero.viewWork}
               </a>
               <a
                 href="#connect"
-                className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/35 text-blue-700 dark:text-blue-300 hover:border-blue-500/60 hover:text-blue-900 dark:hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
+                className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-slate-900/20 dark:border-white/20 text-slate-700 dark:text-slate-200 hover:border-slate-900/45 dark:hover:border-white/40 hover:text-slate-900 dark:hover:text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
               >
                 {t.hero.getInTouch}
               </a>
@@ -192,31 +193,23 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Profile image — large square, full color, permanent blue glow ── */}
+          {/* ── Profile image — gallery-mat frame ── */}
           <motion.div variants={up} className="order-1 sm:order-2 shrink-0">
-            <div
-              className="group relative w-56 h-56 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl
-                         ring-2 ring-blue-500/30 dark:ring-blue-400/25
-                         shadow-[0_10px_45px_-8px_rgba(59,130,246,0.45),0_0_0_1px_rgba(59,130,246,0.15)]
-                         dark:shadow-[0_12px_55px_-6px_rgba(59,130,246,0.55),0_0_0_1px_rgba(96,165,250,0.2)]
-                         hover:ring-blue-500/55 dark:hover:ring-blue-400/50
-                         hover:shadow-[0_15px_60px_-6px_rgba(59,130,246,0.6),0_0_0_1px_rgba(59,130,246,0.25)]
-                         dark:hover:shadow-[0_18px_70px_-4px_rgba(59,130,246,0.7),0_0_0_1px_rgba(96,165,250,0.3)]
-                         transition-all duration-500"
-            >
-              {/* Soft blue aura behind image */}
+            <div className="group relative w-56 h-56 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+              {/* Outer hairline mat — sits 8px outside the photo */}
               <div
                 aria-hidden
-                className="absolute -inset-3 rounded-[1.4rem] bg-gradient-to-br from-blue-500/25 via-blue-400/10 to-indigo-500/20 blur-2xl opacity-80 pointer-events-none -z-10"
+                className="absolute -inset-2 rounded-[1.1rem] border border-slate-900/12 dark:border-white/10 pointer-events-none transition-colors duration-500 group-hover:border-slate-900/22 dark:group-hover:border-white/18"
               />
-              <div className="relative w-full h-full rounded-2xl overflow-hidden">
+              {/* Inner photo with its own hairline */}
+              <div className="relative w-full h-full rounded-xl overflow-hidden border border-slate-900/15 dark:border-white/12 shadow-[0_18px_40px_-22px_rgba(0,0,0,0.5)]">
                 <Image
                   src="/copy.png"
                   alt={t.hero.portraitAlt}
                   fill
                   priority
                   sizes="(max-width: 640px) 224px, (max-width: 1024px) 320px, 384px"
-                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
                 />
               </div>
             </div>

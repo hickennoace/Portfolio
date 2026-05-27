@@ -15,7 +15,7 @@ interface Props {
 }
 
 const inputClass =
-  "w-full px-4 py-3 rounded-xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/[0.1] dark:border-white/[0.08] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 text-[14px] outline-none focus:border-blue-500/60 focus:bg-blue-500/[0.03] dark:focus:bg-blue-500/[0.06] transition-all duration-200";
+  "w-full px-4 py-3 rounded-xl bg-transparent border border-black/[0.1] dark:border-white/[0.08] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-600 text-[14px] outline-none focus:border-slate-900/40 dark:focus:border-white/35 transition-colors duration-200";
 
 export default function ContactModal({ isOpen, onClose }: Props) {
   const [name, setName] = useState("");
@@ -105,12 +105,12 @@ export default function ContactModal({ isOpen, onClose }: Props) {
               {/* Header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-black/[0.07] dark:border-white/[0.06]">
                 <div>
-                  <p className="text-[10px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.22em] uppercase mb-1">
-                    {t.contactModal.eyebrow}
+                  <p className="font-display italic text-[13px] text-ochre-600 dark:text-ochre-400 mb-1">
+                    — {t.contactModal.eyebrow.toLowerCase()}
                   </p>
                   <h2
                     id="contact-modal-title"
-                    className="text-[20px] font-bold text-slate-900 dark:text-white tracking-tight"
+                    className="text-[20px] font-bold text-slate-900 dark:text-white tracking-[-0.01em]"
                   >
                     {t.contactModal.title}
                   </h2>
@@ -118,7 +118,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                 <button
                   onClick={handleClose}
                   aria-label={t.contactModal.closeAria}
-                  className="w-9 h-9 rounded-xl border border-black/[0.1] dark:border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:border-blue-500/30 hover:bg-blue-500/[0.06] transition-all duration-200"
+                  className="w-9 h-9 rounded-xl border border-black/[0.1] dark:border-white/[0.08] flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:border-slate-900/25 dark:hover:border-white/20 transition-all duration-200"
                 >
                   <X size={16} strokeWidth={2} />
                 </button>
@@ -133,8 +133,8 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     transition={{ duration: 0.35 }}
                     className="flex flex-col items-center text-center py-8 gap-4"
                   >
-                    <div className="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
-                      <CheckCircle size={26} className="text-blue-600 dark:text-blue-400" strokeWidth={1.5} />
+                    <div className="w-14 h-14 rounded-2xl border border-ochre-500/35 flex items-center justify-center">
+                      <CheckCircle size={26} className="text-ochre-600 dark:text-ochre-400" strokeWidth={1.5} />
                     </div>
                     <div>
                       <p className="text-[17px] font-bold text-slate-900 dark:text-white mb-1.5">
@@ -146,7 +146,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     </div>
                     <button
                       onClick={handleClose}
-                      className="mt-1 px-7 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-[13px] font-semibold transition-colors duration-200"
+                      className="mt-1 px-7 py-2.5 rounded-xl bg-slate-900 dark:bg-slate-100 text-slate-50 dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white text-[13px] font-semibold transition-colors duration-200"
                     >
                       {t.contactModal.close}
                     </button>
@@ -211,7 +211,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
                     <button
                       type="submit"
                       disabled={status === "sending"}
-                      className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-60 disabled:cursor-not-allowed text-white text-[14px] font-semibold transition-colors duration-200 mt-1"
+                      className="flex items-center justify-center gap-2.5 w-full py-3.5 rounded-xl bg-slate-900 dark:bg-slate-100 text-slate-50 dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-white disabled:opacity-60 disabled:cursor-not-allowed text-[14px] font-semibold transition-colors duration-200 mt-1"
                     >
                       {status === "sending" ? (
                         <>

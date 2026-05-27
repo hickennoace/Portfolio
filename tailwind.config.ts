@@ -10,9 +10,16 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["Inter Variable", "Inter", "system-ui", "sans-serif"],
+        display: ['"Fraunces Variable"', '"Frank Ruhl Libre"', "Georgia", "serif"],
+        heb: ['"Frank Ruhl Libre"', "Georgia", "serif"],
       },
-      backgroundImage: {
-        "blue-glow": "radial-gradient(ellipse at center, rgba(59,130,246,0.15), transparent 70%)",
+      colors: {
+        // Ochre — used sparingly as a warm counterpoint to blue
+        ochre: {
+          400: "#c69654",
+          500: "#b8843a",
+          600: "#9a6d2e",
+        },
       },
     },
   },

@@ -1,4 +1,8 @@
 @import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource/frank-ruhl-libre/400.css";
+@import "@fontsource/frank-ruhl-libre/500.css";
+@import "@fontsource/frank-ruhl-libre/700.css";
 
 @tailwind base;
 @tailwind components;
@@ -6,12 +10,14 @@
 
 /* ── Theme variables ── */
 :root {
-  --site-bg: #f1f5f9;
-  --site-fg: #0f172a;
+  --site-bg: #f5f1ea;          /* warm off-white, less clinical than slate-100 */
+  --site-fg: #1a1814;          /* near-black with a faint warmth */
+  --rule:    rgba(26, 24, 20, 0.09);
 }
 .dark {
-  --site-bg: #0a0a0a;
-  --site-fg: #f8fafc;
+  --site-bg: #0c0b0a;          /* deep ink, slight warmth (vs pure #0a0a0a) */
+  --site-fg: #ece8e1;          /* warm bone */
+  --rule:    rgba(236, 232, 225, 0.07);
 }
 
 /* Only hide cursor on real pointer devices — never on touch */
@@ -42,15 +48,40 @@ body {
   color: var(--site-fg);
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-feature-settings: "ss01", "cv11"; /* alt 'a' and slashed zero for character */
+}
+
+/* Display face — used for hero name and a few headlines */
+.font-display {
+  font-family: "Fraunces Variable", "Frank Ruhl Libre", Georgia, serif;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  letter-spacing: -0.01em;
+}
+html[dir="rtl"] .font-display,
+html[lang="he"] .font-display {
+  font-family: "Frank Ruhl Libre", Georgia, serif;
+  letter-spacing: 0;
+}
+
+/* Numbered eyebrow style — "01 — About" */
+.eyebrow-num {
+  font-feature-settings: "tnum";
+  letter-spacing: 0.16em;
+}
+
+/* Hairline rule */
+.hairline {
+  border-color: var(--rule);
 }
 
 ::selection {
-  background: rgba(59, 130, 246, 0.25);
-  color: #f8fafc;
+  background: rgba(184, 132, 58, 0.28);
+  color: #1a1814;
 }
 .dark ::selection {
-  background: rgba(59, 130, 246, 0.25);
-  color: #f8fafc;
+  background: rgba(184, 132, 58, 0.32);
+  color: #ece8e1;
 }
 
 ::-webkit-scrollbar {
@@ -65,6 +96,24 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
+}
+
+/* ── Paper grain — fine fractal noise overlay ──
+   Replaces the "perfectly flat AI canvas" with subtle tooth. */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.7 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+.dark .grain::after {
+  opacity: 0.06;
+  mix-blend-mode: screen;
 }
 
 /* ── Floating orb keyframes ── */

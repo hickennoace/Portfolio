@@ -33,23 +33,25 @@ export default function WhatIDo() {
   return (
     <section id="what-i-do" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.span
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
+          className="font-display italic text-[14px] text-slate-500 dark:text-slate-400 mb-5 ms-0.5"
         >
-          {t.whatIDo.eyebrow}
-        </motion.span>
+          — {t.whatIDo.eyebrow.toLowerCase()}
+        </motion.p>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, delay: 0.06 }}
-          className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white mb-14 leading-[1.1]"
+          className="text-3xl sm:text-[2.7rem] font-bold tracking-[-0.02em] text-slate-900 dark:text-white mb-14 leading-[1.08]"
         >
           {t.whatIDo.titleStart}{" "}
-          <span className="text-blue-600 dark:text-blue-400">{t.whatIDo.titleEnd}</span>
+          <span className="font-display italic font-normal text-slate-700 dark:text-slate-200">
+            {t.whatIDo.titleEnd}
+          </span>
         </motion.h2>
 
         <div className="flex flex-col gap-3 sm:gap-4">
@@ -61,10 +63,10 @@ export default function WhatIDo() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.12 + i * 0.1, ease: EASE }}
-                className={`group rounded-2xl border overflow-hidden transition-all duration-300 ${
+                className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 ${
                   isOpen
-                    ? "bg-black/[0.05] dark:bg-white/[0.035] border-blue-500/40 dark:border-blue-400/35 shadow-[0_0_40px_rgba(59,130,246,0.12),0_0_1px_rgba(59,130,246,0.25)]"
-                    : "bg-black/[0.04] dark:bg-white/[0.025] border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/35 hover:bg-black/[0.06] dark:hover:bg-white/[0.035]"
+                    ? "bg-black/[0.04] dark:bg-white/[0.028] border-slate-900/22 dark:border-white/[0.18]"
+                    : "bg-black/[0.025] dark:bg-white/[0.018] border-black/[0.08] dark:border-white/[0.06] hover:border-black/[0.18] dark:hover:border-white/[0.14]"
                 }`}
               >
                 <button
@@ -76,13 +78,13 @@ export default function WhatIDo() {
                 >
                   {/* Icon */}
                   <div
-                    className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                    className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 border ${
                       isOpen
-                        ? "bg-blue-500/20 text-blue-600 dark:text-blue-300"
-                        : "bg-blue-500/12 text-blue-600 dark:text-blue-400 group-hover:bg-blue-500/18"
+                        ? "border-slate-900/22 dark:border-white/22 text-slate-900 dark:text-white"
+                        : "border-slate-900/10 dark:border-white/10 text-slate-600 dark:text-slate-300 group-hover:border-slate-900/20 dark:group-hover:border-white/20"
                     }`}
                   >
-                    <row.Icon size={18} strokeWidth={1.6} />
+                    <row.Icon size={18} strokeWidth={1.5} />
                   </div>
 
                   {/* Title + subtitle */}
@@ -101,8 +103,8 @@ export default function WhatIDo() {
                     transition={{ duration: 0.32, ease: EASE }}
                     className={`shrink-0 flex items-center justify-center w-9 h-9 rounded-lg border transition-colors duration-300 ${
                       isOpen
-                        ? "border-blue-500/45 text-blue-600 dark:text-blue-300 bg-blue-500/10"
-                        : "border-black/[0.1] dark:border-white/[0.08] text-slate-500 dark:text-slate-400 group-hover:border-blue-500/35 group-hover:text-blue-600 dark:group-hover:text-blue-300"
+                        ? "border-slate-900/30 dark:border-white/30 text-slate-900 dark:text-white"
+                        : "border-black/[0.1] dark:border-white/[0.08] text-slate-500 dark:text-slate-400 group-hover:border-slate-900/22 dark:group-hover:border-white/22"
                     }`}
                   >
                     <Plus size={16} strokeWidth={2} />
@@ -124,7 +126,7 @@ export default function WhatIDo() {
                       className="overflow-hidden"
                     >
                       <div className="px-6 sm:px-7 pb-7 ps-[4.25rem] sm:ps-[4.5rem]">
-                        <div className="h-px w-full bg-gradient-to-r from-blue-500/30 via-blue-500/10 to-transparent mb-5" />
+                        <div className="h-px w-full bg-gradient-to-r from-slate-900/18 dark:from-white/15 via-slate-900/[0.04] dark:via-white/[0.03] to-transparent mb-5" />
                         <p className="text-slate-600 dark:text-slate-400 text-[14px] sm:text-[14.5px] leading-[1.85] mb-5 max-w-3xl">
                           {row.description}
                         </p>
@@ -132,7 +134,7 @@ export default function WhatIDo() {
                           {row.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-700 dark:text-blue-300 text-[12px] font-medium tracking-wide hover:bg-blue-500/15 hover:border-blue-400/40 transition-colors duration-200"
+                              className="px-3 py-1.5 rounded-full border border-slate-900/12 dark:border-white/10 text-slate-600 dark:text-slate-300 text-[12px] font-medium tracking-wide hover:border-slate-900/22 dark:hover:border-white/20 transition-colors duration-200"
                             >
                               {tag}
                             </span>

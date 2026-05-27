@@ -27,7 +27,7 @@ const itemConfig: Config[] = [
   },
   {
     Icon: Shield,
-    tags: ["Advanced Tech Systems", "Rapid Decision-Making", "Guardian of the Walls", "Field Operations"],
+    tags: ["Combat Infantry", "Rapid Decision-Making", "Guardian of the Walls", "Field Operations"],
     accent: false,
   },
 ];
@@ -42,20 +42,24 @@ export default function Experience() {
   return (
     <section id="experience" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.span
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
+          className="flex items-baseline gap-3 mb-6 eyebrow-num"
         >
-          {t.experience.eyebrow}
-        </motion.span>
+          <span className="text-[12px] font-mono text-slate-400 dark:text-slate-600">02</span>
+          <span className="h-px flex-1 max-w-[28px] bg-slate-300 dark:bg-slate-700" />
+          <span className="text-[11px] font-medium text-slate-700 dark:text-slate-300 tracking-[0.24em] uppercase">
+            {t.experience.eyebrow}
+          </span>
+        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.65, delay: 0.06 }}
-          className="text-3xl sm:text-[2.6rem] font-bold tracking-tight text-slate-900 dark:text-white mb-14"
+          className="text-3xl sm:text-[2.7rem] font-bold tracking-[-0.02em] text-slate-900 dark:text-white mb-14 font-display italic font-normal"
         >
           {t.experience.title}
         </motion.h2>
@@ -67,15 +71,22 @@ export default function Experience() {
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.13, ease: EASE }}
-              className="group p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/48 hover:bg-black/[0.06] dark:hover:bg-white/[0.035] hover:shadow-[0_0_40px_rgba(59,130,246,0.1),0_0_1px_rgba(59,130,246,0.2)] transition-all duration-300"
+              className="group relative p-6 sm:p-9 rounded-2xl bg-black/[0.025] dark:bg-white/[0.018] border border-black/[0.08] dark:border-white/[0.06] hover:border-black/[0.18] dark:hover:border-white/[0.14] transition-colors duration-300"
             >
+              {/* Hairline start-edge accent — only on currently-active roles */}
+              {exp.accent && (
+                <span
+                  aria-hidden
+                  className="absolute inset-y-6 sm:inset-y-9 start-0 w-px bg-ochre-500/55 dark:bg-ochre-400/55"
+                />
+              )}
               <div className="flex items-start gap-4 sm:gap-5">
                 {/* Icon */}
                 <div
-                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                  className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center shrink-0 transition-colors duration-300 border ${
                     exp.accent
-                      ? "bg-blue-500/15 text-blue-600 dark:text-blue-400 group-hover:bg-blue-500/22"
-                      : "bg-slate-500/12 text-slate-500 dark:text-slate-400 group-hover:bg-slate-500/20"
+                      ? "border-slate-900/22 dark:border-white/22 text-slate-900 dark:text-white"
+                      : "border-slate-900/10 dark:border-white/10 text-slate-500 dark:text-slate-400"
                   }`}
                 >
                   <exp.Icon size={18} strokeWidth={1.5} />
@@ -87,7 +98,7 @@ export default function Experience() {
                       <p className="text-[16px] sm:text-[17px] font-bold text-slate-900 dark:text-white leading-tight">
                         {exp.role}
                       </p>
-                      <p className={`text-[13px] font-medium mt-0.5 ${exp.accent ? "text-blue-600 dark:text-blue-400" : "text-slate-600 dark:text-slate-400"}`}>
+                      <p className={`text-[13px] font-medium mt-0.5 ${exp.accent ? "text-ochre-600 dark:text-ochre-400" : "text-slate-600 dark:text-slate-400"}`}>
                         {exp.company}
                       </p>
                     </div>
@@ -104,7 +115,7 @@ export default function Experience() {
                     {exp.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 rounded-md bg-black/[0.04] dark:bg-white/[0.03] border border-black/[0.08] dark:border-white/[0.07] text-[11px] text-slate-600 dark:text-slate-400 font-medium tracking-wide"
+                        className="px-3 py-1 rounded-md border border-black/[0.08] dark:border-white/[0.06] text-[11px] text-slate-600 dark:text-slate-400 font-medium tracking-wide"
                       >
                         {tag}
                       </span>

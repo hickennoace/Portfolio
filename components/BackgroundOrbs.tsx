@@ -5,20 +5,23 @@ export default function BackgroundOrbs() {
       style={{ contain: "layout style paint", transform: "translateZ(0)" }}
       aria-hidden="true"
     >
-      {/* Top-left: large deep blue */}
-      <div className="orb-1 absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full bg-blue-700/[0.12] dark:bg-blue-700/[0.08] blur-[140px]" />
+      {/* Quiet, near-neutral wash. The grain overlay does most of the texture work now;
+          orbs just add a faint atmospheric depth so the page isn't flat slate-on-slate. */}
 
-      {/* Top-right: indigo */}
-      <div className="orb-2 absolute -top-20 right-[10%] w-[460px] h-[460px] rounded-full bg-indigo-600/[0.1] dark:bg-indigo-600/[0.06] blur-[120px]" />
+      {/* Top-left: warm bone in light, deep indigo in dark */}
+      <div className="orb-1 absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full bg-slate-400/[0.08] dark:bg-indigo-900/[0.18] blur-[140px]" />
 
-      {/* Mid-right: electric blue */}
-      <div className="orb-3 absolute top-[42%] -right-40 w-[540px] h-[540px] rounded-full bg-blue-500/[0.09] dark:bg-blue-500/[0.055] blur-[155px]" />
+      {/* Top-right: very subtle ochre — the only warm hint */}
+      <div className="orb-2 absolute -top-20 right-[10%] w-[460px] h-[460px] rounded-full bg-ochre-500/[0.05] dark:bg-ochre-500/[0.04] blur-[130px]" />
 
-      {/* Bottom-left: sky */}
-      <div className="orb-4 absolute bottom-[8%] left-[10%] w-[500px] h-[500px] rounded-full bg-sky-600/[0.08] dark:bg-sky-600/[0.045] blur-[140px]" />
+      {/* Mid-right: cool slate */}
+      <div className="orb-3 absolute top-[42%] -right-40 w-[540px] h-[540px] rounded-full bg-slate-500/[0.06] dark:bg-slate-700/[0.18] blur-[150px]" />
 
-      {/* Bottom-right: deep blue */}
-      <div className="orb-5 absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-blue-800/[0.11] dark:bg-blue-800/[0.07] blur-[130px]" />
+      {/* Bottom-left: faint blue (only one) */}
+      <div className="orb-4 absolute bottom-[8%] left-[10%] w-[500px] h-[500px] rounded-full bg-blue-700/[0.05] dark:bg-blue-900/[0.14] blur-[140px]" />
+
+      {/* Bottom-right: deep ink wash */}
+      <div className="orb-5 absolute -bottom-20 -right-20 w-[400px] h-[400px] rounded-full bg-slate-600/[0.05] dark:bg-slate-900/[0.3] blur-[130px]" />
     </div>
   );
 }
