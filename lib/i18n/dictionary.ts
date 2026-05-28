@@ -14,7 +14,7 @@ const en = {
     closeMenu: "Close navigation",
   },
   hero: {
-    hello: "Hi, I'm",
+    hello: "Hello, I'm",
     nameFirst: "Daniel",
     nameLast: "Shaulov",
     role: "Studying Economics & Management at the Open University. I work with Python, SQL, Power BI and advanced Excel.",
@@ -144,7 +144,7 @@ const en = {
       {
         category: "Web · Design",
         description:
-          "This site. Built from scratch with Next.js and TypeScript, styled in Tailwind, and animated with Framer Motion. Full English/Hebrew localization with right-to-left support, dark and light themes, and a working contact form wired through Resend. Deployed on Wasmer Edge.",
+          "This site. Built from scratch with Next.js and TypeScript, styled in Tailwind, and animated with Framer Motion. Full English/Hebrew localization with right-to-left support, dark and light themes, and a working contact form wired through Resend.",
       },
     ],
   },
@@ -330,7 +330,7 @@ const he: typeof en = {
       {
         category: "ווב · עיצוב",
         description:
-          "האתר הזה. בניתי אותו מאפס ב-Next.js ו-TypeScript, עיצבתי ב-Tailwind והנפשתי ב-Framer Motion. כולל לוקליזציה מלאה לעברית ולאנגלית עם תמיכה בכיווניות ימין-לשמאל, מצב כהה ובהיר, וטופס יצירת קשר פעיל המחובר ל-Resend. מופץ על Wasmer Edge.",
+          "האתר הזה. בניתי אותו מאפס ב-Next.js ו-TypeScript, עיצבתי ב-Tailwind והנפשתי ב-Framer Motion. כולל לוקליזציה מלאה לעברית ולאנגלית עם תמיכה בכיווניות ימין-לשמאל, מצב כהה ובהיר, וטופס יצירת קשר פעיל המחובר ל-Resend.",
       },
     ],
   },
