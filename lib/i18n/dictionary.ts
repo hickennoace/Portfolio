@@ -144,7 +144,7 @@ const en = {
       {
         category: "Web · Design",
         description:
-          "This site. Built from scratch with Next.js and TypeScript, styled in Tailwind, and animated with Framer Motion. Full English/Hebrew localization with right-to-left support, dark and light themes, and a working contact form wired through Resend.",
+          "This site. Built from scratch with Next.js, TypeScript, and Claude Code, styled in Tailwind, and animated with Framer Motion. Full English/Hebrew localization with right-to-left support, dark and light themes, and a working contact form wired through Resend.",
       },
     ],
   },
@@ -330,7 +330,7 @@ const he: typeof en = {
       {
         category: "ווב · עיצוב",
         description:
-          "האתר הזה. בניתי אותו מאפס ב-Next.js ו-TypeScript, עיצבתי ב-Tailwind והנפשתי ב-Framer Motion. כולל לוקליזציה מלאה לעברית ולאנגלית עם תמיכה בכיווניות ימין-לשמאל, מצב כהה ובהיר, וטופס יצירת קשר פעיל המחובר ל-Resend.",
+          "האתר הזה. בניתי אותו מאפס ב-Next.js, ב-TypeScript ובעזרת Claude Code, עיצבתי ב-Tailwind והנפשתי ב-Framer Motion. כולל תמיכה מלאה בעברית ובאנגלית עם כיווניות ימין-לשמאל, מצב כהה ובהיר וטופס יצירת קשר פעיל המחובר ל-Resend.",
       },
     ],
   },
