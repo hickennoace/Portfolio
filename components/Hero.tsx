@@ -25,8 +25,8 @@ function CvDownloadButton() {
   const { t } = useLang();
 
   const cvOptions = [
-    { label: t.hero.cvEn, href: "/cv-en.pdf", flag: "EN" },
-    { label: t.hero.cvHe, href: "/cv-he.pdf", flag: "HE" },
+    { label: t.hero.cvEn, href: "/Daniel%20Shaulov%20Resume%20(EN).pdf", flag: "EN" },
+    { label: t.hero.cvHe, href: "/Daniel%20Shaulov%20Resume%20(HE).pdf", flag: "HE" },
   ];
 
   useEffect(() => {
