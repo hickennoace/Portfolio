@@ -45,7 +45,7 @@ const en = {
     skillsLabel: "Tech & Tools",
     languagesLabel: "Languages",
     stats: [
-      { label: "Economics & Management", sub: "Open University · GPA 90" },
+      { label: "Student Economics & Management", sub: "Open University · GPA 90" },
       { label: "Analyst Toolkit", sub: "Python · SQL · Power BI · Excel" },
     ],
     languages: [
@@ -169,6 +169,9 @@ const en = {
     en: "EN",
     he: "HE",
   },
+  meta: {
+    pageTitle: "Daniel Shaulov - Data & Analyst",
+  },
 };
 
 const he: typeof en = {
@@ -203,7 +206,7 @@ const he: typeof en = {
     titleEnd: "עם הראש בעבודה.",
     p1Pre: "לומד כלכלה וניהול",
     p1University: "באוניברסיטה הפתוחה",
-    p1Mid: "(ממוצע 90). קודם לכן, שירתי שנתיים כלוחם",
+    p1Mid: "(ממוצע 90). קודם לכן, שירתי שלוש שנים כלוחם",
     p1End: "בחטיבת הנח״ל.",
     p2Pre: "ארגז הכלים שלי:",
     p2Stack: "Python, SQL, Power BI ואקסל מתקדם",
@@ -216,7 +219,7 @@ const he: typeof en = {
     skillsLabel: "טכנולוגיות וכלים",
     languagesLabel: "שפות",
     stats: [
-      { label: "כלכלה וניהול", sub: "האוניברסיטה הפתוחה · ממוצע 90" },
+      { label: "סטודנט לכלכלה וניהול", sub: "האוניברסיטה הפתוחה · ממוצע 90" },
       { label: "ארגז כלים", sub: "Python · SQL · Power BI · Excel" },
     ],
     languages: [
@@ -339,6 +342,9 @@ const he: typeof en = {
     toggleAria: "החלפת שפה",
     en: "EN",
     he: "HE",
+  },
+  meta: {
+    pageTitle: "דניאל שאולוב - אנליסט נתונים",
   },
 };
 

@@ -32,6 +32,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const dir: Direction = lang === "he" ? "rtl" : "ltr";
     document.documentElement.lang = lang;
     document.documentElement.dir = dir;
+    document.title = dictionary[lang].meta.pageTitle;
   }, [lang]);
 
   const setLang = (next: Lang) => {
