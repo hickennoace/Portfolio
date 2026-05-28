@@ -2,6 +2,7 @@ export type Lang = "en" | "he";
 
 const en = {
   nav: {
+    logo: "Daniel Shaulov",
     about: "About",
     whatIDo: "What I Do",
     experience: "Experience",
@@ -187,6 +188,7 @@ const en = {
 
 const he: typeof en = {
   nav: {
+    logo: "דניאל שאולוב",
     about: "אודות",
     whatIDo: "תחומי עיסוק",
     experience: "ניסיון",

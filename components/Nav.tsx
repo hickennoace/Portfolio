@@ -54,7 +54,7 @@ export default function Nav() {
             onClick={() => setOpen(false)}
             className="text-[15px] font-semibold text-slate-900 dark:text-white/90 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 tracking-tight shrink-0"
           >
-            Daniel Shaulov
+            {t.nav.logo}
           </a>
 
           {/* Desktop links */}
