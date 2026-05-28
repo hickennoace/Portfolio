@@ -14,6 +14,8 @@ const en = {
   },
   hero: {
     hello: "Hi, I'm",
+    nameFirst: "Daniel",
+    nameLast: "Shaulov",
     role: "Studying Economics & Management at the Open University. I work with Python, SQL, Power BI and advanced Excel.",
     roleAccent: "Looking for a Financial or Data Analyst role.",
     viewWork: "View Work",
@@ -30,7 +32,7 @@ const en = {
     titleEnd: "focused on the work.",
     p1Pre: "Studying Economics & Management at the",
     p1University: "Open University of Israel",
-    p1Mid: "(GPA 90). Before that, two years as a combat soldier in the",
+    p1Mid: "(GPA 90). Before that, three years as a combat soldier in the",
     p1End: "Nahal Brigade.",
     p2Pre: "I write",
     p2Stack: "Python, SQL, Power BI and advanced Excel",
@@ -65,15 +67,15 @@ const en = {
       },
       {
         title: "FINANCIAL ANALYSIS",
-        subtitle: "Statements, models, and the macro picture.",
+        subtitle: "Statements, models, and the numbers behind them.",
         description:
-          "I read income statements, balance sheets, and cash flow end-to-end, and build the scenario and valuation models that sit beside them. I follow rates, inflation prints, and earnings drift closely. The point isn't theory, it's understanding which numbers actually move price. The output is research and models that hold up under questioning.",
+          "I read income statements, balance sheets, and cash flow end-to-end, and build the scenario and valuation models that sit beside them. The output is research and models that hold up under questioning.",
       },
       {
         title: "AI & AUTOMATION",
         subtitle: "Cutting the manual parts.",
         description:
-          "I write Python and prompt pipelines that turn an hour of clicking into a script that runs in seconds: research summaries, data cleanup, report scaffolding. I'm comfortable wiring LLM APIs into real workflows. Not flashy one-off demos, just things I'll actually re-use the next day.",
+          "I write Python and prompt pipelines that turn an hour of clicking into a script that runs in seconds: research summaries, data cleanup, report scaffolding. I'm comfortable wiring LLM APIs into real workflows. I also use AI coding tools to write better code faster - they cut the repetitive parts, surface issues early, and save real time across every project.",
       },
     ],
   },
@@ -138,7 +140,7 @@ const en = {
     eyebrow: "Connect",
     title: "Let's talk.",
     body:
-      "Looking for a Financial or Data Analyst seat. If you're hiring, or you just want to talk markets, get in touch.",
+      "Looking for a Financial or Data Analyst seat. If you're hiring or want to connect, get in touch.",
     emailLabel: "Email",
     linkedinLabel: "LinkedIn",
     githubLabel: "GitHub",
@@ -183,6 +185,8 @@ const he: typeof en = {
   },
   hero: {
     hello: "שלום, אני",
+    nameFirst: "דניאל",
+    nameLast: "שאולוב",
     role: "סטודנט לכלכלה וניהול באוניברסיטה הפתוחה. שולט ב-Python, SQL, Power BI ובאקסל מתקדם.",
     roleAccent: "מחפש משרת אנליסט פיננסי או אנליסט נתונים.",
     viewWork: "לפרויקטים",
@@ -234,15 +238,15 @@ const he: typeof en = {
       },
       {
         title: "ניתוח פיננסי",
-        subtitle: "דוחות, מודלים, ומאקרו.",
+        subtitle: "דוחות, מודלים, והמספרים שמאחוריהם.",
         description:
-          "קורא דוחות רווח והפסד, מאזנים ותזרים מקצה לקצה, ובונה לצידם מודלי תרחיש והערכת שווי. עוקב מקרוב אחרי ריבית, אינפלציה ורווחי חברות. לא תיאוריה, אלא הבנה איזה מספר באמת מזיז את המחיר. התוצר: מחקר ומודלים שעומדים בשאלות.",
+          "קורא דוחות רווח והפסד, מאזנים ותזרים מקצה לקצה, ובונה לצידם מודלי תרחיש והערכת שווי. התוצר: מחקר ומודלים שעומדים בשאלות.",
       },
       {
         title: "AI ואוטומציה",
         subtitle: "פחות עבודה ידנית.",
         description:
-          "כותב סקריפטים בפייתון ותהליכי פרומפט שהופכים שעה של קליקים למשהו שרץ בשניות: סיכומי מחקר, ניקוי נתונים, שלדי דוחות. עובד מול ממשקי LLM ומשלב אותם בתהליכים אמיתיים. לא דמואים חד-פעמיים, אלא כלים שאשתמש בהם גם מחר.",
+          "כותב סקריפטים בפייתון ותהליכי פרומפט שהופכים שעה של קליקים למשהו שרץ בשניות: סיכומי מחקר, ניקוי נתונים, שלדי דוחות. עובד מול ממשקי LLM ומשלב אותם בתהליכים אמיתיים. משתמש גם בכלי AI לכתיבת קוד כדי לכתוב קוד טוב יותר מהר יותר - הם מחסלים את החלקים החוזרים, מגלים בעיות מוקדם, וחוסכים זמן אמיתי בכל פרויקט.",
       },
     ],
   },
@@ -270,14 +274,14 @@ const he: typeof en = {
         company: "עמותת מדור לדור",
         period: "2022 - 2023",
         description:
-          "ניהלתי תוכניות הכנה למועמדים ליחידות קרביות. כמה מסלולים במקביל תחת לוחות זמנים צפופים, ליווי אישי לכל מועמד, וניהול הלוגיסטיקה מסביב. ניסיון משמעותי בנשיאה באחריות על תוצאות של אחרים.",
+          "ניהלתי תוכניות הכנה למועמדים ליחידות קרביות וטכנולוגיות. כמה מסלולים במקביל תחת לוחות זמנים צפופים, ליווי אישי למבחני הדפר ולפסיכולוג הצבאי לכל מועמד, וניהול הלוגיסטיקה מסביב. ניסיון משמעותי בנשיאה באחריות על תוצאות של אחרים.",
       },
       {
         role: "לוחם, חטיבת הנח״ל",
         company: "צה״ל",
         period: "2020 - 2022",
         description:
-          "לוחם בחטיבת הנח״ל. משימות מבצעיות בסביבת שטח דינמית, החלטות בשניות. השתתפתי במבצע שומר החומות. המשמעת, היכולת לקרוא מצב וקור הרוח שמפתחים בשטח מתורגמים ישירות לעבודת אנליסט.",
+          "לוחם בחטיבת הנח״ל. משימות מבצעיות בסביבת שטח דינמית, החלטות בשניות. השתתפתי במבצע שומר החומות ושובר גלים, אשר הקנה עבורי חוסן מנטלי, קור רוח ומצוינות.",
       },
     ],
   },
@@ -307,7 +311,7 @@ const he: typeof en = {
     eyebrow: "יצירת קשר",
     title: "בואו נדבר.",
     body:
-      "מחפש משרת אנליסט פיננסי או אנליסט נתונים. אם אתם מגייסים, או סתם רוצים לדבר על שווקים, מספרים ומחקר, צרו קשר.",
+      "מחפש משרת אנליסט פיננסי או אנליסט נתונים. אם אתם מגייסים או רוצים ליצור קשר, דברו איתי.",
     emailLabel: "אימייל",
     linkedinLabel: "לינקדאין",
     githubLabel: "גיטהאב",

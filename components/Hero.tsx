@@ -156,9 +156,9 @@ export default function Hero() {
               variants={up}
               className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] text-slate-900 dark:text-white mb-6"
             >
-              Daniel{" "}
+              {t.hero.nameFirst}{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400">
-                Shaulov
+                {t.hero.nameLast}
               </span>
             </motion.h1>
 

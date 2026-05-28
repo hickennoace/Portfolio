@@ -42,7 +42,11 @@
       "Bash(npx tsc *)",
       "Bash(curl *)",
       "Bash(git rm *)",
-      "Bash(Select-String -Pattern \"resend|nodemailer|emailjs\")"
+      "Bash(Select-String -Pattern \"resend|nodemailer|emailjs\")",
+      "Bash(git reset *)",
+      "Bash(git pull *)",
+      "Bash(git remote *)",
+      "Bash(git checkout *)"
     ]
   }
 }
