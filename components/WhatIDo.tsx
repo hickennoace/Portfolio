@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Plus, BarChart3, TrendingUp, Sparkles, LucideIcon } from "lucide-react";
+import { Plus, BarChart3, TrendingUp, Sparkles, GraduationCap, LucideIcon } from "lucide-react";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -14,11 +14,15 @@ const rowConfig: { Icon: LucideIcon; tags: string[] }[] = [
   },
   {
     Icon: TrendingUp,
-    tags: ["Financial Statements", "Capital Markets", "Financial Modeling", "Excel", "Python", "Statsmodels"],
+    tags: ["Financial Statements", "Financial Modeling", "Excel", "Python", "Statsmodels"],
   },
   {
     Icon: Sparkles,
     tags: ["Claude", "Gemini", "Python", "Prompt Engineering", "AI Automation", "API Integration"],
+  },
+  {
+    Icon: GraduationCap,
+    tags: ["Coursera", "Udemy", "Online Courses", "Documentation", "Hands-on Projects", "Continuous Learning"],
   },
 ];
 

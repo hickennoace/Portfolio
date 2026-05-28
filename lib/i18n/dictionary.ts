@@ -77,6 +77,12 @@ const en = {
         description:
           "I write Python and prompt pipelines that turn an hour of clicking into a script that runs in seconds: research summaries, data cleanup, report scaffolding. I'm comfortable wiring LLM APIs into real workflows. I also use AI coding tools to write better code faster - they cut the repetitive parts, surface issues early, and save real time across every project.",
       },
+      {
+        title: "SELF-LEARNING",
+        subtitle: "Teaching myself the toolkit.",
+        description:
+          "Most of my toolkit is self-taught. I learn from documentation, online courses, and real projects - Coursera and Udemy carried a lot of it. Python, web development, Power BI, and Excel all started this way: pick the skill the work needs, find the course, then build something real with it. When a project needs a tool I don't have yet, I go learn it.",
+      },
     ],
   },
   experience: {
@@ -255,6 +261,12 @@ const he: typeof en = {
         subtitle: "פחות עבודה ידנית.",
         description:
           "כותב סקריפטים בפייתון ותהליכי פרומפט שהופכים שעה של קליקים למשהו שרץ בשניות: סיכומי מחקר, ניקוי נתונים, שלדי דוחות. עובד מול ממשקי LLM ומשלב אותם בתהליכים אמיתיים. משתמש גם בכלי AI לכתיבת קוד כדי לכתוב קוד טוב יותר מהר יותר - הם מחסלים את החלקים החוזרים, מגלים בעיות מוקדם, וחוסכים זמן אמיתי בכל פרויקט.",
+      },
+      {
+        title: "למידה עצמית",
+        subtitle: "לומד את הכלים בעצמי.",
+        description:
+          "רוב ארגז הכלים שלי נלמד בכוחות עצמי. אני לומד מתיעוד, מקורסים אונליין ומפרויקטים אמיתיים - הרבה מזה הגיע דרך Coursera ו-Udemy. ככה למדתי Python, פיתוח ווב, Power BI ואקסל: בוחר את המיומנות שהעבודה דורשת, מוצא את הקורס, ובונה איתה משהו אמיתי. כשפרויקט דורש כלי שעוד אין לי, אני פשוט הולך ולומד אותו.",
       },
     ],
   },
