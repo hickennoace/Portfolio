@@ -110,7 +110,7 @@ const en = {
         company: "Israel Defense Forces (IDF)",
         period: "2020 - 2022",
         description:
-          "Combat infantryman in the Nahal Brigade. Operational missions in dynamic field environments, decisions made in seconds. The discipline and composure you build here transfer directly to analyst work.",
+          "Combat infantryman in the Nahal Brigade. Operational missions in dynamic field environments, decisions made in seconds. Participated in Operation Guardian of the Walls. The discipline and composure you build here transfer directly to analyst work.",
       },
     ],
   },
@@ -289,7 +289,7 @@ const he: typeof en = {
         company: "צה״ל",
         period: "2020 - 2022",
         description:
-          "לוחם בחטיבת הנח״ל. משימות מבצעיות בסביבת שטח דינמית, החלטות בשניות. השתתפתי במבצע שובר גלים, אשר הקנה עבורי חוסן מנטלי, קור רוח ומצוינות.",
+          "לוחם בחטיבת הנח״ל. משימות מבצעיות בסביבת שטח דינמית, החלטות בשניות. השתתפתי במבצע שומר החומות ושובר גלים, אשר הקנה עבורי חוסן מנטלי, קור רוח ומצוינות.",
       },
     ],
   },

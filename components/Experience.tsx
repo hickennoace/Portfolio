@@ -27,7 +27,7 @@ const itemConfig: Config[] = [
   },
   {
     Icon: Shield,
-    tags: ["Combat Infantry", "Rapid Decision-Making", "Guardian of the Walls", "Field Operations"],
+    tags: ["Combat Infantry", "Rapid Decision-Making", "Field Operations"],
     accent: false,
   },
 ];
