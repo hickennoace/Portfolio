@@ -28,6 +28,12 @@ const projectConfig: Config[] = [
     tags: ["PowerBI", "Power Query", "DAX", "Python"],
     href: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
   },
+  {
+    id: "04",
+    title: "Developer Portfolio",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    href: "https://github.com/hickennoace/Portfolio",
+  },
 ];
 
 export default function Projects() {

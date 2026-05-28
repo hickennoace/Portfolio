@@ -134,6 +134,11 @@ const en = {
         description:
           "Built a 7-page Power BI report on ~853K LAPD incidents (2020 to late 2023). Cleaned the data in Power Query (header repair, locale-aware date parsing, sentinel cleanup) and wrote the DAX measures behind YoY trends, peak hours, reporting lag, and arrest rate. Python validation scripts catch upstream schema drift before refresh.",
       },
+      {
+        category: "Web · Design",
+        description:
+          "This site. Built from scratch with Next.js and TypeScript, styled in Tailwind, and animated with Framer Motion. Full English/Hebrew localization with right-to-left support, dark and light themes, and a working contact form wired through Resend. Deployed on Wasmer Edge.",
+      },
     ],
   },
   connect: {
@@ -307,6 +312,11 @@ const he: typeof en = {
         category: "אנליטיקה · ביטחון ציבורי",
         description:
           "בניתי דוח Power BI בן 7 עמודים על כ-853 אלף אירועי משטרת LA (2020 עד סוף 2023). ניקיתי את הנתונים ב-Power Query (תיקון כותרות שבורות, פרסור תאריכים לפי locale, ניקוי ערכי sentinel) וכתבתי את מדדי ה-DAX שמאחורי מגמות YoY, שעות שיא, השהיית דיווח ושיעורי מעצרים. סקריפטי ולידציה בפייתון תופסים סטיות סכמה במקור לפני הריענון.",
+      },
+      {
+        category: "ווב · עיצוב",
+        description:
+          "האתר הזה. בניתי אותו מאפס ב-Next.js ו-TypeScript, עיצבתי ב-Tailwind והנפשתי ב-Framer Motion. כולל לוקליזציה מלאה לעברית ולאנגלית עם תמיכה בכיווניות ימין-לשמאל, מצב כהה ובהיר, וטופס יצירת קשר פעיל המחובר ל-Resend. מופץ על Wasmer Edge.",
       },
     ],
   },
