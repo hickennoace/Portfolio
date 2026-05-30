@@ -17,7 +17,7 @@ const skillItem = {
 
 const skills = [
   "Python", "SQL", "Pandas", "NumPy", "Matplotlib", "Statsmodels",
-  "Power BI", "DAX", "Excel", "Jupyter Notebook", "Conda",
+  "Power BI", "DAX", "Power Query", "Excel", "Jupyter Notebook", "Conda",
   "Financial Statements",
   "HTML", "CSS", "JavaScript", "React", "Next.js",
   "Git", "AI Automation",
