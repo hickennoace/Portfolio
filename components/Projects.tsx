@@ -30,6 +30,12 @@ const projectConfig: Config[] = [
   },
   {
     id: "04",
+    title: "Car Company",
+    tags: ["Power BI", "DAX", "TMDL", "Power Query"],
+    href: "https://github.com/hickennoace/Car-Company",
+  },
+  {
+    id: "05",
     title: "Developer Portfolio",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     href: "https://github.com/hickennoace/Portfolio",
