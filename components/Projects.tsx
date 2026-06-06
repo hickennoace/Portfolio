@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Github } from "lucide-react";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
+const PER_PAGE = 4;
 
 type Config = { id: string; title: string; tags: string[]; href: string };
 
@@ -42,12 +43,64 @@ const projectConfig: Config[] = [
   },
 ];
 
+const pageVariants: Variants = {
+  enter: (dir: number) => ({ x: dir >= 0 ? 60 : -60, opacity: 0 }),
+  center: {
+    x: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: EASE, staggerChildren: 0.09, delayChildren: 0.04 },
+  },
+  exit: (dir: number) => ({
+    x: dir >= 0 ? -60 : 60,
+    opacity: 0,
+    transition: { duration: 0.3, ease: "easeIn" },
+  }),
+};
+
+const cardVariants: Variants = {
+  enter: { opacity: 0, y: 28 },
+  center: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+  exit: { opacity: 0, y: 0, transition: { duration: 0.2 } },
+};
+
 export default function Projects() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const { t } = useLang();
 
   const projects = t.projects.items.map((it, i) => ({ ...projectConfig[i], ...it }));
+
+  const totalPages = Math.ceil(projects.length / PER_PAGE);
+  const [page, setPage] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  const paginate = (dir: number) => {
+    setDirection(dir);
+    setPage((p) => (p + dir + totalPages) % totalPages);
+  };
+  const goTo = (target: number) => {
+    if (target === page) return;
+    setDirection(target > page ? 1 : -1);
+    setPage(target);
+  };
+
+  const pageItems = projects.slice(page * PER_PAGE, page * PER_PAGE + PER_PAGE);
+  const hasPager = totalPages > 1;
+
+  const ArrowBtn = ({ dir, children }: { dir: number; children: React.ReactNode }) => (
+    <motion.button
+      type="button"
+      onClick={() => paginate(dir)}
+      aria-label={dir > 0 ? "Next projects" : "Previous projects"}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      whileTap={{ scale: 0.9 }}
+      className="shrink-0 self-center w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center bg-black/[0.04] dark:bg-white/[0.04] border border-black/[0.09] dark:border-white/[0.09] text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-300 hover:border-blue-400/55 hover:bg-blue-500/[0.07] hover:shadow-[0_0_30px_rgba(59,130,246,0.18)] transition-all duration-300"
+    >
+      {children}
+    </motion.button>
+  );
 
   return (
     <section id="work" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
@@ -85,55 +138,103 @@ export default function Projects() {
           </motion.a>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
-          {projects.map((project, i) => (
-            <motion.a
-              key={project.id}
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
-              initial={{ opacity: 0, y: 38 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.72, delay: 0.1 + i * 0.14, ease: EASE }}
-              whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
-              className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
-            >
-              {/* Hover glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
+        <div className="flex items-stretch gap-2 sm:gap-4">
+          {hasPager && (
+            <ArrowBtn dir={-1}>
+              <ChevronLeft size={20} strokeWidth={1.75} className="rtl:-scale-x-100" />
+            </ArrowBtn>
+          )}
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-6 gap-4">
-                  <div>
-                    <p className="text-[10px] font-semibold text-blue-600/70 dark:text-blue-400/70 tracking-[0.22em] uppercase mb-2">
-                      {project.category}
-                    </p>
-                    <h3 className="text-[19px] sm:text-[20px] font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-200 leading-tight">
-                      {project.title}
-                    </h3>
-                  </div>
-                  <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
-                    <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400 rtl:-scale-x-100" />
-                  </div>
-                </div>
+          <div className="flex-1 min-w-0 overflow-hidden">
+            <AnimatePresence mode="wait" custom={direction} initial={false}>
+              <motion.div
+                key={page}
+                custom={direction}
+                variants={pageVariants}
+                initial="enter"
+                animate={inView ? "center" : "enter"}
+                exit="exit"
+                className="grid sm:grid-cols-2 gap-4 sm:gap-5"
+              >
+                {pageItems.map((project) => (
+                  <motion.a
+                    key={project.id}
+                    variants={cardVariants}
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
+                    className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
+                  >
+                    {/* Hover glow */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
 
-                <p className="text-slate-600 dark:text-slate-400 text-[14px] leading-[1.88] mb-6">
-                  {project.description}
-                </p>
+                    <div className="relative z-10">
+                      <div className="flex items-start justify-between mb-6 gap-4">
+                        <div>
+                          <p className="text-[10px] font-semibold text-blue-600/70 dark:text-blue-400/70 tracking-[0.22em] uppercase mb-2">
+                            {project.category}
+                          </p>
+                          <h3 className="text-[19px] sm:text-[20px] font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-200 leading-tight">
+                            {project.title}
+                          </h3>
+                        </div>
+                        <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
+                          <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400 rtl:-scale-x-100" />
+                        </div>
+                      </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-700/80 dark:text-blue-300/80 font-medium"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.a>
-          ))}
+                      <p className="text-slate-600 dark:text-slate-400 text-[14px] leading-[1.88] mb-6">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-700/80 dark:text-blue-300/80 font-medium"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.a>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {hasPager && (
+            <ArrowBtn dir={1}>
+              <ChevronRight size={20} strokeWidth={1.75} className="rtl:-scale-x-100" />
+            </ArrowBtn>
+          )}
         </div>
+
+        {hasPager && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.24 }}
+            className="flex items-center justify-center gap-2.5 mt-10"
+          >
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goTo(i)}
+                aria-label={`Go to page ${i + 1}`}
+                aria-current={i === page}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  i === page
+                    ? "w-7 bg-blue-500"
+                    : "w-2 bg-slate-400/40 dark:bg-white/20 hover:bg-slate-400/70 dark:hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );
