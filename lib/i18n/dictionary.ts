@@ -127,6 +127,11 @@ const en = {
     githubProfile: "GitHub profile",
     items: [
       {
+        category: "AI · Analytics",
+        description:
+          "An AI-powered alternative to Power BI / Tableau: drop in a CSV, Excel, JSON, or SQLite file and get a clean, fully-explained dashboard - cleaning, KPIs, real statistics, forecasting, segmentation, and plain-language insights - in seconds. Ask your data questions in plain English, join tables, and export a polished report. The entire analysis engine runs in your browser, so your raw data never leaves the page.",
+      },
+      {
         category: "Data · Finance",
         description:
           "Tested whether ETH price moves with the macro picture (Fed decisions, DXY, NDAQ, BTC dominance) using on-chain data and multivariate regression. Found one statistically significant leading indicator ahead of major drawdowns, validated across five years.",
@@ -317,6 +322,11 @@ const he: typeof en = {
     title: "מה בניתי.",
     githubProfile: "פרופיל GitHub",
     items: [
+      {
+        category: "בינה מלאכותית · אנליטיקה",
+        description:
+          "חלופה מבוססת-AI ל-Power BI / Tableau: גוררים קובץ CSV, Excel, JSON או SQLite ומקבלים בתוך שניות דשבורד נקי ומוסבר במלואו - ניקוי נתונים, מדדי KPI, סטטיסטיקה אמיתית, חיזוי, סגמנטציה ותובנות בשפה פשוטה. אפשר לשאול שאלות על הנתונים באנגלית פשוטה, לחבר טבלאות ולייצא דוח מעוצב. כל מנוע הניתוח רץ בדפדפן שלך, כך שהנתונים הגולמיים לעולם לא עוזבים את העמוד.",
+      },
       {
         category: "נתונים · פיננסים",
         description:
