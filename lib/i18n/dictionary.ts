@@ -127,11 +127,6 @@ const en = {
     githubProfile: "GitHub profile",
     items: [
       {
-        category: "FinTech · Real-time",
-        description:
-          "A real-time trading dashboard: type any ticker - stock, crypto, or forex - and get the whole asset on one page. A live TradingView chart, anchored timeframe performance (a 'weekly' move means the week's open, not a rolling 7 days), a Fear & Greed gauge, an algorithmic trend bias, and an AI recap of the latest news. Prices stream live over SSE; data is aggregated from Yahoo Finance, CoinDesk, FXStreet and Forex Factory, with summaries by Gemini. Built with Next.js and TypeScript, deployed on Vercel.",
-      },
-      {
         category: "AI · Analytics",
         description:
           "An AI-powered alternative to Power BI / Tableau: drop in a CSV, Excel, JSON, or SQLite file and get a clean, fully-explained dashboard - cleaning, KPIs, real statistics, forecasting, segmentation, and plain-language insights - in seconds. Ask your data questions in plain English, join tables, and export a polished report. The entire analysis engine runs in your browser, so your raw data never leaves the page.",
@@ -150,6 +145,11 @@ const en = {
         category: "Analytics · Big Data",
         description:
           "Built a 7-page Power BI report on ~853K LAPD incidents (2020 to late 2023). Cleaned the data in Power Query (header repair, locale-aware date parsing, sentinel cleanup) and wrote the DAX measures behind YoY trends, peak hours, reporting lag, and arrest rate. Python validation scripts catch upstream schema drift before refresh.",
+      },
+      {
+        category: "FinTech · Real-time",
+        description:
+          "A real-time trading dashboard: type any ticker - stock, crypto, or forex - and get the whole asset on one page. A live TradingView chart, anchored timeframe performance (a 'weekly' move means the week's open, not a rolling 7 days), a Fear & Greed gauge, an algorithmic trend bias, and an AI recap of the latest news. Prices stream live over SSE; data is aggregated from Yahoo Finance, CoinDesk, FXStreet and Forex Factory, with summaries by Gemini. Built with Next.js and TypeScript, deployed on Vercel.",
       },
       {
         category: "Analytics · Power BI",
@@ -328,11 +328,6 @@ const he: typeof en = {
     githubProfile: "פרופיל GitHub",
     items: [
       {
-        category: "פינטק · זמן אמת",
-        description:
-          "דשבורד מסחר בזמן אמת: מקלידים טיקר כלשהו - מניה, קריפטו או פורקס - ומקבלים את כל הנכס בעמוד אחד. גרף TradingView חי, ביצועים לפי טווחי זמן מעוגנים (שינוי שבועי נמדד מפתיחת השבוע, לא שבעה ימים מתגלגלים), מד פחד ותאוות בצע, הטיית מגמה אלגוריתמית וסיכום AI של החדשות האחרונות. המחירים משודרים בזמן אמת דרך SSE; הנתונים נאספים מ-Yahoo Finance, CoinDesk, FXStreet ו-Forex Factory, עם סיכומים של Gemini. נבנה ב-Next.js וב-TypeScript, מופץ ב-Vercel.",
-      },
-      {
         category: "בינה מלאכותית · אנליטיקה",
         description:
           "חלופה מבוססת-AI ל-Power BI / Tableau: גוררים קובץ CSV, Excel, JSON או SQLite ומקבלים בתוך שניות דשבורד נקי ומוסבר במלואו - ניקוי נתונים, מדדי KPI, סטטיסטיקה אמיתית, חיזוי, סגמנטציה ותובנות בשפה פשוטה. אפשר לשאול שאלות על הנתונים באנגלית פשוטה, לחבר טבלאות ולייצא דוח מעוצב. כל מנוע הניתוח רץ בדפדפן שלך, כך שהנתונים הגולמיים לעולם לא עוזבים את העמוד.",
@@ -351,6 +346,11 @@ const he: typeof en = {
         category: "אנליטיקה · נתונים",
         description:
           "בניתי דוח Power BI בן 7 עמודים על כ-853 אלף אירועי משטרת LA (2020 עד סוף 2023). ניקיתי את הנתונים ב-Power Query (תיקון כותרות שבורות, פרסור תאריכים לפי locale, ניקוי ערכי sentinel) וכתבתי את מדדי ה-DAX שמאחורי מגמות YoY, שעות שיא, השהיית דיווח ושיעורי מעצרים.",
+      },
+      {
+        category: "פינטק · זמן אמת",
+        description:
+          "דשבורד מסחר בזמן אמת: מקלידים טיקר כלשהו - מניה, קריפטו או פורקס - ומקבלים את כל הנכס בעמוד אחד. גרף TradingView חי, ביצועים לפי טווחי זמן מעוגנים (שינוי שבועי נמדד מפתיחת השבוע, לא שבעה ימים מתגלגלים), מד פחד ותאוות בצע, הטיית מגמה אלגוריתמית וסיכום AI של החדשות האחרונות. המחירים משודרים בזמן אמת דרך SSE; הנתונים נאספים מ-Yahoo Finance, CoinDesk, FXStreet ו-Forex Factory, עם סיכומים של Gemini. נבנה ב-Next.js וב-TypeScript, מופץ ב-Vercel.",
       },
       {
         category: "אנליטיקה · Power BI",
