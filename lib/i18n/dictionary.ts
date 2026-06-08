@@ -237,7 +237,7 @@ const he: typeof en = {
     p1Mid: "(ממוצע 90). קודם לכן, שירתי שלוש שנים כלוחם",
     p1End: "בחטיבת הנח״ל.",
     p2Pre: "ארגז הכלים שלי:",
-    p2Stack: "Python, SQL, Power BI ואקסל מתקדם",
+    p2Stack: "Python SQL, Power BI ואקסל מתקדם",
     p2End:
       ", כולל Pivot Tables ו-VLOOKUP. יודע לנקות CSV מבולגן, לעבוד מול מסד נתונים גדול, ולספק דשבורד שבאמת ישתמשו בו.",
     p3Pre: "מחפש",
