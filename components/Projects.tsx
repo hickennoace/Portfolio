@@ -13,36 +13,42 @@ type Config = { id: string; title: string; tags: string[]; href: string };
 const projectConfig: Config[] = [
   {
     id: "01",
+    title: "TickerIO",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "TradingView", "SSE", "Gemini AI"],
+    href: "https://ticker-io.vercel.app",
+  },
+  {
+    id: "02",
     title: "MyAnalyst",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "ECharts", "Web Worker"],
     href: "https://myanalyst.net",
   },
   {
-    id: "02",
+    id: "03",
     title: "Ethereum Macro Analysis",
     tags: ["Python", "Jupyter Notebook", "Pandas", "Statistical tests"],
     href: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
   },
   {
-    id: "03",
+    id: "04",
     title: "Craftiverse Customer Behaviour",
     tags: ["PowerBI", "Python", "SQL", "DAX", "TMDL"],
     href: "https://github.com/hickennoace/CustomerBehaviour",
   },
   {
-    id: "04",
+    id: "05",
     title: "L.A. Crime Rate",
     tags: ["PowerBI", "Power Query", "DAX", "Python"],
     href: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
   },
   {
-    id: "05",
+    id: "06",
     title: "Car Company",
     tags: ["Power BI", "DAX", "TMDL", "Power Query"],
     href: "https://github.com/hickennoace/Car-Company",
   },
   {
-    id: "06",
+    id: "07",
     title: "Developer Portfolio",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     href: "https://github.com/hickennoace/Portfolio",
