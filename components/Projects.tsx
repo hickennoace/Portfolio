@@ -2,13 +2,13 @@
 
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Github } from "lucide-react";
+import { ChevronLeft, ChevronRight, Github } from "lucide-react";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const PER_PAGE = 4;
 
-type Config = { id: string; title: string; tags: string[]; href: string };
+type Config = { id: string; title: string; tags: string[]; href: string; repo: string };
 
 const projectConfig: Config[] = [
   {
@@ -16,42 +16,49 @@ const projectConfig: Config[] = [
     title: "🚀 MyAnalyst",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "ECharts", "Web Worker"],
     href: "https://myanalyst.net",
+    repo: "https://github.com/hickennoace/MyAnalyst",
   },
   {
     id: "02",
     title: "📈 Ethereum Macro Analysis",
     tags: ["Python", "Jupyter Notebook", "Pandas", "Statistical tests"],
     href: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
+    repo: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
   },
   {
     id: "03",
     title: "🛒 Craftiverse Customer Behaviour",
     tags: ["PowerBI", "Python", "SQL", "DAX", "TMDL"],
     href: "https://github.com/hickennoace/CustomerBehaviour",
+    repo: "https://github.com/hickennoace/CustomerBehaviour",
   },
   {
     id: "04",
     title: "🚔 L.A. Crime Rate",
     tags: ["PowerBI", "Power Query", "DAX", "Python"],
     href: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
+    repo: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
   },
   {
     id: "05",
     title: "📊 TickerIO",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "TradingView", "SSE", "Gemini AI"],
     href: "https://ticker-io.vercel.app",
+    repo: "https://github.com/hickennoace/TickerIO",
   },
   {
     id: "06",
     title: "🚗 Car Company",
     tags: ["Power BI", "DAX", "TMDL", "Power Query"],
     href: "https://github.com/hickennoace/Car-Company",
+    repo: "https://github.com/hickennoace/Car-Company",
   },
   {
     id: "07",
     title: "🌐 Developer Portfolio",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     href: "https://github.com/hickennoace/Portfolio",
+    repo: "https://github.com/hickennoace/Portfolio",
   },
 ];
 
@@ -169,19 +176,25 @@ export default function Projects() {
                 className="grid sm:grid-cols-2 gap-4 sm:gap-5"
               >
                 {pageItems.map((project) => (
-                  <motion.a
+                  <motion.div
                     key={project.id}
                     variants={cardVariants}
-                    href={project.href}
-                    target="_blank"
-                    rel="noreferrer"
                     whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
                     className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
                   >
                     {/* Hover glow */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
 
-                    <div className="relative z-10">
+                    {/* Primary stretched link → live site / project */}
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={project.title}
+                      className="absolute inset-0 z-10"
+                    />
+
+                    <div className="relative z-20 pointer-events-none">
                       <div className="flex items-start justify-between mb-6 gap-4">
                         <div>
                           <p className="text-[10px] font-semibold text-blue-600/70 dark:text-blue-400/70 tracking-[0.22em] uppercase mb-2">
@@ -191,9 +204,17 @@ export default function Projects() {
                             {project.title}
                           </h3>
                         </div>
-                        <div className="w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 group-hover:border-blue-400/40 transition-all duration-200">
-                          <ArrowUpRight size={14} strokeWidth={2} className="text-blue-600 dark:text-blue-400 rtl:-scale-x-100" />
-                        </div>
+                        {/* Source on GitHub - clickable above the stretched link */}
+                        <a
+                          href={project.repo}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${project.title} source on GitHub`}
+                          title="Source on GitHub"
+                          className="pointer-events-auto relative z-30 w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 hover:bg-blue-500/20 hover:border-blue-400/40 transition-all duration-200"
+                        >
+                          <Github size={15} strokeWidth={2} className="text-blue-600 dark:text-blue-400" />
+                        </a>
                       </div>
 
                       <p className="text-slate-600 dark:text-slate-400 text-[14px] leading-[1.88] mb-6">
@@ -211,7 +232,7 @@ export default function Projects() {
                         ))}
                       </div>
                     </div>
-                  </motion.a>
+                  </motion.div>
                 ))}
               </motion.div>
             </AnimatePresence>
