@@ -191,7 +191,7 @@ export default function Hero() {
                   {
                     text: t.hero.nameLast,
                     className:
-                      "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400",
+                      "text-sheen text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 dark:from-blue-400 dark:via-indigo-300 dark:to-blue-400",
                   },
                 ]}
               />
