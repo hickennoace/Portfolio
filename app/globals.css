@@ -4,6 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme circular-reveal (View Transitions API) ──
+   Disable the default root cross-fade so our expanding clip-path circle is the
+   only animation. The new theme is layered on top and revealed by the circle. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
 /* ── Lenis smooth scroll (desktop only; mobile keeps native scroll) ── */
 html.lenis,
 html.lenis body {
