@@ -33,6 +33,7 @@ export default function TiltCard({
 }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
+  const rect = useRef<DOMRect | null>(null);
   const [hovered, setHovered] = useState(false);
 
   // Normalised pointer position within the card (-0.5 … 0.5).
@@ -46,18 +47,22 @@ export default function TiltCard({
   const sy = useMotionValue(0);
   const spotlight = useMotionTemplate`radial-gradient(240px circle at ${sx}px ${sy}px, rgba(59,130,246,0.16), transparent 72%)`;
 
+  const handleEnter = () => {
+    rect.current = ref.current?.getBoundingClientRect() ?? null;
+    setHovered(true);
+  };
+
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const relX = (e.clientX - rect.left) / rect.width - 0.5;
-    const relY = (e.clientY - rect.top) / rect.height - 0.5;
+    const r = rect.current;
+    if (!r) return;
+    const relX = (e.clientX - r.left) / r.width - 0.5;
+    const relY = (e.clientY - r.top) / r.height - 0.5;
     px.set(relX);
     py.set(relY);
     rotateY.set(relX * max * 2);
     rotateX.set(-relY * max * 2);
-    sx.set(e.clientX - rect.left);
-    sy.set(e.clientY - rect.top);
+    sx.set(e.clientX - r.left);
+    sy.set(e.clientY - r.top);
   };
 
   const handleLeave = () => {
@@ -72,7 +77,7 @@ export default function TiltCard({
     <motion.div
       ref={ref}
       onMouseMove={handleMove}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       className={className}

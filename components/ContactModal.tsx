@@ -46,6 +46,32 @@ export default function ContactModal({ isOpen, onClose }: Props) {
     return () => window.removeEventListener("keydown", handler);
   }, [isOpen, onClose]);
 
+  // Celebrate a successful send with a brand-coloured confetti burst.
+  useEffect(() => {
+    if (status !== "success") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let cancelled = false;
+    import("canvas-confetti").then(({ default: confetti }) => {
+      if (cancelled) return;
+      const colors = ["#3b82f6", "#6366f1", "#60a5fa", "#a5b4fc"];
+      const fire = (ratio: number, opts: object) =>
+        confetti({
+          origin: { y: 0.7 },
+          colors,
+          particleCount: Math.floor(180 * ratio),
+          ...opts,
+        });
+      fire(0.25, { spread: 26, startVelocity: 55 });
+      fire(0.2, { spread: 60 });
+      fire(0.35, { spread: 100, decay: 0.91, scalar: 0.8 });
+      fire(0.1, { spread: 120, startVelocity: 25, decay: 0.92, scalar: 1.2 });
+      fire(0.1, { spread: 120, startVelocity: 45 });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [status]);
+
   const reset = () => {
     setName(""); setEmail(""); setMessage("");
     setStatus("idle"); setErrorMsg("");

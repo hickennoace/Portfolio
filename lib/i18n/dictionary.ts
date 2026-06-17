@@ -209,6 +209,21 @@ const en = {
   },
   misc: {
     backToTop: "Back to top",
+    home: "Home",
+  },
+  cmdk: {
+    placeholder: "Type a command or search…",
+    navigate: "Navigate",
+    actions: "Actions",
+    empty: "No results",
+    toggleTheme: "Toggle theme",
+    copyEmail: "Copy email address",
+    emailCopied: "Email copied to clipboard",
+    downloadCvEn: "Download CV (English)",
+    downloadCvHe: "Download CV (Hebrew)",
+    github: "Open GitHub",
+    linkedin: "Open LinkedIn",
+    openHint: "to open",
   },
   meta: {
     pageTitle: "Daniel Shaulov - Data & Analyst",
@@ -424,6 +439,21 @@ const he: typeof en = {
   },
   misc: {
     backToTop: "חזרה למעלה",
+    home: "בית",
+  },
+  cmdk: {
+    placeholder: "הקלידו פקודה או חיפוש…",
+    navigate: "ניווט",
+    actions: "פעולות",
+    empty: "אין תוצאות",
+    toggleTheme: "החלפת מצב תצוגה",
+    copyEmail: "העתקת כתובת אימייל",
+    emailCopied: "האימייל הועתק",
+    downloadCvEn: "הורדת קורות חיים (אנגלית)",
+    downloadCvHe: "הורדת קורות חיים (עברית)",
+    github: "פתיחת GitHub",
+    linkedin: "פתיחת LinkedIn",
+    openHint: "לפתיחה",
   },
   meta: {
     pageTitle: "דניאל שאולוב - אנליסט נתונים",

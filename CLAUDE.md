@@ -116,6 +116,15 @@ Guiding principles:
 > (parallax hero, scroll progress, live nav, count-ups + self-drawing sparklines
 > on view), not a separate pinned-scrub system.
 >
+> **v3 (perf + more features):** ✅ Phase 12–15.
+> Perf pass: `Constellation` batches link strokes, uses squared-distance math,
+> caps at ~40fps, lower density, reads its rect once per rendered frame (not per
+> scroll); `TiltCard`/`Magnetic` cache `getBoundingClientRect` on enter;
+> `BackgroundOrbs` trimmed to 4 orbs with smaller blur; Lenis switched to
+> lerp-based tracking. New: `SectionNav` (side dot navigator), `CommandPalette`
+> (⌘K / Ctrl-K + Nav search chip), confetti on contact success (`canvas-confetti`,
+> dynamically imported, reduced-motion-safe). New dep: `canvas-confetti`.
+>
 > Note: the standalone count-up that was dropped in v1 (no numeric stat in About)
 > is realised properly in v2's `Metrics` band with real figures.
 
