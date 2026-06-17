@@ -24,7 +24,10 @@ export default function Preloader() {
     } catch {
       /* sessionStorage unavailable — just show once */
     }
-    if (seen || reduce) {
+    // Skip the intro for repeat visits, reduced motion, or deep links to a
+    // section (arriving at /#work shouldn't sit through the opening).
+    const deepLink = window.location.hash.length > 1;
+    if (seen || reduce || deepLink) {
       setVisible(false);
       return;
     }

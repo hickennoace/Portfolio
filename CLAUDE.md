@@ -16,6 +16,7 @@ Live at https://danielshaulov.vercel.app — deployed on Vercel.
 - Next.js 14.2 (App Router) · React 18 · TypeScript
 - Tailwind CSS 3.4 (class-based dark mode)
 - Framer Motion 12 — the primary animation tool
+- Lenis — smooth scroll (desktop fine-pointer only; see `components/SmoothScroll.tsx`)
 - `next-themes` (light default, no system theme) · custom i18n (EN/HE + RTL)
 - `lucide-react` icons · `resend` for the contact form
 - Fonts: Inter Variable (body), JetBrains Mono, Instrument Serif
@@ -96,14 +97,27 @@ Guiding principles:
 
 ## 5. Plan of work (phased)
 
-> **Status (all phases landed on branch `feat/interactive-animations`):**
-> ✅ Phase 0 · ✅ Phase 1 · ✅ Phase 2 · ✅ Phase 3 · ✅ Phase 4 · ✅ Phase 5.
-> New shared modules: `lib/motion.ts`, `lib/useActiveSection.ts`. New components:
-> `ScrollProgress`, `ScrollToTop`, `Magnetic`, `MaskedWords`, `TiltCard`.
-> Global `MotionConfig reducedMotion="user"` added in `app/layout.tsx`.
-> Note: Phase 4 count-up was intentionally dropped — the "stats" are text labels
-> (e.g. "GPA 90" inside prose), not standalone numbers, so a counter would be
-> forced; springy skill chips + stat-card lift were done instead.
+> **Status — all phases landed on branch `feat/interactive-animations`.**
+>
+> **v1 (refined interactivity):** ✅ Phase 0–5.
+> Modules: `lib/motion.ts`, `lib/useActiveSection.ts`. Components: `ScrollProgress`,
+> `ScrollToTop`, `Magnetic`, `MaskedWords`, `TiltCard`. Global
+> `MotionConfig reducedMotion="user"` in `app/layout.tsx`.
+>
+> **v2 (playful & flashy expansion):** ✅ Phase 6–11.
+> New dependency: **`lenis`** (smooth scroll). Modules: `lib/smoothScroll.ts`.
+> Components: `SmoothScroll`, `Preloader`, `Constellation`, `RotatingText`,
+> `ThemeToggle` (rebuilt with View Transitions circular reveal), `CountUp`,
+> `Sparkline`, `Metrics`. New section `Metrics` ("By the numbers") sits between
+> About and WhatIDo. Preloader skips on repeat visits / reduced motion / deep
+> links (`/#section`).
+>
+> Scroll storytelling is delivered through the combined scroll-driven layer
+> (parallax hero, scroll progress, live nav, count-ups + self-drawing sparklines
+> on view), not a separate pinned-scrub system.
+>
+> Note: the standalone count-up that was dropped in v1 (no numeric stat in About)
+> is realised properly in v2's `Metrics` band with real figures.
 
 Each phase is independently shippable. Build → lint → eyeball → commit per phase.
 
