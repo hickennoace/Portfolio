@@ -96,6 +96,15 @@ Guiding principles:
 
 ## 5. Plan of work (phased)
 
+> **Status (all phases landed on branch `feat/interactive-animations`):**
+> ✅ Phase 0 · ✅ Phase 1 · ✅ Phase 2 · ✅ Phase 3 · ✅ Phase 4 · ✅ Phase 5.
+> New shared modules: `lib/motion.ts`, `lib/useActiveSection.ts`. New components:
+> `ScrollProgress`, `ScrollToTop`, `Magnetic`, `MaskedWords`, `TiltCard`.
+> Global `MotionConfig reducedMotion="user"` added in `app/layout.tsx`.
+> Note: Phase 4 count-up was intentionally dropped — the "stats" are text labels
+> (e.g. "GPA 90" inside prose), not standalone numbers, so a counter would be
+> forced; springy skill chips + stat-card lift were done instead.
+
 Each phase is independently shippable. Build → lint → eyeball → commit per phase.
 
 ### Phase 0 — Foundation & accessibility *(do first)*
