@@ -4,6 +4,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Theme circular-reveal (View Transitions API) ──
+   Disable the default root cross-fade so our expanding clip-path circle is the
+   only animation. The new theme is layered on top and revealed by the circle. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+
+/* ── Lenis smooth scroll (desktop only; mobile keeps native scroll) ── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* ── Theme variables ── */
 :root {
   --site-bg: #f1f5f9;
@@ -187,4 +220,27 @@ html:not(.dark) .meteor::after {
 }
 .animate-bounce-arrow {
   animation: bounce-arrow 2.4s ease-in-out infinite;
+}
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Reduced motion — honour the OS/browser "reduce motion" preference.
+   Framer-driven interaction effects are gated in JS via useReducedMotion();
+   this block neutralises the always-on CSS loops (orbs, meteors, bounce, ping)
+   and clamps every transition/animation so nothing moves on its own.
+   ────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .orb-1, .orb-2, .orb-3, .orb-4, .orb-5,
+  .meteor,
+  .animate-bounce-arrow {
+    animation: none !important;
+  }
 }

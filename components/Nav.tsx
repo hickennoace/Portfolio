@@ -6,14 +6,17 @@ import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLang } from "@/lib/i18n/LanguageProvider";
+import { useActiveSection } from "@/lib/useActiveSection";
 
 const LINK_KEYS = [
-  { key: "about",      href: "#about"      },
-  { key: "whatIDo",    href: "#what-i-do"  },
-  { key: "experience", href: "#experience" },
-  { key: "work",       href: "#work"       },
-  { key: "connect",    href: "#connect"    },
+  { key: "about",      href: "#about",      id: "about"      },
+  { key: "whatIDo",    href: "#what-i-do",  id: "what-i-do"  },
+  { key: "experience", href: "#experience", id: "experience" },
+  { key: "work",       href: "#work",       id: "work"       },
+  { key: "connect",    href: "#connect",    id: "connect"    },
 ] as const;
+
+const SECTION_IDS = LINK_KEYS.map((l) => l.id);
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -21,6 +24,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { t, dir } = useLang();
+  const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
     const handle = () => setScrolled(window.scrollY > 28);
@@ -59,15 +63,30 @@ export default function Nav() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-7">
-            {LINK_KEYS.map((l) => (
-              <a
-                key={l.key}
-                href={l.href}
-                className="text-[13px] text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200 tracking-wide"
-              >
-                {t.nav[l.key]}
-              </a>
-            ))}
+            {LINK_KEYS.map((l) => {
+              const isActive = active === l.id;
+              return (
+                <a
+                  key={l.key}
+                  href={l.href}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative text-[13px] tracking-wide transition-colors duration-200 py-1 ${
+                    isActive
+                      ? "text-slate-900 dark:text-white"
+                      : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  {t.nav[l.key]}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-blue-500 dark:bg-blue-400"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </a>
+              );
+            })}
           </div>
 
           {/* Right: availability + toggles + hamburger */}

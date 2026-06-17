@@ -4,9 +4,8 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { Github, Linkedin, Mail, LucideIcon } from "lucide-react";
 import ContactModal from "./ContactModal";
+import { EASE, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
-
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 type LinkConfig = { Icon: LucideIcon; key: "linkedinLabel" | "githubLabel"; display: string; href: string };
 
@@ -27,7 +26,7 @@ const linkConfig: LinkConfig[] = [
 
 export default function Connect() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, VIEWPORT_ONCE);
   const [modalOpen, setModalOpen] = useState(false);
   const { t } = useLang();
 

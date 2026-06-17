@@ -3,9 +3,10 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useInView, type Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Github } from "lucide-react";
+import TiltCard from "@/components/TiltCard";
+import { EASE, SPRING_SNAPPY } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const PER_PAGE = 4;
 
 type Config = { id: string; title: string; tags: string[]; href: string; repo: string };
@@ -78,8 +79,19 @@ const pageVariants: Variants = {
 
 const cardVariants: Variants = {
   enter: { opacity: 0, y: 28 },
-  center: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE } },
+  center: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE, staggerChildren: 0.05, delayChildren: 0.18 } },
   exit: { opacity: 0, y: 0, transition: { duration: 0.2 } },
+};
+
+const tagsWrap: Variants = {
+  enter: {},
+  center: { transition: { staggerChildren: 0.05, delayChildren: 0.22 } },
+};
+
+const tagItem: Variants = {
+  enter: { opacity: 0, scale: 0.8 },
+  center: { opacity: 1, scale: 1, transition: SPRING_SNAPPY },
+  exit: { opacity: 0 },
 };
 
 export default function Projects() {
@@ -180,8 +192,9 @@ export default function Projects() {
                     key={project.id}
                     variants={cardVariants}
                     whileHover={{ y: -6, transition: { duration: 0.22, ease: "easeOut" } }}
-                    className="group relative block p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden"
+                    style={{ perspective: 1000 }}
                   >
+                  <TiltCard className="group relative block h-full p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/55 hover:bg-black/[0.06] dark:hover:bg-white/[0.04] hover:shadow-[0_0_50px_rgba(59,130,246,0.13),0_0_1px_rgba(59,130,246,0.25)] transition-all duration-300 overflow-hidden">
                     {/* Hover glow */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
 
@@ -221,17 +234,19 @@ export default function Projects() {
                         {project.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2">
+                      <motion.div variants={tagsWrap} className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
-                          <span
+                          <motion.span
                             key={tag}
+                            variants={tagItem}
                             className="px-2.5 py-1 rounded-md bg-blue-500/[0.09] border border-blue-500/[0.18] text-[11px] text-blue-700/80 dark:text-blue-300/80 font-medium"
                           >
                             {tag}
-                          </span>
+                          </motion.span>
                         ))}
-                      </div>
+                      </motion.div>
                     </div>
+                  </TiltCard>
                   </motion.div>
                 ))}
               </motion.div>

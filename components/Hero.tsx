@@ -1,23 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 import { ArrowDown, Download, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import MeteorShower from "@/components/MeteorShower";
+import Constellation from "@/components/Constellation";
+import RotatingText from "@/components/RotatingText";
+import Magnetic from "@/components/Magnetic";
+import MaskedWords from "@/components/MaskedWords";
+import { EASE, stagger as staggerVariants, fadeUp } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
-
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.28 } },
-};
-
-const up = {
-  hidden: { opacity: 0, y: 32 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.78, ease: EASE } },
-};
+const stagger = staggerVariants(0.12, 0.28);
+const up = fadeUp(32, 0.78);
 
 function CvDownloadButton() {
   const [open, setOpen] = useState(false);
@@ -109,24 +111,42 @@ function CvDownloadButton() {
 
 export default function Hero() {
   const { t } = useLang();
+  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Scroll-linked parallax: as the hero leaves the viewport, layers drift at
+  // different rates for a sense of depth. Disabled under reduced motion.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const textY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 80]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 140]);
+  const gridY = useTransform(scrollYProgress, [0, 1], [0, reduce ? 0 : 60]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], [1, reduce ? 1 : 0]);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 overflow-hidden">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 overflow-hidden"
+    >
       {/* Dot-grid — light mode: dark dots */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.028] block dark:hidden"
+      <motion.div
         style={{
+          y: gridY,
           backgroundImage: `radial-gradient(circle, rgba(15,23,42,0.9) 1px, transparent 1px)`,
           backgroundSize: "36px 36px",
         }}
+        className="absolute inset-0 pointer-events-none opacity-[0.028] block dark:hidden"
       />
       {/* Dot-grid — dark mode: slate dots */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.018] hidden dark:block"
+      <motion.div
         style={{
+          y: gridY,
           backgroundImage: `radial-gradient(circle, rgba(148,163,184,1) 1px, transparent 1px)`,
           backgroundSize: "36px 36px",
         }}
+        className="absolute inset-0 pointer-events-none opacity-[0.018] hidden dark:block"
       />
 
       {/* Meteor shower — desktop only; CSS animations kill mobile GPU */}
@@ -134,17 +154,26 @@ export default function Hero() {
         <MeteorShower />
       </div>
 
+      {/* Cursor-reactive constellation — self-gates to desktop fine pointers */}
+      <div className="hidden sm:block absolute inset-0 pointer-events-none">
+        <Constellation />
+      </div>
+
       {/* Main content: text ←→ image */}
       <motion.div
         variants={stagger}
         initial="hidden"
         animate="show"
+        style={{ opacity: fade }}
         className="relative w-full max-w-5xl mx-auto"
       >
         <div className="flex flex-col sm:flex-row items-center gap-10 sm:gap-14 lg:gap-20">
 
           {/* ── Text block ── */}
-          <div className="flex-1 min-w-0 text-center sm:text-start order-2 sm:order-1">
+          <motion.div
+            style={{ y: textY }}
+            className="flex-1 min-w-0 text-center sm:text-start order-2 sm:order-1"
+          >
             <motion.p
               variants={up}
               className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.26em] uppercase mb-6"
@@ -152,15 +181,30 @@ export default function Hero() {
               {t.hero.hello}
             </motion.p>
 
-            <motion.h1
+            <h1 className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] text-slate-900 dark:text-white mb-6">
+              <MaskedWords
+                delay={0.42}
+                words={[
+                  { text: t.hero.nameFirst },
+                  {
+                    text: t.hero.nameLast,
+                    className:
+                      "text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400",
+                  },
+                ]}
+              />
+            </h1>
+
+            <motion.p
               variants={up}
-              className="text-[clamp(2.8rem,7vw,5rem)] font-bold tracking-tighter leading-[0.9] text-slate-900 dark:text-white mb-6"
+              className="text-[18px] sm:text-[22px] font-semibold text-slate-800 dark:text-slate-200 mb-6 flex items-center justify-center sm:justify-start gap-2 flex-wrap"
             >
-              {t.hero.nameFirst}{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 dark:from-blue-400 dark:via-blue-300 dark:to-indigo-400">
-                {t.hero.nameLast}
-              </span>
-            </motion.h1>
+              <span className="text-slate-500 dark:text-slate-400 font-normal">{t.hero.titlePrefix}</span>
+              <RotatingText
+                words={t.hero.titles}
+                className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"
+              />
+            </motion.p>
 
             <motion.p
               variants={up}
@@ -176,24 +220,32 @@ export default function Hero() {
               variants={up}
               className="flex items-center justify-center sm:justify-start gap-3 sm:gap-4 flex-wrap"
             >
-              <a
-                href="#work"
-                className="inline-flex items-center px-7 sm:px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] hover:-translate-y-[2px] active:scale-[0.97]"
-              >
-                {t.hero.viewWork}
-              </a>
-              <a
-                href="#connect"
-                className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/35 text-blue-700 dark:text-blue-300 hover:border-blue-500/60 hover:text-blue-900 dark:hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
-              >
-                {t.hero.getInTouch}
-              </a>
+              <Magnetic>
+                <a
+                  href="#work"
+                  className="inline-flex items-center px-7 sm:px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm rounded-xl transition-all duration-300 hover:shadow-[0_0_40px_rgba(59,130,246,0.4)] active:scale-[0.97]"
+                >
+                  {t.hero.viewWork}
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href="#connect"
+                  className="inline-flex items-center px-7 sm:px-8 py-3.5 border border-blue-500/35 text-blue-700 dark:text-blue-300 hover:border-blue-500/60 hover:text-blue-900 dark:hover:text-white hover:bg-blue-500/[0.08] font-semibold text-sm rounded-xl transition-all duration-300 active:scale-[0.97]"
+                >
+                  {t.hero.getInTouch}
+                </a>
+              </Magnetic>
               <CvDownloadButton />
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* ── Profile image — large square, full color, permanent blue glow ── */}
-          <motion.div variants={up} className="order-1 sm:order-2 shrink-0">
+          <motion.div
+            variants={up}
+            style={{ y: imageY }}
+            className="order-1 sm:order-2 shrink-0"
+          >
             <div
               className="group relative w-56 h-56 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl
                          ring-2 ring-blue-500/30 dark:ring-blue-400/25

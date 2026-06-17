@@ -3,9 +3,8 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Plus, BarChart3, TrendingUp, Sparkles, GraduationCap, LucideIcon } from "lucide-react";
+import { EASE, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
-
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const rowConfig: { Icon: LucideIcon; tags: string[] }[] = [
   {
@@ -28,7 +27,7 @@ const rowConfig: { Icon: LucideIcon; tags: string[] }[] = [
 
 export default function WhatIDo() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, VIEWPORT_ONCE);
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { t } = useLang();
 
@@ -65,12 +64,20 @@ export default function WhatIDo() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.12 + i * 0.1, ease: EASE }}
-                className={`group rounded-2xl border overflow-hidden transition-all duration-300 ${
+                className={`group relative rounded-2xl border overflow-hidden transition-all duration-300 ${
                   isOpen
                     ? "bg-black/[0.05] dark:bg-white/[0.035] border-blue-500/40 dark:border-blue-400/35 shadow-[0_0_40px_rgba(59,130,246,0.12),0_0_1px_rgba(59,130,246,0.25)]"
                     : "bg-black/[0.04] dark:bg-white/[0.025] border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/35 hover:bg-black/[0.06] dark:hover:bg-white/[0.035]"
                 }`}
               >
+                {/* Animated left-edge accent on the open row */}
+                <motion.span
+                  aria-hidden="true"
+                  className="absolute start-0 top-0 bottom-0 w-[3px] origin-top bg-gradient-to-b from-blue-500 to-indigo-500"
+                  initial={false}
+                  animate={{ scaleY: isOpen ? 1 : 0, opacity: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.4, ease: EASE }}
+                />
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : i)}

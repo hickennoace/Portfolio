@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
+import { MotionConfig } from "framer-motion";
 import { LanguageProvider } from "@/lib/i18n/LanguageProvider";
 
 export const metadata: Metadata = {
@@ -25,9 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <MotionConfig reducedMotion="user">
+            <LanguageProvider>
+              {children}
+            </LanguageProvider>
+          </MotionConfig>
         </ThemeProvider>
       </body>
     </html>

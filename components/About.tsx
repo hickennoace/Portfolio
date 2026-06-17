@@ -1,10 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { EASE, SPRING_SNAPPY, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
-
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const skillsContainer = {
   hidden: {},
@@ -25,7 +24,8 @@ const skills = [
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, VIEWPORT_ONCE);
+  const reduce = useReducedMotion();
   const { t, dir } = useLang();
   const slide = dir === "rtl" ? 24 : -24;
 
@@ -90,7 +90,8 @@ export default function About() {
                 <motion.span
                   key={skill}
                   variants={skillItem}
-                  className="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-700 dark:text-blue-300 text-[13px] font-medium hover:bg-blue-500/18 hover:border-blue-400/38 transition-all duration-200"
+                  whileHover={reduce ? undefined : { scale: 1.08, y: -2, transition: SPRING_SNAPPY }}
+                  className="cursor-default px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-700 dark:text-blue-300 text-[13px] font-medium hover:bg-blue-500/18 hover:border-blue-400/38 hover:shadow-[0_4px_18px_rgba(59,130,246,0.18)] transition-colors duration-200"
                 >
                   {skill}
                 </motion.span>
@@ -99,13 +100,15 @@ export default function About() {
 
             <div className="grid grid-cols-2 gap-3 mb-8">
               {t.about.stats.map((stat) => (
-                <div
+                <motion.div
                   key={stat.label}
-                  className="p-5 rounded-xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-500/20 transition-colors duration-300"
+                  whileHover={reduce ? undefined : { y: -4 }}
+                  transition={SPRING_SNAPPY}
+                  className="p-5 rounded-xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-500/25 hover:shadow-[0_8px_30px_rgba(59,130,246,0.1)] transition-colors duration-300"
                 >
                   <p className="text-[15px] text-blue-600/80 dark:text-blue-400/80 font-semibold">{stat.label}</p>
                   <p className="text-[13px] text-slate-500 mt-1">{stat.sub}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
 
