@@ -11,6 +11,8 @@ import {
 import { ArrowDown, Download, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import MeteorShower from "@/components/MeteorShower";
+import Constellation from "@/components/Constellation";
+import RotatingText from "@/components/RotatingText";
 import Magnetic from "@/components/Magnetic";
 import MaskedWords from "@/components/MaskedWords";
 import { EASE, stagger as staggerVariants, fadeUp } from "@/lib/motion";
@@ -152,6 +154,11 @@ export default function Hero() {
         <MeteorShower />
       </div>
 
+      {/* Cursor-reactive constellation — self-gates to desktop fine pointers */}
+      <div className="hidden sm:block absolute inset-0 pointer-events-none">
+        <Constellation />
+      </div>
+
       {/* Main content: text ←→ image */}
       <motion.div
         variants={stagger}
@@ -187,6 +194,17 @@ export default function Hero() {
                 ]}
               />
             </h1>
+
+            <motion.p
+              variants={up}
+              className="text-[18px] sm:text-[22px] font-semibold text-slate-800 dark:text-slate-200 mb-6 flex items-center justify-center sm:justify-start gap-2 flex-wrap"
+            >
+              <span className="text-slate-500 dark:text-slate-400 font-normal">{t.hero.titlePrefix}</span>
+              <RotatingText
+                words={t.hero.titles}
+                className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400"
+              />
+            </motion.p>
 
             <motion.p
               variants={up}
