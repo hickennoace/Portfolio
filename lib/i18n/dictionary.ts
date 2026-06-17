@@ -202,6 +202,7 @@ const en = {
     backToTop: "Back to top",
     home: "Home",
     techStack: "The tools I work with",
+    konami: "You found the secret! 🎉",
   },
   cmdk: {
     placeholder: "Type a command or search…",
@@ -424,6 +425,7 @@ const he: typeof en = {
     backToTop: "חזרה למעלה",
     home: "בית",
     techStack: "הכלים שאני עובד איתם",
+    konami: "מצאת את הסוד! 🎉",
   },
   cmdk: {
     placeholder: "הקלידו פקודה או חיפוש…",

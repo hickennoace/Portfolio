@@ -125,6 +125,13 @@ Guiding principles:
 > (⌘K / Ctrl-K + Nav search chip), confetti on contact success (`canvas-confetti`,
 > dynamically imported, reduced-motion-safe). New dep: `canvas-confetti`.
 >
+> **v4 (more fun):** ✅ Phase 16–20.
+> Removed the `Metrics`/"By the numbers" band (+ `CountUp`/`Sparkline`) at the
+> owner's request. New: `ScrambleText` (decode effect on section eyebrows), hero
+> portrait 3D tilt (reuses `TiltCard` with `spotlight={false}`), `TechMarquee`
+> (infinite CSS tool ribbon between About and WhatIDo), `KonamiEasterEgg`
+> (↑↑↓↓←→←→ B A → confetti party + toast).
+>
 > Note: the standalone count-up that was dropped in v1 (no numeric stat in About)
 > is realised properly in v2's `Metrics` band with real figures.
 
