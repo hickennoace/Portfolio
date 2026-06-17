@@ -199,17 +199,6 @@ export default function Projects() {
                     {/* Hover glow */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br from-blue-500/[0.12] via-transparent to-transparent rounded-2xl" />
 
-                    {/* Big faded index watermark */}
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none select-none absolute -top-3 end-4 font-black leading-none tracking-tighter
-                                 text-[4.5rem] sm:text-[5.5rem] text-slate-900/[0.04] dark:text-white/[0.04]
-                                 group-hover:text-blue-500/[0.1] dark:group-hover:text-blue-400/[0.1]
-                                 transition-colors duration-500"
-                    >
-                      {project.id}
-                    </span>
-
                     {/* Primary stretched link → live site / project */}
                     <a
                       href={project.href}
