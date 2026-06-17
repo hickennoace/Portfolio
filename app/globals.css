@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Lenis smooth scroll (desktop only; mobile keeps native scroll) ── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* ── Theme variables ── */
 :root {
   --site-bg: #f1f5f9;

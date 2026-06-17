@@ -1,5 +1,6 @@
 import BackgroundOrbs from "@/components/BackgroundOrbs";
 import CustomCursor from "@/components/CustomCursor";
+import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import Nav from "@/components/Nav";
@@ -13,6 +14,7 @@ import Connect from "@/components/Connect";
 export default function Page() {
   return (
     <>
+      <SmoothScroll />
       <CustomCursor />
       <ScrollProgress />
       <BackgroundOrbs />

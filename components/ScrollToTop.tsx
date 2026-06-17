@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { EASE } from "@/lib/motion";
+import { scrollToTop } from "@/lib/smoothScroll";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 /**
@@ -23,8 +24,7 @@ export default function ScrollToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const toTop = () =>
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+  const toTop = () => scrollToTop(reduce ?? false);
 
   return (
     <AnimatePresence>
