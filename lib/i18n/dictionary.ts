@@ -198,6 +198,15 @@ const en = {
     en: "EN",
     he: "HE",
   },
+  metrics: {
+    eyebrow: "By the numbers",
+    items: [
+      { label: "GPA" },
+      { label: "Projects shipped" },
+      { label: "Tools & technologies" },
+      { label: "Languages spoken" },
+    ],
+  },
   misc: {
     backToTop: "Back to top",
   },
@@ -403,6 +412,15 @@ const he: typeof en = {
     toggleAria: "החלפת שפה",
     en: "EN",
     he: "HE",
+  },
+  metrics: {
+    eyebrow: "במספרים",
+    items: [
+      { label: "ממוצע ציונים" },
+      { label: "פרויקטים" },
+      { label: "כלים וטכנולוגיות" },
+      { label: "שפות" },
+    ],
   },
   misc: {
     backToTop: "חזרה למעלה",
