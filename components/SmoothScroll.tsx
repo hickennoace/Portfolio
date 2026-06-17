@@ -23,8 +23,9 @@ export default function SmoothScroll() {
     if (reduce || !fine) return;
 
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      // lerp tracks the input continuously — feels more responsive than a long
+      // fixed duration, which can read as scroll lag.
+      lerp: 0.11,
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 1.5,
