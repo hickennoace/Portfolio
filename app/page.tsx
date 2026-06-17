@@ -7,6 +7,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import SectionNav from "@/components/SectionNav";
 import CommandPalette from "@/components/CommandPalette";
 import KonamiEasterEgg from "@/components/KonamiEasterEgg";
+import TabTitle from "@/components/TabTitle";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -35,6 +36,7 @@ export default function Page() {
       </main>
       <CommandPalette />
       <KonamiEasterEgg />
+      <TabTitle />
       <ScrollToTop />
     </>
   );

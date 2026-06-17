@@ -204,6 +204,7 @@ const en = {
     backToTop: "Back to top",
     home: "Home",
     konami: "You found the secret! 🎉",
+    tabAway: "👋 Come back!",
   },
   cmdk: {
     placeholder: "Type a command or search…",
@@ -428,6 +429,7 @@ const he: typeof en = {
     backToTop: "חזרה למעלה",
     home: "בית",
     konami: "מצאת את הסוד! 🎉",
+    tabAway: "👋 חוזרים?",
   },
   cmdk: {
     placeholder: "הקלידו פקודה או חיפוש…",

@@ -138,7 +138,13 @@ Guiding principles:
 > **proficiency bars** that fill on scroll. Projects gained a big faded **index
 > watermark** per card. WhatIDo **staggers tags** in on panel open. Hero name and
 > the Connect title use an animated **gradient sheen** (`.text-sheen`); Connect
-> contact cards are now **magnetic**.
+> contact cards are now **magnetic**. (Later removed the project index watermark.)
+>
+> **v6 (more features):** ✅ Phase 26–28.
+> `CustomCursor` shows a contextual label via `data-cursor` ("View ↗" over project
+> cards). Projects gained **category filter pills** (All / Analytics / Finance /
+> Web & Apps, sliding `layoutId` pill, resets pagination). `TabTitle` swaps the
+> document title to a friendly nudge when the tab loses focus.
 >
 > Note: the standalone count-up that was dropped in v1 (no numeric stat in About)
 > is realised properly in v2's `Metrics` band with real figures.
