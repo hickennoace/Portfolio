@@ -128,6 +128,7 @@ const en = {
     title: "Things I've built.",
     githubProfile: "GitHub profile",
     view: "View",
+    filters: { all: "All", analytics: "Analytics", finance: "Finance", web: "Web & Apps" },
     items: [
       {
         category: "AI · Analytics",
@@ -351,6 +352,7 @@ const he: typeof en = {
     title: "מה בניתי.",
     githubProfile: "פרופיל GitHub",
     view: "צפייה",
+    filters: { all: "הכול", analytics: "אנליטיקה", finance: "פיננסים", web: "ווב ואפליקציות" },
     items: [
       {
         category: "בינה מלאכותית · אנליטיקה",
