@@ -1,11 +1,10 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Briefcase, Shield, Lock, Users, LucideIcon } from "lucide-react";
+import { EASE, SPRING_SNAPPY, VIEWPORT_ONCE } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
-
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 type Config = { Icon: LucideIcon; tags: string[]; accent: boolean };
 
@@ -34,7 +33,8 @@ const itemConfig: Config[] = [
 
 export default function Experience() {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
+  const inView = useInView(ref, VIEWPORT_ONCE);
+  const reduce = useReducedMotion();
   const { t } = useLang();
 
   const experiences = t.experience.items.map((it, i) => ({ ...it, ...itemConfig[i] }));
@@ -67,6 +67,7 @@ export default function Experience() {
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.72, delay: 0.1 + i * 0.13, ease: EASE }}
+              whileHover={reduce ? undefined : { y: -4, transition: SPRING_SNAPPY }}
               className="group p-6 sm:p-9 rounded-2xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-400/48 hover:bg-black/[0.06] dark:hover:bg-white/[0.035] hover:shadow-[0_0_40px_rgba(59,130,246,0.1),0_0_1px_rgba(59,130,246,0.2)] transition-all duration-300"
             >
               <div className="flex items-start gap-4 sm:gap-5">
