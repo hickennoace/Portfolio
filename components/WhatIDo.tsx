@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Plus, BarChart3, TrendingUp, Sparkles, GraduationCap, LucideIcon } from "lucide-react";
 import { EASE, VIEWPORT_ONCE } from "@/lib/motion";
+import ScrambleText from "@/components/ScrambleText";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const rowConfig: { Icon: LucideIcon; tags: string[] }[] = [
@@ -42,7 +43,7 @@ export default function WhatIDo() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          {t.whatIDo.eyebrow}
+          <ScrambleText text={t.whatIDo.eyebrow} />
         </motion.span>
 
         <motion.h2

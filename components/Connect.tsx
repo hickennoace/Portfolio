@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { Github, Linkedin, Mail, LucideIcon } from "lucide-react";
 import ContactModal from "./ContactModal";
 import { EASE, VIEWPORT_ONCE } from "@/lib/motion";
+import ScrambleText from "@/components/ScrambleText";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 type LinkConfig = { Icon: LucideIcon; key: "linkedinLabel" | "githubLabel"; display: string; href: string };
@@ -46,7 +47,7 @@ export default function Connect() {
             transition={{ duration: 0.6 }}
             className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-6"
           >
-            {t.connect.eyebrow}
+            <ScrambleText text={t.connect.eyebrow} />
           </motion.span>
 
           <motion.h2

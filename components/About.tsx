@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { EASE, SPRING_SNAPPY, VIEWPORT_ONCE } from "@/lib/motion";
+import ScrambleText from "@/components/ScrambleText";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const skillsContainer = {
@@ -38,7 +39,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          {t.about.eyebrow}
+          <ScrambleText text={t.about.eyebrow} />
         </motion.span>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">

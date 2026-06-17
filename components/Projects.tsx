@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useInView, type Variants } from "framer-motion
 import { ChevronLeft, ChevronRight, Github } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 import { EASE, SPRING_SNAPPY } from "@/lib/motion";
+import ScrambleText from "@/components/ScrambleText";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const PER_PAGE = 4;
@@ -142,7 +143,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          {t.projects.eyebrow}
+          <ScrambleText text={t.projects.eyebrow} />
         </motion.span>
 
         <div className="flex items-end justify-between mb-14 flex-wrap gap-4">

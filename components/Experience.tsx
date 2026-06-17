@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { Briefcase, Shield, Lock, Users, LucideIcon } from "lucide-react";
 import { EASE, SPRING_SNAPPY, VIEWPORT_ONCE } from "@/lib/motion";
+import ScrambleText from "@/components/ScrambleText";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 type Config = { Icon: LucideIcon; tags: string[]; accent: boolean };
@@ -48,7 +49,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          {t.experience.eyebrow}
+          <ScrambleText text={t.experience.eyebrow} />
         </motion.span>
 
         <motion.h2
