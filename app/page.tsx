@@ -9,7 +9,6 @@ import CommandPalette from "@/components/CommandPalette";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Metrics from "@/components/Metrics";
 import WhatIDo from "@/components/WhatIDo";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -28,7 +27,6 @@ export default function Page() {
       <main className="relative z-10">
         <Hero />
         <About />
-        <Metrics />
         <WhatIDo />
         <Experience />
         <Projects />
