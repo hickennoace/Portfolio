@@ -86,17 +86,24 @@ export default function CommandPalette() {
 
   const go = (href: string) => {
     setOpen(false);
-    if (href === "#") {
-      const l = getLenis();
-      if (l) l.scrollTo(0, { duration: 1.1 });
-      else window.scrollTo({ top: 0, behavior: "smooth" });
-      return;
-    }
-    const el = document.querySelector(href);
-    if (!el) return;
+    // The open-effect locked the body and stopped Lenis; its cleanup only runs on
+    // the next tick. Restore scrolling now, then drive the scroll on the next frame
+    // with force:true — a stopped/locked Lenis silently ignores scrollTo otherwise,
+    // which is why clicking a result used to do nothing.
+    document.body.style.overflow = "";
     const l = getLenis();
-    if (l) l.scrollTo(el as HTMLElement, { offset: SCROLL_OFFSET, duration: 1.1 });
-    else el.scrollIntoView({ behavior: "smooth" });
+    l?.start();
+    requestAnimationFrame(() => {
+      if (href === "#") {
+        if (l) l.scrollTo(0, { duration: 1.1, force: true });
+        else window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      const el = document.querySelector(href);
+      if (!el) return;
+      if (l) l.scrollTo(el as HTMLElement, { offset: SCROLL_OFFSET, duration: 1.1, force: true });
+      else el.scrollIntoView({ behavior: "smooth" });
+    });
   };
 
   const download = (href: string) => {
