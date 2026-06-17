@@ -23,6 +23,9 @@ const skills = [
   "Git", "AI Automation",
 ];
 
+// Proficiency per language, in dictionary order (Hebrew, English, Russian).
+const LANG_LEVELS = [100, 90, 80];
+
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, VIEWPORT_ONCE);
@@ -118,11 +121,21 @@ export default function About() {
               <p className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-4">
                 {t.about.languagesLabel}
               </p>
-              <div className="flex flex-wrap gap-x-6 gap-y-2">
-                {t.about.languages.map(({ lang, level }) => (
-                  <div key={lang} className="flex items-center gap-1.5">
-                    <span className="text-[13px] text-slate-700 dark:text-slate-300 font-medium">{lang}</span>
-                    <span className="text-[12px] text-slate-500">- {level}</span>
+              <div className="space-y-4">
+                {t.about.languages.map(({ lang, level }, i) => (
+                  <div key={lang}>
+                    <div className="flex items-baseline justify-between mb-1.5">
+                      <span className="text-[13px] text-slate-700 dark:text-slate-300 font-medium">{lang}</span>
+                      <span className="text-[12px] text-slate-500">{level}</span>
+                    </div>
+                    <div className="h-1.5 rounded-full bg-black/[0.06] dark:bg-white/[0.07] overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-indigo-500"
+                        initial={{ width: reduce ? `${LANG_LEVELS[i]}%` : 0 }}
+                        animate={inView ? { width: `${LANG_LEVELS[i]}%` } : {}}
+                        transition={{ duration: 1, delay: 0.3 + i * 0.12, ease: EASE }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

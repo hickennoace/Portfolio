@@ -140,16 +140,25 @@ export default function WhatIDo() {
                         <p className="text-slate-600 dark:text-slate-400 text-[14px] sm:text-[14.5px] leading-[1.85] mb-5 max-w-3xl">
                           {row.description}
                         </p>
-                        <div className="flex flex-wrap gap-2">
+                        <motion.div
+                          className="flex flex-wrap gap-2"
+                          initial="hidden"
+                          animate="show"
+                          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.18 } } }}
+                        >
                           {row.tags.map((tag) => (
-                            <span
+                            <motion.span
                               key={tag}
+                              variants={{
+                                hidden: { opacity: 0, y: 8, scale: 0.9 },
+                                show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3, ease: EASE } },
+                              }}
                               className="px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 text-blue-700 dark:text-blue-300 text-[12px] font-medium tracking-wide hover:bg-blue-500/15 hover:border-blue-400/40 transition-colors duration-200"
                             >
                               {tag}
-                            </span>
+                            </motion.span>
                           ))}
-                        </div>
+                        </motion.div>
                       </div>
                     </motion.div>
                   )}
