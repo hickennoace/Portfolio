@@ -196,6 +196,9 @@ const en = {
     en: "EN",
     he: "HE",
   },
+  misc: {
+    backToTop: "Back to top",
+  },
   meta: {
     pageTitle: "Daniel Shaulov - Data & Analyst",
   },
@@ -396,6 +399,9 @@ const he: typeof en = {
     toggleAria: "החלפת שפה",
     en: "EN",
     he: "HE",
+  },
+  misc: {
+    backToTop: "חזרה למעלה",
   },
   meta: {
     pageTitle: "דניאל שאולוב - אנליסט נתונים",

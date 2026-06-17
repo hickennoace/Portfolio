@@ -188,3 +188,26 @@ html:not(.dark) .meteor::after {
 .animate-bounce-arrow {
   animation: bounce-arrow 2.4s ease-in-out infinite;
 }
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Reduced motion — honour the OS/browser "reduce motion" preference.
+   Framer-driven interaction effects are gated in JS via useReducedMotion();
+   this block neutralises the always-on CSS loops (orbs, meteors, bounce, ping)
+   and clamps every transition/animation so nothing moves on its own.
+   ────────────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .orb-1, .orb-2, .orb-3, .orb-4, .orb-5,
+  .meteor,
+  .animate-bounce-arrow {
+    animation: none !important;
+  }
+}

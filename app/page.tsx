@@ -1,5 +1,7 @@
 import BackgroundOrbs from "@/components/BackgroundOrbs";
 import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
+import ScrollToTop from "@/components/ScrollToTop";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -12,6 +14,7 @@ export default function Page() {
   return (
     <>
       <CustomCursor />
+      <ScrollProgress />
       <BackgroundOrbs />
       <Nav />
       <main className="relative z-10">
@@ -22,6 +25,7 @@ export default function Page() {
         <Projects />
         <Connect />
       </main>
+      <ScrollToTop />
     </>
   );
 }
