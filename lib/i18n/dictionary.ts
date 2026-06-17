@@ -127,6 +127,7 @@ const en = {
     eyebrow: "Selected Work",
     title: "Things I've built.",
     githubProfile: "GitHub profile",
+    view: "View",
     items: [
       {
         category: "AI · Analytics",
@@ -349,6 +350,7 @@ const he: typeof en = {
     eyebrow: "פרויקטים נבחרים",
     title: "מה בניתי.",
     githubProfile: "פרופיל GitHub",
+    view: "צפייה",
     items: [
       {
         category: "בינה מלאכותית · אנליטיקה",

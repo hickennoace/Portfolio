@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
   const [isTouch, setIsTouch] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [label, setLabel] = useState("");
 
   const mx = useMotionValue(-200);
   const my = useMotionValue(-200);
@@ -31,6 +32,8 @@ export default function CustomCursor() {
     // (120-240Hz) was the desktop slowdown.
     const over = (e: MouseEvent) => {
       const el = e.target as HTMLElement;
+      const labelEl = el.closest<HTMLElement>("[data-cursor]");
+      setLabel(labelEl?.dataset.cursor ?? "");
       setIsHovering(
         !!el.closest('a, button, [role="button"], input, select, label, [data-cursor]')
       );
@@ -53,6 +56,8 @@ export default function CustomCursor() {
 
   if (!mounted || isTouch) return null;
 
+  const hasLabel = label !== "";
+
   return (
     <>
       {/* Exact-follow dot */}
@@ -69,17 +74,32 @@ export default function CustomCursor() {
         style={{ x: sx, y: sy, marginLeft: -20, marginTop: -20 }}
         initial={{ borderColor: "rgba(59,130,246,0.4)", backgroundColor: "transparent", opacity: 0 }}
         animate={{
-          scale: isHovering ? 1.75 : 1,
+          scale: hasLabel ? 2.2 : isHovering ? 1.75 : 1,
           opacity: isVisible ? 1 : 0,
-          borderColor: isHovering
-            ? "rgba(96,165,250,0.75)"
-            : "rgba(59,130,246,0.4)",
-          backgroundColor: isHovering
-            ? "rgba(59,130,246,0.07)"
-            : "transparent",
+          borderColor: isHovering ? "rgba(96,165,250,0.75)" : "rgba(59,130,246,0.4)",
+          backgroundColor: isHovering ? "rgba(59,130,246,0.07)" : "transparent",
         }}
         transition={{ duration: 0.2 }}
       />
+
+      {/* Contextual label pill (e.g. "View ↗" over project cards) */}
+      <AnimatePresence>
+        {hasLabel && isVisible && (
+          <motion.div
+            key="cursor-label"
+            className="fixed top-0 left-0 z-[9999] pointer-events-none whitespace-nowrap rounded-full
+                       bg-blue-600 text-white text-[11px] font-semibold px-3 py-1.5
+                       shadow-[0_6px_20px_rgba(59,130,246,0.45)]"
+            style={{ x: sx, y: sy, marginLeft: 16, marginTop: 16 }}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.6 }}
+            transition={{ duration: 0.16 }}
+          >
+            {label}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

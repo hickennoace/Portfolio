@@ -205,6 +205,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={project.title}
+                      data-cursor={`${t.projects.view} ↗`}
                       className="absolute inset-0 z-10"
                     />
 
