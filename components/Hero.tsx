@@ -15,6 +15,7 @@ import Constellation from "@/components/Constellation";
 import RotatingText from "@/components/RotatingText";
 import Magnetic from "@/components/Magnetic";
 import MaskedWords from "@/components/MaskedWords";
+import TiltCard from "@/components/TiltCard";
 import { EASE, stagger as staggerVariants, fadeUp } from "@/lib/motion";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
@@ -244,10 +245,12 @@ export default function Hero() {
           {/* ── Profile image — large square, full color, permanent blue glow ── */}
           <motion.div
             variants={up}
-            style={{ y: imageY }}
+            style={{ y: imageY, perspective: 900 }}
             className="order-1 sm:order-2 shrink-0"
           >
-            <div
+            <TiltCard
+              max={9}
+              spotlight={false}
               className="group relative w-56 h-56 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-2xl
                          ring-2 ring-blue-500/30 dark:ring-blue-400/25
                          shadow-[0_10px_45px_-8px_rgba(59,130,246,0.45),0_0_0_1px_rgba(59,130,246,0.15)]
@@ -255,7 +258,7 @@ export default function Hero() {
                          hover:ring-blue-500/55 dark:hover:ring-blue-400/50
                          hover:shadow-[0_15px_60px_-6px_rgba(59,130,246,0.6),0_0_0_1px_rgba(59,130,246,0.25)]
                          dark:hover:shadow-[0_18px_70px_-4px_rgba(59,130,246,0.7),0_0_0_1px_rgba(96,165,250,0.3)]
-                         transition-all duration-500"
+                         transition-shadow duration-500"
             >
               {/* Soft blue aura behind image */}
               <div
@@ -272,7 +275,7 @@ export default function Hero() {
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </div>
-            </div>
+            </TiltCard>
           </motion.div>
 
         </div>
