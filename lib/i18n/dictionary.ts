@@ -127,6 +127,8 @@ const en = {
     eyebrow: "Selected Work",
     title: "Things I've built.",
     githubProfile: "GitHub profile",
+    view: "View",
+    filters: { all: "All", analytics: "Analytics", finance: "Finance", web: "Web & Apps" },
     items: [
       {
         category: "AI · Analytics",
@@ -198,18 +200,11 @@ const en = {
     en: "EN",
     he: "HE",
   },
-  metrics: {
-    eyebrow: "By the numbers",
-    items: [
-      { label: "GPA" },
-      { label: "Projects shipped" },
-      { label: "Tools & technologies" },
-      { label: "Languages spoken" },
-    ],
-  },
   misc: {
     backToTop: "Back to top",
     home: "Home",
+    konami: "You found the secret! 🎉",
+    tabAway: "👋 Come back!",
   },
   cmdk: {
     placeholder: "Type a command or search…",
@@ -357,6 +352,8 @@ const he: typeof en = {
     eyebrow: "פרויקטים נבחרים",
     title: "מה בניתי.",
     githubProfile: "פרופיל GitHub",
+    view: "צפייה",
+    filters: { all: "הכול", analytics: "אנליטיקה", finance: "פיננסים", web: "ווב ואפליקציות" },
     items: [
       {
         category: "בינה מלאכותית · אנליטיקה",
@@ -428,18 +425,11 @@ const he: typeof en = {
     en: "EN",
     he: "HE",
   },
-  metrics: {
-    eyebrow: "במספרים",
-    items: [
-      { label: "ממוצע ציונים" },
-      { label: "פרויקטים" },
-      { label: "כלים וטכנולוגיות" },
-      { label: "שפות" },
-    ],
-  },
   misc: {
     backToTop: "חזרה למעלה",
     home: "בית",
+    konami: "מצאת את הסוד! 🎉",
+    tabAway: "👋 חוזרים?",
   },
   cmdk: {
     placeholder: "הקלידו פקודה או חיפוש…",

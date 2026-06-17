@@ -26,10 +26,12 @@ export default function TiltCard({
   children,
   className,
   max = 7,
+  spotlight = true,
 }: {
   children: ReactNode;
   className?: string;
   max?: number;
+  spotlight?: boolean;
 }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
@@ -45,7 +47,7 @@ export default function TiltCard({
   // Raw pixel coords for the spotlight centre.
   const sx = useMotionValue(0);
   const sy = useMotionValue(0);
-  const spotlight = useMotionTemplate`radial-gradient(240px circle at ${sx}px ${sy}px, rgba(59,130,246,0.16), transparent 72%)`;
+  const spotlightBg = useMotionTemplate`radial-gradient(240px circle at ${sx}px ${sy}px, rgba(59,130,246,0.16), transparent 72%)`;
 
   const handleEnter = () => {
     rect.current = ref.current?.getBoundingClientRect() ?? null;
@@ -83,11 +85,13 @@ export default function TiltCard({
       className={className}
     >
       {/* Cursor-following spotlight (desktop pointers only) */}
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300 hidden sm:block"
-        style={{ background: spotlight, opacity: hovered ? 1 : 0 }}
-      />
+      {spotlight && (
+        <motion.div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 rounded-2xl transition-opacity duration-300 hidden sm:block"
+          style={{ background: spotlightBg, opacity: hovered ? 1 : 0 }}
+        />
+      )}
       {children}
     </motion.div>
   );

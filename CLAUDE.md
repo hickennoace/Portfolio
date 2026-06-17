@@ -125,6 +125,27 @@ Guiding principles:
 > (⌘K / Ctrl-K + Nav search chip), confetti on contact success (`canvas-confetti`,
 > dynamically imported, reduced-motion-safe). New dep: `canvas-confetti`.
 >
+> **v4 (more fun):** ✅ Phase 16–20.
+> Removed the `Metrics`/"By the numbers" band (+ `CountUp`/`Sparkline`) at the
+> owner's request. New: `ScrambleText` (decode effect on section eyebrows), hero
+> portrait 3D tilt (reuses `TiltCard` with `spotlight={false}`), `TechMarquee`
+> (infinite CSS tool ribbon between About and WhatIDo), `KonamiEasterEgg`
+> (↑↑↓↓←→←→ B A → confetti party + toast).
+>
+> **v5 (maximise existing sections, no new ones):** ✅ Phase 21–25.
+> Removed the tech marquee. Experience rebuilt as an animated **timeline**
+> (scroll-linked gradient connector + spring node dots). About languages became
+> **proficiency bars** that fill on scroll. Projects gained a big faded **index
+> watermark** per card. WhatIDo **staggers tags** in on panel open. Hero name and
+> the Connect title use an animated **gradient sheen** (`.text-sheen`); Connect
+> contact cards are now **magnetic**. (Later removed the project index watermark.)
+>
+> **v6 (more features):** ✅ Phase 26–28.
+> `CustomCursor` shows a contextual label via `data-cursor` ("View ↗" over project
+> cards). Projects gained **category filter pills** (All / Analytics / Finance /
+> Web & Apps, sliding `layoutId` pill, resets pagination). `TabTitle` swaps the
+> document title to a friendly nudge when the tab loses focus.
+>
 > Note: the standalone count-up that was dropped in v1 (no numeric stat in About)
 > is realised properly in v2's `Metrics` band with real figures.
 

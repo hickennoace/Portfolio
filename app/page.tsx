@@ -6,10 +6,11 @@ import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import SectionNav from "@/components/SectionNav";
 import CommandPalette from "@/components/CommandPalette";
+import KonamiEasterEgg from "@/components/KonamiEasterEgg";
+import TabTitle from "@/components/TabTitle";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Metrics from "@/components/Metrics";
 import WhatIDo from "@/components/WhatIDo";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -28,13 +29,14 @@ export default function Page() {
       <main className="relative z-10">
         <Hero />
         <About />
-        <Metrics />
         <WhatIDo />
         <Experience />
         <Projects />
         <Connect />
       </main>
       <CommandPalette />
+      <KonamiEasterEgg />
+      <TabTitle />
       <ScrollToTop />
     </>
   );

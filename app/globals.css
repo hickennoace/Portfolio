@@ -222,6 +222,16 @@ html:not(.dark) .meteor::after {
   animation: bounce-arrow 2.4s ease-in-out infinite;
 }
 
+/* ── Flowing gradient sheen for headline text (bg-clip-text) ── */
+@keyframes textSheen {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-sheen {
+  background-size: 200% auto;
+  animation: textSheen 7s linear infinite;
+}
+
 /* ──────────────────────────────────────────────────────────────────────────
    Reduced motion — honour the OS/browser "reduce motion" preference.
    Framer-driven interaction effects are gated in JS via useReducedMotion();

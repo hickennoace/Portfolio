@@ -5,11 +5,12 @@ import { AnimatePresence, motion, useInView, type Variants } from "framer-motion
 import { ChevronLeft, ChevronRight, Github } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 import { EASE, SPRING_SNAPPY } from "@/lib/motion";
+import ScrambleText from "@/components/ScrambleText";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const PER_PAGE = 4;
 
-type Config = { id: string; title: string; tags: string[]; href: string; repo: string };
+type Config = { id: string; title: string; tags: string[]; href: string; repo: string; groups: string[] };
 
 const projectConfig: Config[] = [
   {
@@ -18,6 +19,7 @@ const projectConfig: Config[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "ECharts", "Web Worker"],
     href: "https://myanalyst.net",
     repo: "https://github.com/hickennoace/MyAnalyst",
+    groups: ["analytics", "web"],
   },
   {
     id: "02",
@@ -25,6 +27,7 @@ const projectConfig: Config[] = [
     tags: ["Python", "Jupyter Notebook", "Pandas", "Statistical tests"],
     href: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
     repo: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
+    groups: ["finance"],
   },
   {
     id: "03",
@@ -32,6 +35,7 @@ const projectConfig: Config[] = [
     tags: ["PowerBI", "Python", "SQL", "DAX", "TMDL"],
     href: "https://github.com/hickennoace/CustomerBehaviour",
     repo: "https://github.com/hickennoace/CustomerBehaviour",
+    groups: ["analytics"],
   },
   {
     id: "04",
@@ -39,6 +43,7 @@ const projectConfig: Config[] = [
     tags: ["PowerBI", "Power Query", "DAX", "Python"],
     href: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
     repo: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
+    groups: ["analytics"],
   },
   {
     id: "05",
@@ -46,6 +51,7 @@ const projectConfig: Config[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "TradingView", "SSE", "Gemini AI"],
     href: "https://ticker-io.vercel.app",
     repo: "https://github.com/hickennoace/TickerIO",
+    groups: ["finance", "web"],
   },
   {
     id: "06",
@@ -53,6 +59,7 @@ const projectConfig: Config[] = [
     tags: ["Power BI", "DAX", "TMDL", "Power Query"],
     href: "https://github.com/hickennoace/Car-Company",
     repo: "https://github.com/hickennoace/Car-Company",
+    groups: ["analytics", "finance"],
   },
   {
     id: "07",
@@ -60,8 +67,11 @@ const projectConfig: Config[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     href: "https://github.com/hickennoace/Portfolio",
     repo: "https://github.com/hickennoace/Portfolio",
+    groups: ["web"],
   },
 ];
+
+const FILTERS = ["all", "analytics", "finance", "web"] as const;
 
 const pageVariants: Variants = {
   enter: (dir: number) => ({ x: dir >= 0 ? 60 : -60, opacity: 0 }),
@@ -99,11 +109,22 @@ export default function Projects() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const { t } = useLang();
 
-  const projects = t.projects.items.map((it, i) => ({ ...projectConfig[i], ...it }));
+  const allProjects = t.projects.items.map((it, i) => ({ ...projectConfig[i], ...it }));
 
-  const totalPages = Math.ceil(projects.length / PER_PAGE);
+  const [filter, setFilter] = useState<(typeof FILTERS)[number]>("all");
   const [page, setPage] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  const projects =
+    filter === "all" ? allProjects : allProjects.filter((p) => p.groups.includes(filter));
+  const totalPages = Math.max(1, Math.ceil(projects.length / PER_PAGE));
+
+  const selectFilter = (key: (typeof FILTERS)[number]) => {
+    if (key === filter) return;
+    setDirection(0);
+    setPage(0);
+    setFilter(key);
+  };
 
   const paginate = (dir: number) => {
     setDirection(dir);
@@ -142,10 +163,10 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          {t.projects.eyebrow}
+          <ScrambleText text={t.projects.eyebrow} />
         </motion.span>
 
-        <div className="flex items-end justify-between mb-14 flex-wrap gap-4">
+        <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -169,6 +190,40 @@ export default function Projects() {
           </motion.a>
         </div>
 
+        {/* Category filter pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.16 }}
+          className="flex flex-wrap gap-2 mb-10"
+        >
+          {FILTERS.map((key) => {
+            const isActive = filter === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                onClick={() => selectFilter(key)}
+                aria-pressed={isActive}
+                className={`relative px-4 py-1.5 rounded-full text-[12.5px] font-medium border transition-colors duration-200 ${
+                  isActive
+                    ? "text-white border-transparent"
+                    : "text-slate-600 dark:text-slate-400 border-black/[0.1] dark:border-white/[0.1] hover:text-slate-900 dark:hover:text-white hover:border-blue-400/45"
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="project-filter-pill"
+                    className="absolute inset-0 rounded-full bg-blue-600"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">{t.projects.filters[key]}</span>
+              </button>
+            );
+          })}
+        </motion.div>
+
         <div className="flex items-stretch gap-2 sm:gap-4">
           {hasPager && (
             <ArrowBtn dir={-1}>
@@ -179,7 +234,7 @@ export default function Projects() {
           <div className="flex-1 min-w-0 overflow-hidden">
             <AnimatePresence mode="wait" custom={direction} initial={false}>
               <motion.div
-                key={page}
+                key={`${filter}-${page}`}
                 custom={direction}
                 variants={pageVariants}
                 initial="enter"
@@ -204,6 +259,7 @@ export default function Projects() {
                       target="_blank"
                       rel="noreferrer"
                       aria-label={project.title}
+                      data-cursor={`${t.projects.view} ↗`}
                       className="absolute inset-0 z-10"
                     />
 
