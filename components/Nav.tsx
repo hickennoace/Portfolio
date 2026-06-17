@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageToggle from "@/components/LanguageToggle";
 import { useLang } from "@/lib/i18n/LanguageProvider";
@@ -23,8 +23,13 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [isMac, setIsMac] = useState(false);
   const { t, dir } = useLang();
   const active = useActiveSection(SECTION_IDS);
+
+  useEffect(() => {
+    setIsMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
+  }, []);
 
   useEffect(() => {
     const handle = () => setScrolled(window.scrollY > 28);
@@ -100,6 +105,16 @@ export default function Nav() {
                 {t.nav.available}
               </span>
             </div>
+
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("cmdk:open"))}
+              aria-label="Open command palette"
+              className="hidden lg:inline-flex items-center gap-1.5 h-8 ps-2.5 pe-2 rounded-lg border border-black/[0.1] dark:border-white/[0.1] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-blue-500/40 hover:bg-blue-500/[0.05] transition-all duration-200"
+            >
+              <Search size={13} strokeWidth={2} />
+              <kbd className="text-[11px] font-medium tracking-wide">{isMac ? "⌘" : "Ctrl"} K</kbd>
+            </button>
 
             <LanguageToggle />
             <ThemeToggle />

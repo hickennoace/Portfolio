@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 import ScrollToTop from "@/components/ScrollToTop";
 import SectionNav from "@/components/SectionNav";
+import CommandPalette from "@/components/CommandPalette";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -33,6 +34,7 @@ export default function Page() {
         <Projects />
         <Connect />
       </main>
+      <CommandPalette />
       <ScrollToTop />
     </>
   );
