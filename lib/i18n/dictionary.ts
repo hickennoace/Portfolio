@@ -209,6 +209,7 @@ const en = {
   },
   misc: {
     backToTop: "Back to top",
+    home: "Home",
   },
   meta: {
     pageTitle: "Daniel Shaulov - Data & Analyst",
@@ -424,6 +425,7 @@ const he: typeof en = {
   },
   misc: {
     backToTop: "חזרה למעלה",
+    home: "בית",
   },
   meta: {
     pageTitle: "דניאל שאולוב - אנליסט נתונים",

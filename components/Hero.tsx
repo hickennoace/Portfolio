@@ -127,6 +127,7 @@ export default function Hero() {
 
   return (
     <section
+      id="top"
       ref={sectionRef}
       className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 overflow-hidden"
     >
