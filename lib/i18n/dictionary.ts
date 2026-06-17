@@ -201,7 +201,6 @@ const en = {
   misc: {
     backToTop: "Back to top",
     home: "Home",
-    techStack: "The tools I work with",
     konami: "You found the secret! 🎉",
   },
   cmdk: {
@@ -424,7 +423,6 @@ const he: typeof en = {
   misc: {
     backToTop: "חזרה למעלה",
     home: "בית",
-    techStack: "הכלים שאני עובד איתם",
     konami: "מצאת את הסוד! 🎉",
   },
   cmdk: {
