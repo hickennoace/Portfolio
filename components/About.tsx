@@ -30,8 +30,8 @@ export default function About() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, VIEWPORT_ONCE);
   const reduce = useReducedMotion();
-  const { t, dir } = useLang();
-  const slide = dir === "rtl" ? 24 : -24;
+  const { t } = useLang();
+  const slide = -24;
 
   return (
     <section id="about" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">

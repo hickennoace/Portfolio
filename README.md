@@ -49,7 +49,7 @@ app/
   api/contact/route.ts Server route that sends the contact form via Resend.
 components/
   Nav.tsx              Top nav with anchor links to each section.
-  Hero.tsx             Headline, CV download (EN/HE), call to action.
+  Hero.tsx             Headline, CV download, call to action.
   About.tsx            Bio and background.
   WhatIDo.tsx          What I'm focused on right now.
   Experience.tsx       Roles and timeline.
@@ -60,7 +60,7 @@ components/
   CustomCursor.tsx     Desktop-only cursor. Disabled on coarse pointers.
   MeteorShower.tsx     Slow meteor streaks behind the hero. Sparse on purpose.
   ThemeToggle.tsx      Light/dark toggle (with a placeholder before mount).
-public/                CV PDFs (Daniel Shaulov - Resume (EN).pdf, Daniel Shaulov - Resume (HE).pdf), headshot, favicons.
+public/                CV PDF (Daniel Shaulov - Resume.pdf), headshot, favicons.
 ```
 
 A couple of details worth knowing if you fork this:
@@ -71,7 +71,7 @@ A couple of details worth knowing if you fork this:
 
 ## To make it yours
 
-- Swap the CV PDFs in `public/` (`Daniel Shaulov - Resume (EN).pdf`, `Daniel Shaulov - Resume (HE).pdf`).
+- Swap the CV PDF in `public/` (`Daniel Shaulov - Resume.pdf`).
 - Replace the headshot reference in `Hero.tsx`.
 - Edit copy directly in each component. No CMS, everything is colocated with the component.
 - Update social links wherever they appear (`Nav.tsx`, `Connect.tsx`).
