@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
-import LanguageToggle from "@/components/LanguageToggle";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 import { useActiveSection } from "@/lib/useActiveSection";
 
@@ -24,7 +23,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [isMac, setIsMac] = useState(false);
-  const { t, dir } = useLang();
+  const { t } = useLang();
   const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ export default function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  const linkSlideX = dir === "rtl" ? 24 : -24;
+  const linkSlideX = -24;
 
   return (
     <>
@@ -116,7 +115,6 @@ export default function Nav() {
               <kbd className="text-[11px] font-medium tracking-wide">{isMac ? "⌘" : "Ctrl"} K</kbd>
             </button>
 
-            <LanguageToggle />
             <ThemeToggle />
 
             {/* Hamburger — mobile only */}

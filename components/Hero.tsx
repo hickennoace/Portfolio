@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import {
   motion,
-  AnimatePresence,
   useScroll,
   useTransform,
   useReducedMotion,
 } from "framer-motion";
-import { ArrowDown, Download, ChevronDown } from "lucide-react";
+import { ArrowDown, Download } from "lucide-react";
 import Image from "next/image";
 import MeteorShower from "@/components/MeteorShower";
 import Constellation from "@/components/Constellation";
@@ -23,90 +22,17 @@ const stagger = staggerVariants(0.12, 0.28);
 const up = fadeUp(32, 0.78);
 
 function CvDownloadButton() {
-  const [open, setOpen] = useState(false);
-  const wrapRef = useRef<HTMLDivElement>(null);
   const { t } = useLang();
 
-  const cvOptions = [
-    { label: t.hero.cvEn, href: "/Daniel%20Shaulov%20-%20Resume%20(EN).pdf", flag: "EN" },
-    { label: t.hero.cvHe, href: "/Daniel%20Shaulov%20-%20Resume%20(HE).pdf", flag: "HE" },
-  ];
-
-  useEffect(() => {
-    if (!open) return;
-    const onClick = (e: MouseEvent) => {
-      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
-    document.addEventListener("mousedown", onClick);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onClick);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
   return (
-    <div ref={wrapRef} className="relative">
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-haspopup="menu"
-        aria-expanded={open}
-        className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-black/[0.12] dark:border-white/[0.12] text-slate-600 dark:text-slate-400 hover:border-black/[0.25] dark:hover:border-white/25 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
-      >
-        <Download size={14} strokeWidth={2} />
-        {t.hero.downloadCV}
-        <motion.span
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.22, ease: EASE }}
-          className="flex"
-        >
-          <ChevronDown size={14} strokeWidth={2} />
-        </motion.span>
-      </button>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            role="menu"
-            initial={{ opacity: 0, y: -6, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0,  scale: 1    }}
-            exit={{    opacity: 0, y: -6, scale: 0.97 }}
-            transition={{ duration: 0.18, ease: EASE }}
-            className="absolute start-1/2 sm:start-0 -translate-x-1/2 rtl:translate-x-1/2 sm:translate-x-0 sm:rtl:translate-x-0 top-full mt-2 w-56 origin-top
-                       rounded-xl border border-black/[0.1] dark:border-white/[0.08]
-                       bg-white/95 dark:bg-neutral-950/95 backdrop-blur-xl
-                       shadow-[0_10px_40px_rgba(15,23,42,0.12)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.45)]
-                       z-30 p-1.5"
-          >
-            {cvOptions.map((opt) => (
-              <a
-                key={opt.href}
-                href={opt.href}
-                download
-                onClick={() => setOpen(false)}
-                role="menuitem"
-                className="group/item flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13.5px] font-medium
-                           text-slate-700 dark:text-slate-300
-                           hover:bg-blue-500/10 hover:text-blue-700 dark:hover:text-blue-300
-                           transition-colors duration-150"
-              >
-                <span className="flex items-center justify-center w-7 h-7 rounded-md
-                                 bg-blue-500/10 border border-blue-500/20
-                                 text-[10px] font-bold tracking-wider
-                                 text-blue-600 dark:text-blue-400
-                                 group-hover/item:bg-blue-500/18">
-                  {opt.flag}
-                </span>
-                <span className="flex-1">{opt.label}</span>
-                <Download size={13} strokeWidth={2} className="opacity-60 group-hover/item:opacity-100" />
-              </a>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <a
+      href="/Daniel%20Shaulov%20-%20Resume.pdf"
+      download
+      className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 border border-black/[0.12] dark:border-white/[0.12] text-slate-600 dark:text-slate-400 hover:border-black/[0.25] dark:hover:border-white/25 hover:text-slate-900 dark:hover:text-white hover:bg-black/[0.04] dark:hover:bg-white/[0.05] font-semibold text-sm rounded-xl transition-all duration-300 hover:-translate-y-[2px] active:scale-[0.97]"
+    >
+      <Download size={14} strokeWidth={2} />
+      {t.hero.downloadCV}
+    </a>
   );
 }
 

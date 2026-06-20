@@ -148,8 +148,7 @@ export default function CommandPalette() {
           window.setTimeout(() => setOpen(false), 700);
         },
       },
-      { id: "cv-en", label: t.cmdk.downloadCvEn, group: t.cmdk.actions, icon: Download, keywords: "resume", run: () => download("/Daniel%20Shaulov%20-%20Resume%20(EN).pdf") },
-      { id: "cv-he", label: t.cmdk.downloadCvHe, group: t.cmdk.actions, icon: Download, keywords: "resume", run: () => download("/Daniel%20Shaulov%20-%20Resume%20(HE).pdf") },
+      { id: "cv", label: t.cmdk.downloadCv, group: t.cmdk.actions, icon: Download, keywords: "resume", run: () => download("/Daniel%20Shaulov%20-%20Resume.pdf") },
       { id: "gh", label: t.cmdk.github, group: t.cmdk.actions, icon: Github, run: () => { window.open("https://github.com/hickennoace", "_blank"); setOpen(false); } },
       { id: "li", label: t.cmdk.linkedin, group: t.cmdk.actions, icon: Linkedin, run: () => { window.open("https://www.linkedin.com/in/danielshaulov/", "_blank"); setOpen(false); } },
     ];

@@ -17,19 +17,19 @@ Live at https://danielshaulov.vercel.app — deployed on Vercel.
 - Tailwind CSS 3.4 (class-based dark mode)
 - Framer Motion 12 — the primary animation tool
 - Lenis — smooth scroll (desktop fine-pointer only; see `components/SmoothScroll.tsx`)
-- `next-themes` (light default, no system theme) · custom i18n (EN/HE + RTL)
+- `next-themes` (light default, no system theme) · English-only copy in `lib/i18n/dictionary.ts`
 - `lucide-react` icons · `resend` for the contact form
 - Fonts: Inter Variable (body), JetBrains Mono, Instrument Serif
 
 **Layout**
 ```
 app/
-  layout.tsx        ThemeProvider → LanguageProvider → children
+  layout.tsx        ThemeProvider → MotionConfig → children
   page.tsx          Composes the section components in order
   globals.css       Theme vars, cursor-hiding, orb/meteor keyframes, scrollbar
   api/contact/      Resend-backed contact endpoint
 components/         One file per section + ambient effects (see §3)
-lib/i18n/           LanguageProvider + dictionary (all copy lives here)
+lib/i18n/           useLang() hook + dictionary (all copy lives here, English-only)
 ```
 
 Section order on the page: `Hero → About → WhatIDo → Experience → Projects → Connect`,
@@ -201,9 +201,9 @@ Each phase is independently shippable. Build → lint → eyeball → commit per
 ## 6. Conventions for this codebase
 - **`"use client"`** on any component using hooks/motion (all section components are
   client components; keep `page.tsx`/`layout.tsx` server where possible).
-- **Copy lives in `lib/i18n/dictionary.ts`** — never hardcode user-facing strings;
-  add EN + HE keys and read them via `useLang()`. Respect `dir` for RTL (note the
-  existing `slide = dir === "rtl" ? … : …` pattern).
+- **Copy lives in `lib/i18n/dictionary.ts`** — the site is English-only; add the
+  copy there and read it via `useLang()` (returns the English `t` object). Prefer
+  this over hardcoding user-facing strings in components.
 - **Easing**: import `EASE` from `lib/motion.ts` (after Phase 0); don't redeclare.
 - **Styling**: Tailwind utility classes, blue-centric palette
   (`blue-500/600`, indigo accents), `rounded-2xl` cards, `/[0.0x]` alpha borders.
@@ -214,7 +214,7 @@ Each phase is independently shippable. Build → lint → eyeball → commit per
 ## 7. Definition of done (per change)
 1. `npm run build` passes (no type errors).
 2. `npm run lint` clean.
-3. Works in **light + dark** and **EN + HE (RTL)**.
+3. Works in **light + dark**.
 4. Respects `prefers-reduced-motion`.
 5. No mobile regression — orbs/meteors/cursor rules from §3 still hold.
 6. Committed with a clear message; **pushed only when Daniel asks.**

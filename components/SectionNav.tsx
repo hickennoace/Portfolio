@@ -46,7 +46,7 @@ export default function SectionNav() {
                          bg-white/90 dark:bg-neutral-900/90 backdrop-blur px-2 py-1
                          text-[11px] font-medium text-slate-700 dark:text-slate-200
                          border border-black/[0.06] dark:border-white/[0.08] shadow-sm
-                         opacity-0 translate-x-1 rtl:-translate-x-1
+                         opacity-0 translate-x-1
                          group-hover:opacity-100 group-hover:translate-x-0
                          transition-all duration-200"
             >

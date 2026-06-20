@@ -227,7 +227,7 @@ export default function Projects() {
         <div className="flex items-stretch gap-2 sm:gap-4">
           {hasPager && (
             <ArrowBtn dir={-1}>
-              <ChevronLeft size={20} strokeWidth={1.75} className="rtl:-scale-x-100" />
+              <ChevronLeft size={20} strokeWidth={1.75} />
             </ArrowBtn>
           )}
 
@@ -311,7 +311,7 @@ export default function Projects() {
 
           {hasPager && (
             <ArrowBtn dir={1}>
-              <ChevronRight size={20} strokeWidth={1.75} className="rtl:-scale-x-100" />
+              <ChevronRight size={20} strokeWidth={1.75} />
             </ArrowBtn>
           )}
         </div>
