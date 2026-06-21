@@ -22,6 +22,14 @@ const projectConfig: Config[] = [
     groups: ["analytics", "web"],
   },
   {
+    id: "08",
+    title: "🔮 Churn Prediction Engine",
+    tags: ["Python", "PostgreSQL", "scikit-learn", "FastAPI", "Power BI", "SQL"],
+    href: "https://github.com/hickennoace/churn-prediction-engine",
+    repo: "https://github.com/hickennoace/churn-prediction-engine",
+    groups: ["analytics", "finance"],
+  },
+  {
     id: "02",
     title: "📈 Ethereum Macro Analysis",
     tags: ["Python", "Jupyter Notebook", "Pandas", "Statistical tests"],

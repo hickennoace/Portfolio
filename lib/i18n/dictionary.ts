@@ -134,6 +134,11 @@ const en = {
           "An AI-powered alternative to Power BI / Tableau: drop in a CSV, Excel, JSON, or SQLite file and get a clean, fully-explained dashboard - cleaning, KPIs, real statistics, forecasting, segmentation, and plain-language insights - in seconds. Ask your data questions in plain English, join tables, and export a polished report. The entire analysis engine runs in your browser, so your raw data never leaves the page.",
       },
       {
+        category: "ML · Data Engineering",
+        description:
+          "An end-to-end churn & revenue engine on ~23M real KKBox subscription transactions. A PostgreSQL pipeline cleans the raw data, advanced SQL computes the SaaS economics (MRR, ARPU, LTV), and a calibrated Random-Forest model scores every active customer 1–100 for churn risk (ROC-AUC 0.907). Results are served through a FastAPI layer and a 4-page Power BI dashboard. Surfaced ~NT$13.8M/month of revenue at risk and pinned manual-pay billing as the biggest churn driver — 37% vs 5% on auto-renew.",
+      },
+      {
         category: "Data · Finance",
         description:
           "Tested whether ETH price moves with the macro picture (Fed decisions, DXY, NDAQ, BTC dominance) using on-chain data and multivariate regression. Found one statistically significant leading indicator ahead of major drawdowns, validated across five years.",
