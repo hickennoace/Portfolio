@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { EASE, SPRING_SNAPPY, VIEWPORT_ONCE } from "@/lib/motion";
-import ScrambleText from "@/components/ScrambleText";
+import SectionLabel from "@/components/SectionLabel";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const skillsContainer = {
@@ -33,6 +33,10 @@ export default function About() {
   const { t } = useLang();
   const slide = -24;
 
+  if (process.env.NODE_ENV !== "production" && LANG_LEVELS.length !== t.about.languages.length) {
+    throw new Error("About: LANG_LEVELS length must match dictionary languages");
+  }
+
   return (
     <section id="about" ref={ref} className="py-28 sm:py-36 px-5 sm:px-6">
       <div className="max-w-6xl mx-auto">
@@ -42,7 +46,7 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          <ScrambleText text={t.about.eyebrow} />
+          <SectionLabel index="01">{t.about.eyebrow}</SectionLabel>
         </motion.span>
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
@@ -111,7 +115,7 @@ export default function About() {
                   className="p-5 rounded-xl bg-black/[0.04] dark:bg-white/[0.025] border border-black/[0.09] dark:border-white/[0.07] hover:border-blue-500/25 hover:shadow-[0_8px_30px_rgba(59,130,246,0.1)] transition-colors duration-300"
                 >
                   <p className="text-[15px] text-blue-600/80 dark:text-blue-400/80 font-semibold">{stat.label}</p>
-                  <p className="text-[13px] text-slate-500 mt-1">{stat.sub}</p>
+                  <p className="text-[13px] text-slate-600 dark:text-slate-400 mt-1">{stat.sub}</p>
                 </motion.div>
               ))}
             </div>
@@ -126,7 +130,7 @@ export default function About() {
                   <div key={lang}>
                     <div className="flex items-baseline justify-between mb-1.5">
                       <span className="text-[13px] text-slate-700 dark:text-slate-300 font-medium">{lang}</span>
-                      <span className="text-[12px] text-slate-500">{level}</span>
+                      <span className="text-[12px] text-slate-600 dark:text-slate-400">{level}</span>
                     </div>
                     <div className="h-1.5 rounded-full bg-black/[0.06] dark:bg-white/[0.07] overflow-hidden">
                       <motion.div

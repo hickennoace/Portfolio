@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, CheckCircle, AlertCircle } from "lucide-react";
+import { EASE } from "@/lib/motion";
+import { lockScroll, unlockScroll } from "@/lib/scrollLock";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLang } from "@/lib/i18n/LanguageProvider";
-
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -24,19 +25,28 @@ export default function ContactModal({ isOpen, onClose }: Props) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const { t } = useLang();
+
+  useFocusTrap(isOpen, modalRef);
 
   useEffect(() => {
     if (!isOpen) return;
-    document.body.style.overflow = "hidden";
-    setTimeout(() => firstFieldRef.current?.focus(), 80);
-    return () => { document.body.style.overflow = ""; };
+    lockScroll();
+    const id = setTimeout(() => firstFieldRef.current?.focus(), 80);
+    return () => {
+      clearTimeout(id);
+      unlockScroll();
+    };
   }, [isOpen]);
 
   useEffect(() => {
     if (!isOpen) return;
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        // Defer to the command palette if it's stacked on top, so Escape
+        // dismisses only the topmost overlay (and doesn't wipe a half-typed message).
+        if (document.body.dataset.cmdkOpen) return;
         setName(""); setEmail(""); setMessage("");
         setStatus("idle"); setErrorMsg("");
         onClose();
@@ -81,6 +91,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === "sending") return;
     setStatus("sending");
     setErrorMsg("");
     try {
@@ -115,8 +126,9 @@ export default function ContactModal({ isOpen, onClose }: Props) {
           />
 
           {/* Modal container */}
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 pointer-events-none">
+          <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-4 sm:p-6 overflow-y-auto pointer-events-none">
             <motion.div
+              ref={modalRef}
               key="modal"
               role="dialog"
               aria-modal="true"
@@ -126,7 +138,7 @@ export default function ContactModal({ isOpen, onClose }: Props) {
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.36, ease: EASE }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-lg pointer-events-auto bg-white dark:bg-[#0f0f0f] rounded-2xl border border-black/[0.1] dark:border-white/[0.1] shadow-[0_24px_80px_rgba(0,0,0,0.35)] overflow-hidden"
+              className="relative w-full max-w-lg pointer-events-auto bg-white dark:bg-[#0f0f0f] rounded-2xl border border-black/[0.1] dark:border-white/[0.1] shadow-[0_24px_80px_rgba(0,0,0,0.35)] max-h-[90dvh] overflow-y-auto my-6"
             >
               {/* Header */}
               <div className="flex items-center justify-between px-6 pt-6 pb-5 border-b border-black/[0.07] dark:border-white/[0.06]">

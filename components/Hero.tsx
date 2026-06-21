@@ -56,7 +56,7 @@ export default function Hero() {
     <section
       id="top"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-5 sm:px-8 overflow-hidden"
+      className="relative min-h-screen min-h-[100svh] flex items-center justify-center px-5 sm:px-8 overflow-hidden"
     >
       {/* Dot-grid — light mode: dark dots */}
       <motion.div
@@ -166,6 +166,23 @@ export default function Hero() {
               </Magnetic>
               <CvDownloadButton />
             </motion.div>
+
+            {/* Proof bar — hard numbers, above the fold */}
+            <motion.div
+              variants={up}
+              className="mt-10 pt-6 border-t border-black/[0.08] dark:border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-[460px] mx-auto sm:mx-0"
+            >
+              {t.hero.proof.map((p) => (
+                <div key={p.label} className="text-center sm:text-start">
+                  <div className="font-mono tabular-nums text-[20px] sm:text-[22px] font-bold tracking-tight text-slate-900 dark:text-white">
+                    {p.value}
+                  </div>
+                  <div className="mt-0.5 text-[10.5px] sm:text-[11px] text-slate-600 dark:text-slate-400 tracking-wide">
+                    {p.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* ── Profile image — large square, full color, permanent blue glow ── */}
@@ -193,7 +210,7 @@ export default function Hero() {
               />
               <div className="relative w-full h-full rounded-2xl overflow-hidden">
                 <Image
-                  src="/copy.png"
+                  src="/portrait.jpg"
                   alt={t.hero.portraitAlt}
                   fill
                   priority
@@ -212,7 +229,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 0.9 }}
-        className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 dark:text-slate-600"
+        className="absolute bottom-9 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-600 dark:text-slate-400"
       >
         <div className="animate-bounce-arrow">
           <ArrowDown size={15} strokeWidth={1.5} />

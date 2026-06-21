@@ -5,6 +5,7 @@ import { Sun, Moon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { EASE } from "@/lib/motion";
 
 /**
  * Theme toggle with a circular-reveal transition: the new theme wipes in from
@@ -60,7 +61,7 @@ export default function ThemeToggle() {
         },
         {
           duration: 520,
-          easing: "cubic-bezier(0.22,1,0.36,1)",
+          easing: `cubic-bezier(${EASE.join(",")})`,
           pseudoElement: "::view-transition-new(root)",
         }
       );

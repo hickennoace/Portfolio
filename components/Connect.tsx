@@ -6,7 +6,7 @@ import { Github, Linkedin, Mail, LucideIcon } from "lucide-react";
 import ContactModal from "./ContactModal";
 import Magnetic from "@/components/Magnetic";
 import { EASE, VIEWPORT_ONCE } from "@/lib/motion";
-import ScrambleText from "@/components/ScrambleText";
+import SectionLabel from "@/components/SectionLabel";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 type LinkConfig = { Icon: LucideIcon; key: "linkedinLabel" | "githubLabel"; display: string; href: string };
@@ -48,7 +48,7 @@ export default function Connect() {
             transition={{ duration: 0.6 }}
             className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-6"
           >
-            <ScrambleText text={t.connect.eyebrow} />
+            <SectionLabel index="05">{t.connect.eyebrow}</SectionLabel>
           </motion.span>
 
           <motion.h2
@@ -89,7 +89,7 @@ export default function Connect() {
                   <Mail size={16} strokeWidth={1.5} className="text-blue-600 dark:text-blue-400" />
                 </div>
                 <div className="text-start">
-                  <p className="text-[10px] text-slate-500 font-semibold tracking-[0.16em] uppercase">
+                  <p className="text-[10px] text-slate-600 dark:text-slate-400 font-semibold tracking-[0.16em] uppercase">
                     {t.connect.emailLabel}
                   </p>
                   <p className="text-[13px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
@@ -116,7 +116,7 @@ export default function Connect() {
                     <c.Icon size={16} strokeWidth={1.5} className="text-blue-600 dark:text-blue-400" />
                   </div>
                   <div className="text-start">
-                    <p className="text-[10px] text-slate-500 font-semibold tracking-[0.16em] uppercase">
+                    <p className="text-[10px] text-slate-600 dark:text-slate-400 font-semibold tracking-[0.16em] uppercase">
                       {t.connect[c.key]}
                     </p>
                     <p className="text-[13px] text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-200">
@@ -135,7 +135,7 @@ export default function Connect() {
             transition={{ duration: 0.9, delay: 0.55 }}
             className="mt-20 pt-7 border-t border-black/[0.06] dark:border-white/[0.04]"
           >
-            <p className="text-[11px] text-slate-500 dark:text-slate-600">
+            <p className="text-[11px] text-slate-600 dark:text-slate-400 font-mono">
               © {new Date().getFullYear()} Daniel Shaulov · {t.connect.builtWith}
             </p>
           </motion.div>

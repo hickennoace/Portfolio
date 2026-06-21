@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import { Briefcase, Shield, Lock, Users, LucideIcon } from "lucide-react";
 import { EASE, SPRING_SNAPPY, VIEWPORT_ONCE } from "@/lib/motion";
-import ScrambleText from "@/components/ScrambleText";
+import SectionLabel from "@/components/SectionLabel";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 type Config = { Icon: LucideIcon; tags: string[]; accent: boolean };
@@ -52,6 +52,10 @@ export default function Experience() {
   });
   const fill = useSpring(scrollYProgress, { stiffness: 120, damping: 30, restDelta: 0.001 });
 
+  if (process.env.NODE_ENV !== "production" && itemConfig.length !== t.experience.items.length) {
+    throw new Error("Experience: itemConfig length must match dictionary items");
+  }
+
   const experiences = t.experience.items.map((it, i) => ({ ...it, ...itemConfig[i] }));
 
   return (
@@ -63,7 +67,7 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          <ScrambleText text={t.experience.eyebrow} />
+          <SectionLabel index="03">{t.experience.eyebrow}</SectionLabel>
         </motion.span>
 
         <motion.h2
@@ -127,14 +131,14 @@ export default function Experience() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
                         <div>
-                          <p className="text-[16px] sm:text-[17px] font-bold text-slate-900 dark:text-white leading-tight">
+                          <h3 className="text-[16px] sm:text-[17px] font-bold text-slate-900 dark:text-white leading-tight">
                             {exp.role}
-                          </p>
+                          </h3>
                           <p className={`text-[13px] font-medium mt-0.5 ${exp.accent ? "text-blue-600 dark:text-blue-400" : "text-slate-600 dark:text-slate-400"}`}>
                             {exp.company}
                           </p>
                         </div>
-                        <span className="text-[12px] text-slate-500 font-mono shrink-0 mt-0.5">
+                        <span className="text-[12px] text-slate-600 dark:text-slate-400 font-mono shrink-0 mt-0.5">
                           {exp.period}
                         </span>
                       </div>

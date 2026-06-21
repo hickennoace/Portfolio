@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Plus, BarChart3, TrendingUp, Sparkles, GraduationCap, LucideIcon } from "lucide-react";
 import { EASE, VIEWPORT_ONCE } from "@/lib/motion";
-import ScrambleText from "@/components/ScrambleText";
+import SectionLabel from "@/components/SectionLabel";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const rowConfig: { Icon: LucideIcon; tags: string[] }[] = [
@@ -32,6 +32,10 @@ export default function WhatIDo() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const { t } = useLang();
 
+  if (process.env.NODE_ENV !== "production" && rowConfig.length !== t.whatIDo.rows.length) {
+    throw new Error("WhatIDo: rowConfig length must match dictionary rows");
+  }
+
   const rows = t.whatIDo.rows.map((r, i) => ({ ...r, ...rowConfig[i] }));
 
   return (
@@ -43,7 +47,7 @@ export default function WhatIDo() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          <ScrambleText text={t.whatIDo.eyebrow} />
+          <SectionLabel index="02">{t.whatIDo.eyebrow}</SectionLabel>
         </motion.span>
 
         <motion.h2

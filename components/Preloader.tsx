@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { EASE } from "@/lib/motion";
-import { getLenis } from "@/lib/smoothScroll";
+import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
 const HOLD_MS = 1500;
 
@@ -32,9 +32,6 @@ export default function Preloader() {
       return;
     }
 
-    document.body.style.overflow = "hidden";
-    getLenis()?.stop();
-
     const id = window.setTimeout(() => {
       try {
         sessionStorage.setItem("ds-preloaded", "1");
@@ -47,12 +44,12 @@ export default function Preloader() {
     return () => window.clearTimeout(id);
   }, [reduce]);
 
-  // Release scroll lock once the curtain has lifted.
+  // Lock scroll (ref-counted, shared with the other overlays) while the curtain
+  // is on screen; release it once the curtain has lifted.
   useEffect(() => {
-    if (!visible) {
-      document.body.style.overflow = "";
-      getLenis()?.start();
-    }
+    if (!visible) return;
+    lockScroll();
+    return () => unlockScroll();
   }, [visible]);
 
   return (

@@ -5,12 +5,12 @@ import { AnimatePresence, motion, useInView, type Variants } from "framer-motion
 import { ChevronLeft, ChevronRight, Github } from "lucide-react";
 import TiltCard from "@/components/TiltCard";
 import { EASE, SPRING_SNAPPY } from "@/lib/motion";
-import ScrambleText from "@/components/ScrambleText";
+import SectionLabel from "@/components/SectionLabel";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const PER_PAGE = 4;
 
-type Config = { id: string; title: string; tags: string[]; href: string; repo: string; groups: string[] };
+type Config = { id: string; title: string; tags: string[]; href: string; repo: string; groups: string[]; metric: string };
 
 const projectConfig: Config[] = [
   {
@@ -20,6 +20,7 @@ const projectConfig: Config[] = [
     href: "https://myanalyst.net",
     repo: "https://github.com/hickennoace/MyAnalyst",
     groups: ["analytics", "web"],
+    metric: "In-browser engine · CSV → dashboard in seconds",
   },
   {
     id: "08",
@@ -28,6 +29,7 @@ const projectConfig: Config[] = [
     href: "https://github.com/hickennoace/churn-prediction-engine",
     repo: "https://github.com/hickennoace/churn-prediction-engine",
     groups: ["analytics", "finance"],
+    metric: "ROC-AUC 0.907 · ~NT$13.8M/mo at risk",
   },
   {
     id: "02",
@@ -36,6 +38,7 @@ const projectConfig: Config[] = [
     href: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
     repo: "https://github.com/hickennoace/Ethereum-Macro-Analysis",
     groups: ["finance"],
+    metric: "1 significant leading indicator · 5-yr validation",
   },
   {
     id: "03",
@@ -44,6 +47,7 @@ const projectConfig: Config[] = [
     href: "https://github.com/hickennoace/CustomerBehaviour",
     repo: "https://github.com/hickennoace/CustomerBehaviour",
     groups: ["analytics"],
+    metric: "36 months of logs · live economy dashboard",
   },
   {
     id: "04",
@@ -52,6 +56,7 @@ const projectConfig: Config[] = [
     href: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
     repo: "https://github.com/hickennoace/LA-Crime-Rate-PowerBI",
     groups: ["analytics"],
+    metric: "~853K incidents · 7-page report",
   },
   {
     id: "05",
@@ -60,6 +65,7 @@ const projectConfig: Config[] = [
     href: "https://ticker-io.vercel.app",
     repo: "https://github.com/hickennoace/TickerIO",
     groups: ["finance", "web"],
+    metric: "Live SSE prices · any ticker on one page",
   },
   {
     id: "06",
@@ -68,6 +74,7 @@ const projectConfig: Config[] = [
     href: "https://github.com/hickennoace/Car-Company",
     repo: "https://github.com/hickennoace/Car-Company",
     groups: ["analytics", "finance"],
+    metric: "₪2bn revenue · 20.5% margin · Win-Back what-if",
   },
   {
     id: "07",
@@ -76,6 +83,7 @@ const projectConfig: Config[] = [
     href: "https://github.com/hickennoace/Portfolio",
     repo: "https://github.com/hickennoace/Portfolio",
     groups: ["web"],
+    metric: "Next.js · TypeScript · Framer Motion",
   },
 ];
 
@@ -116,6 +124,10 @@ export default function Projects() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const { t } = useLang();
+
+  if (process.env.NODE_ENV !== "production" && projectConfig.length !== t.projects.items.length) {
+    throw new Error("Projects: projectConfig length must match dictionary items");
+  }
 
   const allProjects = t.projects.items.map((it, i) => ({ ...projectConfig[i], ...it }));
 
@@ -171,7 +183,7 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="block text-[11px] font-semibold text-blue-600 dark:text-blue-400 tracking-[0.24em] uppercase mb-5"
         >
-          <ScrambleText text={t.projects.eyebrow} />
+          <SectionLabel index="04">{t.projects.eyebrow}</SectionLabel>
         </motion.span>
 
         <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
@@ -266,7 +278,7 @@ export default function Projects() {
                       href={project.href}
                       target="_blank"
                       rel="noreferrer"
-                      aria-label={project.title}
+                      aria-label={`${project.title} — opens in new tab`}
                       data-cursor={`${t.projects.view} ↗`}
                       className="absolute inset-0 z-10"
                     />
@@ -275,6 +287,8 @@ export default function Projects() {
                       <div className="flex items-start justify-between mb-6 gap-4">
                         <div>
                           <p className="text-[10px] font-semibold text-blue-600/70 dark:text-blue-400/70 tracking-[0.22em] uppercase mb-2">
+                            <span className="font-mono">{project.id}</span>
+                            <span aria-hidden className="mx-1.5 opacity-40">/</span>
                             {project.category}
                           </p>
                           <h3 className="text-[19px] sm:text-[20px] font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-200 leading-tight">
@@ -286,13 +300,17 @@ export default function Projects() {
                           href={project.repo}
                           target="_blank"
                           rel="noreferrer"
-                          aria-label={`${project.title} source on GitHub`}
+                          aria-label={`${project.title} source on GitHub — opens in new tab`}
                           title="Source on GitHub"
                           className="pointer-events-auto relative z-30 w-9 h-9 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 hover:bg-blue-500/20 hover:border-blue-400/40 transition-all duration-200"
                         >
                           <Github size={15} strokeWidth={2} className="text-blue-600 dark:text-blue-400" />
                         </a>
                       </div>
+
+                      <p className="font-mono tabular-nums text-[12px] text-blue-700/90 dark:text-blue-300/90 border-s-2 border-blue-500/40 ps-3 mb-5">
+                        {project.metric}
+                      </p>
 
                       <p className="text-slate-600 dark:text-slate-400 text-[14px] leading-[1.88] mb-6">
                         {project.description}
@@ -338,12 +356,16 @@ export default function Projects() {
                 onClick={() => goTo(i)}
                 aria-label={`Go to page ${i + 1}`}
                 aria-current={i === page}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  i === page
-                    ? "w-7 bg-blue-500"
-                    : "w-2 bg-slate-400/40 dark:bg-white/20 hover:bg-slate-400/70 dark:hover:bg-white/40"
-                }`}
-              />
+                className="group flex h-6 min-w-[24px] items-center justify-center"
+              >
+                <span
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    i === page
+                      ? "w-7 bg-blue-500"
+                      : "w-2 bg-slate-400/40 dark:bg-white/20 group-hover:bg-slate-400/70 dark:group-hover:bg-white/40"
+                  }`}
+                />
+              </button>
             ))}
           </motion.div>
         )}

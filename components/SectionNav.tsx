@@ -11,6 +11,10 @@ import { useLang } from "@/lib/i18n/LanguageProvider";
  * (and native scroll handles the no-Lenis case). Reuses useActiveSection — no
  * extra scroll cost.
  */
+// Stable module-level id list so useActiveSection's effect subscribes once
+// instead of rebuilding its IntersectionObserver on every render.
+const SECTION_IDS = ["top", "about", "what-i-do", "experience", "work", "connect"];
+
 export default function SectionNav() {
   const { t } = useLang();
 
@@ -23,7 +27,7 @@ export default function SectionNav() {
     { id: "connect", label: t.nav.connect, href: "#connect" },
   ];
 
-  const active = useActiveSection(items.map((i) => i.id));
+  const active = useActiveSection(SECTION_IDS);
 
   return (
     <nav

@@ -19,6 +19,12 @@ import Connect from "@/components/Connect";
 export default function Page() {
   return (
     <>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[300] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-blue-600 focus:text-white focus:text-sm focus:font-semibold"
+      >
+        Skip to content
+      </a>
       <Preloader />
       <SmoothScroll />
       <CustomCursor />
@@ -26,7 +32,7 @@ export default function Page() {
       <BackgroundOrbs />
       <Nav />
       <SectionNav />
-      <main className="relative z-10">
+      <main id="main" tabIndex={-1} className="relative z-10 outline-none">
         <Hero />
         <About />
         <WhatIDo />

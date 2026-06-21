@@ -1,4 +1,6 @@
-@import "@fontsource-variable/inter";
+/* Fonts (Inter + JetBrains Mono) are imported via next/font-style JS imports in
+   app/layout.tsx so they self-host and preload instead of being a render-blocking,
+   serially-chained CSS @import. */
 
 @tailwind base;
 @tailwind components;
@@ -62,6 +64,18 @@ html.lenis body {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Visible keyboard focus ──
+   :focus-visible only triggers for keyboard/AT navigation, so mouse users still
+   see no ring and the custom-cursor aesthetic is preserved. :where() keeps the
+   specificity at 0 so component-level focus styles can still override it. */
+:where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+.dark :where(a, button, input, textarea, select, summary, [tabindex]:not([tabindex="-1"])):focus-visible {
+  outline-color: #60a5fa;
 }
 
 html {
@@ -227,9 +241,13 @@ html:not(.dark) .meteor::after {
   0%   { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
 }
+/* One-shot sheen: plays a couple of passes on load, then holds its end state so
+   the compositor goes idle (the gradient is symmetric, so the end frame matches
+   the start). Avoids an always-on per-frame text repaint. */
 .text-sheen {
   background-size: 200% auto;
-  animation: textSheen 7s linear infinite;
+  animation: textSheen 7s linear 2;
+  animation-fill-mode: forwards;
 }
 
 /* ──────────────────────────────────────────────────────────────────────────

@@ -6,6 +6,8 @@ import { Menu, X, Search } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 import { useActiveSection } from "@/lib/useActiveSection";
+import { EASE } from "@/lib/motion";
+import { lockScroll, unlockScroll } from "@/lib/scrollLock";
 
 const LINK_KEYS = [
   { key: "about",      href: "#about",      id: "about"      },
@@ -16,8 +18,6 @@ const LINK_KEYS = [
 ] as const;
 
 const SECTION_IDS = LINK_KEYS.map((l) => l.id);
-
-const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,8 +37,9 @@ export default function Nav() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!open) return;
+    lockScroll();
+    return () => unlockScroll();
   }, [open]);
 
   const linkSlideX = -24;

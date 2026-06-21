@@ -2,7 +2,7 @@
 
 My personal landing page, built as a single-page Next.js site and deployed on Vercel. It's where I send recruiters and people asking what I'm working on.
 
-The site itself is one long page with anchored sections (Hero, About, What I Do, Experience, Projects, Connect) and a contact modal that actually sends mail via Resend. Dark theme by default. There's a custom cursor on desktop, a slow meteor-shower effect behind the hero, and a few framer-motion reveals as you scroll.
+The site itself is one long page with anchored sections (Hero, About, What I Do, Experience, Projects, Connect) and a contact modal that actually sends mail via Resend. Light theme by default, with a dark toggle. There's a custom cursor on desktop, a slow meteor-shower effect behind the hero, and a few framer-motion reveals as you scroll.
 
 ## Stack
 
@@ -11,10 +11,10 @@ The site itself is one long page with anchored sections (Hero, About, What I Do,
 - Tailwind CSS for styling.
 - framer-motion for section reveals and the small flourishes.
 - lucide-react for icons.
-- next-themes for dark mode (defaulted to dark, no system follow).
+- next-themes for light/dark theming (defaulted to light, no system follow).
 - Resend for the contact form (`RESEND_API_KEY` env var required for emails to actually send).
 
-Fonts: Instrument Serif for the display headings, Inter (variable) for body, JetBrains Mono for accents. All three are loaded via `@fontsource` packages so there's no Google Fonts call at runtime.
+Fonts: Inter (variable) for everything, JetBrains Mono for data accents (dates, metrics, section indices). Both are self-hosted via `@fontsource` packages (imported in `layout.tsx`), so there's no Google Fonts call at runtime.
 
 ## Local development
 
@@ -76,7 +76,7 @@ A couple of details worth knowing if you fork this:
 - Edit copy directly in each component. No CMS, everything is colocated with the component.
 - Update social links wherever they appear (`Nav.tsx`, `Connect.tsx`).
 - Set `RESEND_API_KEY` in your env if you want the contact form to actually send mail. Without it the form will fall back to copying the address.
-- The dark-mode default lives in `layout.tsx` (`defaultTheme="dark"`, `enableSystem={false}`). Flip those if you want light by default or want to follow the OS.
+- The theme default lives in `layout.tsx` (`defaultTheme="light"`, `enableSystem={false}`). Flip those if you want dark by default or want to follow the OS.
 
 ## Notes
 

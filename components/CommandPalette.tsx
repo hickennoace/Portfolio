@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import { EASE } from "@/lib/motion";
 import { getLenis, SCROLL_OFFSET } from "@/lib/smoothScroll";
+import { lockScroll, unlockScroll } from "@/lib/scrollLock";
+import { useFocusTrap } from "@/lib/useFocusTrap";
 import { useLang } from "@/lib/i18n/LanguageProvider";
 
 const EMAIL = "danielshaulov4@gmail.com";
@@ -49,6 +51,9 @@ export default function CommandPalette() {
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useFocusTrap(open, dialogRef);
 
   // Global hotkey.
   useEffect(() => {
@@ -69,28 +74,30 @@ export default function CommandPalette() {
     };
   }, []);
 
-  // Scroll lock + focus while open.
+  // Scroll lock (ref-counted, shared with the other overlays) + focus while open.
+  // A body flag lets ContactModal's Escape handler defer to the palette when both
+  // are open, so Escape dismisses only the topmost overlay.
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-      getLenis()?.stop();
-      setQuery("");
-      setSel(0);
-      setCopied(false);
-      const id = window.setTimeout(() => inputRef.current?.focus(), 40);
-      return () => window.clearTimeout(id);
-    }
-    document.body.style.overflow = "";
-    getLenis()?.start();
+    if (!open) return;
+    lockScroll();
+    document.body.dataset.cmdkOpen = "1";
+    setQuery("");
+    setSel(0);
+    setCopied(false);
+    const id = window.setTimeout(() => inputRef.current?.focus(), 40);
+    return () => {
+      window.clearTimeout(id);
+      unlockScroll();
+      delete document.body.dataset.cmdkOpen;
+    };
   }, [open]);
 
   const go = (href: string) => {
     setOpen(false);
-    // The open-effect locked the body and stopped Lenis; its cleanup only runs on
-    // the next tick. Restore scrolling now, then drive the scroll on the next frame
-    // with force:true — a stopped/locked Lenis silently ignores scrollTo otherwise,
-    // which is why clicking a result used to do nothing.
-    document.body.style.overflow = "";
+    // Closing unlocks scroll on the next tick (open-effect cleanup). Start Lenis
+    // now and drive the scroll on the next frame with force:true — a stopped/locked
+    // Lenis silently ignores scrollTo otherwise, which is why clicking a result
+    // used to do nothing.
     const l = getLenis();
     l?.start();
     requestAnimationFrame(() => {
@@ -200,8 +207,10 @@ export default function CommandPalette() {
           />
 
           <motion.div
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
+            aria-label="Command palette"
             initial={{ opacity: 0, y: -12, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.98 }}
@@ -219,6 +228,12 @@ export default function CommandPalette() {
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={onInputKey}
                 placeholder={t.cmdk.placeholder}
+                role="combobox"
+                aria-expanded
+                aria-controls="cmdk-list"
+                aria-autocomplete="list"
+                aria-activedescendant={filtered.length ? filtered[sel]?.id : undefined}
+                aria-label={t.cmdk.placeholder}
                 className="w-full bg-transparent py-4 text-[15px] text-slate-900 dark:text-white placeholder:text-slate-400 outline-none"
               />
               <kbd className="hidden sm:block text-[10px] font-medium text-slate-400 border border-black/[0.1] dark:border-white/[0.12] rounded px-1.5 py-0.5">
@@ -226,8 +241,19 @@ export default function CommandPalette() {
               </kbd>
             </div>
 
+            {/* SR-only live region announcing result count / empty state */}
+            <p className="sr-only" aria-live="polite">
+              {filtered.length ? `${filtered.length} results` : t.cmdk.empty}
+            </p>
+
             {/* Results */}
-            <div ref={listRef} className="max-h-[52vh] overflow-y-auto p-2">
+            <div
+              ref={listRef}
+              id="cmdk-list"
+              role="listbox"
+              aria-label={t.cmdk.placeholder}
+              className="max-h-[52vh] overflow-y-auto p-2"
+            >
               {filtered.length === 0 && (
                 <p className="px-3 py-8 text-center text-[13px] text-slate-400">{t.cmdk.empty}</p>
               )}
@@ -249,6 +275,9 @@ export default function CommandPalette() {
                       return (
                         <button
                           key={c.id}
+                          id={c.id}
+                          role="option"
+                          aria-selected={isSel}
                           type="button"
                           onMouseEnter={() => setSel(idx)}
                           onClick={() => c.run()}

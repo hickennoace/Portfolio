@@ -1,5 +1,3 @@
-export type Lang = "en";
-
 const en = {
   nav: {
     logo: "Daniel Shaulov",
@@ -26,6 +24,12 @@ const en = {
     downloadCV: "Download CV",
     scroll: "Scroll",
     portraitAlt: "Daniel Shaulov",
+    proof: [
+      { value: "90", label: "GPA" },
+      { value: "0.907", label: "ROC-AUC" },
+      { value: "~23M", label: "rows modeled" },
+      { value: "8", label: "projects" },
+    ],
   },
   about: {
     eyebrow: "About",
@@ -198,11 +202,6 @@ const en = {
     genericError: "Something went wrong.",
     sendError: "Failed to send. Please try again.",
   },
-  language: {
-    toggleAria: "Switch language",
-    en: "EN",
-    he: "HE",
-  },
   misc: {
     backToTop: "Back to top",
     home: "Home",
@@ -221,9 +220,6 @@ const en = {
     github: "Open GitHub",
     linkedin: "Open LinkedIn",
     openHint: "to open",
-  },
-  meta: {
-    pageTitle: "Daniel Shaulov - Data & Analyst",
   },
 };
 
