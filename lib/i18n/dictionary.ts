@@ -24,12 +24,6 @@ const en = {
     downloadCV: "Download CV",
     scroll: "Scroll",
     portraitAlt: "Daniel Shaulov",
-    proof: [
-      { value: "90", label: "GPA" },
-      { value: "0.907", label: "ROC-AUC" },
-      { value: "~23M", label: "rows modeled" },
-      { value: "8", label: "projects" },
-    ],
   },
   about: {
     eyebrow: "About",

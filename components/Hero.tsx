@@ -166,23 +166,6 @@ export default function Hero() {
               </Magnetic>
               <CvDownloadButton />
             </motion.div>
-
-            {/* Proof bar — hard numbers, above the fold */}
-            <motion.div
-              variants={up}
-              className="mt-10 pt-6 border-t border-black/[0.08] dark:border-white/[0.08] grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-[460px] mx-auto sm:mx-0"
-            >
-              {t.hero.proof.map((p) => (
-                <div key={p.label} className="text-center sm:text-start">
-                  <div className="font-mono tabular-nums text-[20px] sm:text-[22px] font-bold tracking-tight text-slate-900 dark:text-white">
-                    {p.value}
-                  </div>
-                  <div className="mt-0.5 text-[10.5px] sm:text-[11px] text-slate-600 dark:text-slate-400 tracking-wide">
-                    {p.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
           </motion.div>
 
           {/* ── Profile image — large square, full color, permanent blue glow ── */}
